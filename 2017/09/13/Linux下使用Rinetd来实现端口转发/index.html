@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://silverfox2016.github.com/2017/09/13/Linux下使用Rinetd来实现端口转发/index.html">
 <meta property="og:site_name" content="Silverfox2016">
 <meta property="og:description" content="Linux下端口转发一般都使用iptables来实现，使用iptables可以很容易将TCP和UDP端口从防火墙转发到内部主机上。但是如果需要将流量从专用地址转发到不在您当前网络上的机器上，可尝试另一个应用层端口转发程序Rinetd。Rinetd短小、高效，配置起来比iptables也简单很多。Rinetd是为在一个Unix和Linux操作系统中为重定向传输控制协议(TCP)连接的一个工具。Rin">
-<meta property="og:updated_time" content="2017-09-13T09:44:57.000Z">
+<meta property="og:updated_time" content="2017-09-13T09:59:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下使用Rinetd来实现端口转发">
 <meta name="twitter:description" content="Linux下端口转发一般都使用iptables来实现，使用iptables可以很容易将TCP和UDP端口从防火墙转发到内部主机上。但是如果需要将流量从专用地址转发到不在您当前网络上的机器上，可尝试另一个应用层端口转发程序Rinetd。Rinetd短小、高效，配置起来比iptables也简单很多。Rinetd是为在一个Unix和Linux操作系统中为重定向传输控制协议(TCP)连接的一个工具。Rin">
@@ -89,7 +89,7 @@
 <p>安装</p>
 <p>通过包安装<br>CentOS</p>
 <p>官方源中不具有Rinetd，所以需要先安装三方源。</p>
-<p>配置三方源</p>
+<p>配置三方源<br><a id="more"></a></p>
 <p>32位系统</p>
 <p>$ vim /etc/yum.repos.d/nux-misc.repo[nux-misc]name=Nux Miscbaseurl=<a href="http://li.nux.ro/download/nux/misc/el6/i386/enabled=0gpgcheck=1gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro" target="_blank" rel="external">http://li.nux.ro/download/nux/misc/el6/i386/enabled=0gpgcheck=1gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro</a><br>64位系统</p>
 <p>$ vim  /etc/yum.repos.d/nux-misc.repo:[nux-misc]name=Nux Miscbaseurl=<a href="http://li.nux.ro/download/nux/misc/el6/x86_64/enabled=0gpgcheck=1gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro" target="_blank" rel="external">http://li.nux.ro/download/nux/misc/el6/x86_64/enabled=0gpgcheck=1gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro</a><br>安装Rinetd</p>
@@ -115,7 +115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://silverfox2016.github.com/2017/09/13/Linux下使用Rinetd来实现端口转发/" data-id="cj7iup5g30000xp5wf6zg0u3x" class="article-share-link">Share</a>
+      <a data-url="http://silverfox2016.github.com/2017/09/13/Linux下使用Rinetd来实现端口转发/" data-id="cj7iuzky000008l5wxkkhi6vu" class="article-share-link">Share</a>
       
       
     </footer>

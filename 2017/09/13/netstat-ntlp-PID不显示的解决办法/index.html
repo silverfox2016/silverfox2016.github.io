@@ -5,16 +5,16 @@
   
   <title>netstat -ntlp PID不显示的解决办法 | Silverfox2016</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt 我擦 还没有。。。。懵逼了遂 群里寻求帮助无解">
+  <meta name="description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="netstat -ntlp PID不显示的解决办法">
 <meta property="og:url" content="http://silverfox2016.github.com/2017/09/13/netstat-ntlp-PID不显示的解决办法/index.html">
 <meta property="og:site_name" content="Silverfox2016">
-<meta property="og:description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt 我擦 还没有。。。。懵逼了遂 群里寻求帮助无解">
-<meta property="og:updated_time" content="2017-09-13T09:45:16.000Z">
+<meta property="og:description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt">
+<meta property="og:updated_time" content="2017-09-13T10:00:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="netstat -ntlp PID不显示的解决办法">
-<meta name="twitter:description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt 我擦 还没有。。。。懵逼了遂 群里寻求帮助无解">
+<meta name="twitter:description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt">
   
     <link rel="alternate" href="/atom.xml" title="Silverfox2016" type="application/atom+xml">
   
@@ -87,7 +87,7 @@
       
         <p>查看线上机器 发现PID有- 如下图 遂 lsof 查看</p>
 <p>我嘞个去  木有诶。。。<br>去伪系统看看<br>ll /proc/*/fd &gt; proc.txt</p>
-<p>搜索下511398198 511398183 511398188 511398200<br>grep -E “511398198|511398183|511398188|511398200” proc.txt</p>
+<p>搜索下511398198 511398183 511398188 511398200<br>grep -E “511398198|511398183|511398188|511398200” proc.txt<br><a id="more"></a></p>
 <p>我擦 还没有。。。。<br>懵逼了<br>遂 群里寻求帮助<br>无解 。。。。下班 回家<br>周一 有大牛提供systemtap<br>这是个什么东西呢。。。 擦 木有玩过哇。。。<br>遂百度先看看</p>
 <p> 安装systemtap<br>1.查看当前内核版本<br>uname -a<br>2 查看当前安装kernel版本 kernel-devel kernel-debuginfo kernel-debuginfo-common<br>rpm -qa| grep kernel<br>所有版本需要跟uname -r版本一致<br>kernel-debuginfo kernel-debuginfo-common 这两个包去<a href="http://debuginfo.centos.org/" target="_blank" rel="external">http://debuginfo.centos.org/</a> 这里下载<br>（版本需要跟uname -r 版本一致）</p>
 <p>安装完毕后<br>yum install systemtap -y</p>
@@ -106,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://silverfox2016.github.com/2017/09/13/netstat-ntlp-PID不显示的解决办法/" data-id="cj7iup5gb0002xp5w5sp5b440" class="article-share-link">Share</a>
+      <a data-url="http://silverfox2016.github.com/2017/09/13/netstat-ntlp-PID不显示的解决办法/" data-id="cj7iuzky800028l5ws3nwtxtt" class="article-share-link">Share</a>
       
       
     </footer>

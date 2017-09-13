@@ -5,16 +5,16 @@
   
   <title>curl 时间变量格式化输出 | Silverfox2016</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对curl时间变量的格式化输出。定义格式化文件 1234567891011 #vim  curl-format.txt\n            time_namelookup:  %{time_namelookup}\n               time_connect:  %{time_connect}\n            time_appconnect:  %{time_appc">
+  <meta name="description" content="对curl时间变量的格式化输出。定义格式化文件 #vim  curl-format.txt\n            time_namelookup:  %{time_namelookup}\n               time_connect:  %{time_connect}\n            time_appconnect:  %{time_appconnect}\n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="curl 时间变量格式化输出">
 <meta property="og:url" content="http://silverfox2016.github.com/2017/09/13/curl-时间变量格式化输出/index.html">
 <meta property="og:site_name" content="Silverfox2016">
-<meta property="og:description" content="对curl时间变量的格式化输出。定义格式化文件 1234567891011 #vim  curl-format.txt\n            time_namelookup:  %{time_namelookup}\n               time_connect:  %{time_connect}\n            time_appconnect:  %{time_appc">
-<meta property="og:updated_time" content="2017-09-13T09:44:46.000Z">
+<meta property="og:description" content="对curl时间变量的格式化输出。定义格式化文件 #vim  curl-format.txt\n            time_namelookup:  %{time_namelookup}\n               time_connect:  %{time_connect}\n            time_appconnect:  %{time_appconnect}\n">
+<meta property="og:updated_time" content="2017-09-13T09:58:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="curl 时间变量格式化输出">
-<meta name="twitter:description" content="对curl时间变量的格式化输出。定义格式化文件 1234567891011 #vim  curl-format.txt\n            time_namelookup:  %{time_namelookup}\n               time_connect:  %{time_connect}\n            time_appconnect:  %{time_appc">
+<meta name="twitter:description" content="对curl时间变量的格式化输出。定义格式化文件 #vim  curl-format.txt\n            time_namelookup:  %{time_namelookup}\n               time_connect:  %{time_connect}\n            time_appconnect:  %{time_appconnect}\n">
   
     <link rel="alternate" href="/atom.xml" title="Silverfox2016" type="application/atom+xml">
   
@@ -85,8 +85,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 对curl时间变量的格式化输出。<br>定义格式化文件</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11</p>
+        <a id="more"></a>
+<p> 对curl时间变量的格式化输出。<br>定义格式化文件</p>
 <p>#vim  curl-format.txt<br>\n<br>            time_namelookup:  %{time_namelookup}\n<br>               time_connect:  %{time_connect}\n<br>            time_appconnect:  %{time_appconnect}\n<br>           time_pretransfer:  %{time_pretransfer}\n<br>              time_redirect:  %{time_redirect}\n<br>         time_starttransfer:  %{time_starttransfer}\n<br>                            ———-\n<br>                 time_total:  %{time_total}\n<br>\n<br>这些变量的含义不解释了，大伙去看看curl帮助文档。重点说下time_connect和time_appconnect变量。time_connect 变量表示 TCP 握手的耗时，time_appconnect 变量表示 SSL 握手的耗时（ssl延时）。HTTPs 连接耗时要比 HTTP 连接耗时长 3 倍左右，具体取决于 CPU 的快慢。<br>发送请求</p>
 <h1 id="curl-w-“-curl-format-txt”-o-dev-null-s-http-www-baidu-com"><a href="#curl-w-“-curl-format-txt”-o-dev-null-s-http-www-baidu-com" class="headerlink" title="curl -w “@curl-format.txt” -o /dev/null -s  http://www.baidu.com"></a>curl -w “@curl-format.txt” -o /dev/null -s  <a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a></h1><pre><code>   time_namelookup:  0.002
       time_connect:  1.973
@@ -109,7 +109,7 @@ time_starttransfer:  5.214
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://silverfox2016.github.com/2017/09/13/curl-时间变量格式化输出/" data-id="cj7iup5g80001xp5wk29nkl3b" class="article-share-link">Share</a>
+      <a data-url="http://silverfox2016.github.com/2017/09/13/curl-时间变量格式化输出/" data-id="cj7iuzky600018l5w0ff4zv0l" class="article-share-link">Share</a>
       
       
     </footer>

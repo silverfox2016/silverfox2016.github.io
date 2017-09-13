@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/index.html">
 <meta property="og:site_name" content="Silverfox2016">
 <meta property="og:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
-<meta property="og:updated_time" content="2017-09-13T09:48:59.000Z">
+<meta property="og:updated_time" content="2017-09-13T10:02:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="终极Web应用性能和压力测试工具Gor">
 <meta name="twitter:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
@@ -90,6 +90,7 @@
 <p>官方描述</p>
 <p>Gor is a simple http traffic replication tool written in Go.<br>Its main goal is to replay traffic from production servers to staging and dev environments.</p>
 <p>简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</p>
+<a id="more"></a>
 <p>Gor的功能</p>
 <p>Gor支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。Gor还支持根据正则表达式过滤流量，这意味着可以单独测试某个API服务。还可以修改HTTP请求头，比如替换User-Agent, 或者增加某些HTTPHeader。</p>
 <p>Gor还可以把请求记录到文件，以备回放和分析。Gor支持和ElasticSearch集成，将流量存入ES进行实时分析。</p>
@@ -146,7 +147,7 @@ gor --input-raw :80 --output-tcp replay.local:28020 (default [])
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7iup5gq000bxp5whmyfhesu" class="article-share-link">Share</a>
+      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7iuzkyn000b8l5w1svyaze5" class="article-share-link">Share</a>
       
       
     </footer>

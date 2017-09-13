@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://silverfox2016.github.com/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/index.html">
 <meta property="og:site_name" content="Silverfox2016">
 <meta property="og:description" content="背景介绍：目前，项目中服务器的配置管理已经全部从Puppet迁移到了Ansible，而之前一直认为不会带来困扰的SSH通道慢的问题则暴露的很明显了。因为很多时候需要同时更新几百台服务器，有不少服务器与Ansible主机还不在同一个IDC机房。无意间发现了一篇文章，提到开启SSH的ControlMaster并持久化socket连接，可以加速Ansible的执行速度，不需要在每次都经历SSH认证，单个">
-<meta property="og:updated_time" content="2017-09-13T09:47:49.000Z">
+<meta property="og:updated_time" content="2017-09-13T09:59:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开启ControlPersist来大幅度提升SSH的连接速度">
 <meta name="twitter:description" content="背景介绍：目前，项目中服务器的配置管理已经全部从Puppet迁移到了Ansible，而之前一直认为不会带来困扰的SSH通道慢的问题则暴露的很明显了。因为很多时候需要同时更新几百台服务器，有不少服务器与Ansible主机还不在同一个IDC机房。无意间发现了一篇文章，提到开启SSH的ControlMaster并持久化socket连接，可以加速Ansible的执行速度，不需要在每次都经历SSH认证，单个">
@@ -87,7 +87,7 @@
       
         <p>背景介绍：<br>目前，项目中服务器的配置管理已经全部从Puppet迁移到了Ansible，而之前一直认为不会带来困扰的SSH通道慢的问题则暴露的很明显了。<br>因为很多时候需要同时更新几百台服务器，有不少服务器与Ansible主机还不在同一个IDC机房。<br>无意间发现了一篇文章，提到开启SSH的ControlMaster并持久化socket连接，可以加速Ansible的执行速度，不需要在每次都经历SSH认证，单个服务器可能节约的时间仅在1秒左右，而上百台的服务器就能节省约1分钟左右的时间。</p>
 <p>但开启这个功能，必须安装版本较新的openssh，而我们大部分主机都是CentOS6.4 x86_64，默认的版本太旧了并且官方yum仓库中的版本也很旧。<br>考虑到这个功能仅需要客户端的支持即可，不需要在每台服务器上都安装，我们就下载了最新的openssh源码包并打包成了RPM直接安装到了Ansible操作主机上。</p>
-<p>服务器环境：<br>CentOS 6.4 x86_64 Minimal</p>
+<p>服务器环境：<br>CentOS 6.4 x86_64 Minimal<br><a id="more"></a></p>
 <ol>
 <li>编译生成OpenSSH RPM<br>1.1 安装编译所需工具<br>$ sudo yum -y groupinstall “Development tools”<br>$ sudo yum -y install pam-devel rpm-build rpmdevtools zlib-devel krb5-devel tcp_wrappers tcp_wrappers-devel tcp_wrappers-libs</li>
 </ol>
@@ -129,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://silverfox2016.github.com/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/" data-id="cj7iup5gn0009xp5w24n64it4" class="article-share-link">Share</a>
+      <a data-url="http://silverfox2016.github.com/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/" data-id="cj7iuzkyk00098l5w2umatx6a" class="article-share-link">Share</a>
       
       
     </footer>
