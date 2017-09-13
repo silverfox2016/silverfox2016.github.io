@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>终极Web应用性能和压力测试工具Gor | Silverfox2016</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终极Web应用性能和压力测试工具Gor">
+<meta property="og:url" content="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/index.html">
+<meta property="og:site_name" content="Silverfox2016">
+<meta property="og:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
+<meta property="og:updated_time" content="2017-09-13T09:48:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="终极Web应用性能和压力测试工具Gor">
+<meta name="twitter:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
+  
+    <link rel="alternate" href="/atom.xml" title="Silverfox2016" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Silverfox2016</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://silverfox2016.github.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-终极Web应用性能和压力测试工具Gor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/" class="article-date">
+  <time datetime="2017-09-13T08:51:39.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      终极Web应用性能和压力测试工具Gor
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>什么是Gor</p>
+<p>项目地址：<a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a></p>
+<p>官方描述</p>
+<p>Gor is a simple http traffic replication tool written in Go.<br>Its main goal is to replay traffic from production servers to staging and dev environments.</p>
+<p>简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</p>
+<p>Gor的功能</p>
+<p>Gor支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。Gor还支持根据正则表达式过滤流量，这意味着可以单独测试某个API服务。还可以修改HTTP请求头，比如替换User-Agent, 或者增加某些HTTPHeader。</p>
+<p>Gor还可以把请求记录到文件，以备回放和分析。Gor支持和ElasticSearch集成，将流量存入ES进行实时分析。</p>
+<p>Gor的架构</p>
+<p>非http协议的流量复制</p>
+<p>对于不是基于http协议的流量复制，可以使用流量复制工具TCPCopy, TCPCopy支持tcp协议流量的复制、转发、拦截，非常棒的工具。</p>
+<p>TCPCopy项目地址：<a href="https://github.com/session-replay-tools/tcpcopy" target="_blank" rel="external">https://github.com/session-replay-tools/tcpcopy</a></p>
+<p>Gor安装</p>
+<p>二进制版本</p>
+<p>官方预编译版本使用比较简单，开箱即用。</p>
+<p>通过以下地址下载最新版本</p>
+<p><a href="https://github.com/buger/gor/releases" target="_blank" rel="external">https://github.com/buger/gor/releases</a> </p>
+<p>Linux</p>
+<p>$ wget <a href="https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$" target="_blank" rel="external">https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$</a> tar xzvf gor_0.12.1_x64.tar.gz$ cp gor /usr/local/bin<br>Mac</p>
+<p>$ wget <a href="https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$" target="_blank" rel="external">https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$</a> tar xzvf gor_0.12.1_mac.tar.gz<br>编译安装</p>
+<p>搭建标准的Go语言环境,可参考<a href="http://golang.org/doc/code.html。并设置$GOPATH环境变量" target="_blank" rel="external">http://golang.org/doc/code.html。并设置$GOPATH环境变量</a></p>
+<p>获取源代码</p>
+<p>$ go get github.com/buger/gor<br>编译</p>
+<p>$ cd $GOPATH/src/github.com/buger/gor$ go build<br>编译完成会产生一个gor二进制文件。</p>
+<p>Gor配置参数</p>
+<p>gor –help<br>-cpuprofile string<br>        write cpu profile to file<br>-debug verbose<br>        打开debug模式，显示所有接口的流量<br>  -http-allow-header value<br>        用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝<br>         gor –input-raw :8080 –output-http staging.com –http-allow-header api-version:^v1 (default [])<br>  -http-allow-method value<br>        类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.<br>        gor –input-raw :8080 –output-http staging.com –http-allow-method GET –http-allow-method OPTIONS (default [])<br>  -http-allow-url value<br>        一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉<br>         gor –input-raw :8080 –output-http staging.com –http-allow-url ^www. (default [])<br>  -http-disallow-header value<br>        用一个正则表达式来匹配http头部，匹配到的请求会被拒绝掉<br>         gor –input-raw :8080 –output-http staging.com –http-disallow-header “User-Agent: Replayed by Gor” (default [])<br>  -http-disallow-url value<br>        用一个正则表达式来匹配url，如果请求匹配上了，则会被拒绝<br>         gor –input-raw :8080 –output-http staging.com –http-disallow-url ^www. (default [])<br>  -http-header-limiter value<br>        读取请求，基于FNV32-1A散列来拒绝一定比例的特殊请求<br>         gor –input-raw :8080 –output-http staging.com –http-header-imiter user-id:25% (default [])<br>  -http-original-host<br>        在–output-http的输出中，通常gor会使用取代请求的http头，所以应该禁用该选项，保留原始的主机头<br>  -http-param-limiter value<br>        Takes a fraction of requests, consistently taking or rejecting a request based on the FNV32-1A hash of a specific GET param:<br>         gor –input-raw :8080 –output-http staging.com –http-param-limiter user_id:25% (default [])<br>  -http-rewrite-url value<br>        Rewrite the request url based on a mapping:<br>        gor –input-raw :8080 –output-http staging.com –http-rewrite-url /v1/user/([^\/]+)/ping:/v2/user/$1/ping (default [])<br>  -http-set-header value<br>        Inject additional headers to http reqest:<br>        gor –input-raw :8080 –output-http staging.com –http-set-header ‘User-Agent: Gor’ (default [])<br>  -http-set-param value<br>        Set request url param, if param already exists it will be overwritten:<br>        gor –input-raw :8080 –output-http staging.com –http-set-param api_key=1 (default [])<br>  -input-dummy value<br>        Used for testing outputs. Emits ‘Get /‘ request every 1s (default [])<br>  -input-file value<br>        从一个文件中读取请求<br>        gor –input-file ./requests.gor –output-http staging.com (default [])<br>  -input-http value<br>        从一个http接口读取请求</p>
+<pre><code># Listen for http on 9000
+gor --input-http :9000 --output-http staging.com (default [])
+</code></pre><p>  -input-raw value<br>        Capture traffic from given port (use RAW sockets and require <em>sudo</em> access):</p>
+<pre><code># Capture traffic from 8080 port
+gor --input-raw :8080 --output-http staging.com (default [])
+</code></pre><p>  -input-tcp value<br>       用来在多个gor之间流转流量</p>
+<pre><code># Receive requests from other Gor instances on 28020 port, and redirect output to staging
+gor --input-tcp :28020 --output-http staging.com (default [])
+</code></pre><p>  -memprofile string<br>        write memory profile to this file<br>  -middleware string<br>        Used for modifying traffic using external command<br>  -output-dummy value<br>        用来测试输入，打印出接收的数据. (default [])<br>  -output-file value<br>        把进入的请求写入一个文件中<br>        gor –input-raw :80 –output-file ./requests.gor (default [])<br>  -output-http value<br>        转发进入的请求到一个http地址上</p>
+<pre><code># Redirect all incoming requests to staging.com address 
+gor --input-raw :80 --output-http http://staging.com (default [])
+</code></pre><p>  -output-http-elasticsearch string<br>        把请求和响应状态发送到ElasticSearch:<br>        gor –input-raw :8080 –output-http staging.com –output-http-elasticsearch ‘es_host:api_port/index_name’<br>  -output-http-redirects int<br>        设置多少次重定向被允许<br>  -output-http-stats<br>        每5秒钟输出一次输出队列的状态<br>  -output-http-timeout duration<br>       指定http的request/response超时时间，默认是5秒<br>  -output-http-workers int<br>        gor默认是动态的扩展工作者数量，你也可以指定固定数量的工作者<br>  -output-tcp value<br>        用来在多个gor之间流转流量</p>
+<pre><code># Listen for requests on 80 port and forward them to other Gor instance on 28020 port
+gor --input-raw :80 --output-tcp replay.local:28020 (default [])
+</code></pre><p>  -output-tcp-stats<br>        每5秒钟报告一次tcp输出队列的状态<br>  -split-output true<br>        By default each output gets same traffic. If set to true it splits traffic equally among all outputs.<br>  -stats<br>        打开输出队列的状态<br>  -verbose<br>        Turn on more verbose output<br>Gor常用命令</p>
+<p>简单的HTTP流量复制</p>
+<p>$ gor –input-raw :80 –output-http “<a href="http://staging.com" target="_blank" rel="external">http://staging.com</a>“<br>HTTP流量复制频率控制(获取每秒超过10个请求)</p>
+<p>$ gor –input-tcp :28020 –output-http “<a href="http://staging.com|10" target="_blank" rel="external">http://staging.com|10</a>“<br>HTTP流量复制缩小</p>
+<p>$ gor –input-raw :80 –output-tcp “replay.local:28020|10%”<br>HTTP流量记录到本地文件</p>
+<p>$ gor –input-raw :80 –output-file requests.gor<br>HTTP流量回放和压测</p>
+<p>$ gor –input-file “requests.gor|200%” –output-http “staging.com”<br>HTTP流量过滤复制</p>
+<p>$ gor –input-raw :8080 –output-http staging.com –output-http-url-regexp ^www.<br>自定义一些流量复制的参数</p>
+<p>$ gor –input-raw :80 –output-http 192.168.2.6:8000 –http-allow-method POST –http-set-header ‘User-Agent: Gor’ -output-http-workers=1 -http-allow-url test.php<br>将流量复制两份到不同的测试服务</p>
+<p>$ gor –input-tcp :28020 –output-http “<a href="http://staging.com" target="_blank" rel="external">http://staging.com</a>“  –output-http “<a href="http://dev.com" target="_blank" rel="external">http://dev.com</a>“<br>将流量像负载均衡一样分配到不同的服务器</p>
+<p>$ gor –input-tcp :28020 –output-http “<a href="http://staging.com" target="_blank" rel="external">http://staging.com</a>“  –output-http “<a href="http://dev.com" target="_blank" rel="external">http://dev.com</a>“ –split-output true<br>测试实例</p>
+<p>预发布系统压力测试</p>
+<p>预发布系统主要由预发布服务器和Gor流量复制工具组成，为了查看和分析测试效果，还可以接入各种监控分析系统。<br>部署搭建预发布服务，预发布服务使用的数据库，消息队列，缓存等等需要生成环境隔离，避免对生产环境造成影响；同时，预发布环境使用的数据尽量保证和生成环境一致，以保证测试效果。<br>将线上的五台Api服务器的流量复制到了一台preview(预发布)服务器</p>
+<p>在Api服务器上启动Gor Listener，复制80端口的流量，转发到预发布服务器的28020端口<br>$ sudo gor –input-raw :80 –output-tcp preview:28020<br>在预发布服务器上启动Gor Replayer， 监听28020端口，同时将请求转发到预发布服务器<br>$ sudo gor –input-tcp preview:28020 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a><br>也可以将listener和replayer合二为一<br>$ sudo gor –input-tcp preview:28020 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a><br>注: gor使用listener捕捉请求的时候需要sudo权限</p>
+<p>测试总结<br>极少的情况下Gor会有少量的丢包问题出现，但是不影响测试效果。<br>建议将Gor的listener和replayer分开，减少对生成环境性能的影响。<br>部署搭建预发布服务，预发布服务使用的数据库，消息队列，缓存等等需要生成环境隔离，避免对生产环境造成影响；同时，预发布环境使用的数据尽量保证和生成环境一致，以保证测试效果。<br>由于预发布环境和生成环境的数据无法做到实时的同步，所以要注意区分哪些错误是有程序的bug，哪些是由数据不一致导致的。<br>预发布系统能够一站解决回归测试、abtest和压力测试，然而还是会有局限性：对于比较复杂的业务逻辑，并不能直观的表现出来，需要后台对数据进行进一步的分析比较后才能判断。</p>
+<p>参考文档</p>
+<p><a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a><br><a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a><br><a href="https://blog.eood.cn/web-performance-testing-gor" target="_blank" rel="external">https://blog.eood.cn/web-performance-testing-gor</a><br><a href="http://my.oschina.net/guol/blog/675294" target="_blank" rel="external">http://my.oschina.net/guol/blog/675294</a><br><a href="http://xuyaoqiang.com/2016/05/02/prevew-api-based-on-gor/" target="_blank" rel="external">http://xuyaoqiang.com/2016/05/02/prevew-api-based-on-gor/</a><br><a href="https://github.com/buger/gor/blob/master/ELASTICSEARCH.md" target="_blank" rel="external">https://github.com/buger/gor/blob/master/ELASTICSEARCH.md</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7iuj4g6000b7u5w6bxpgufl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/13/rsync-log日志时间差8小时问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          rsync log日志时间差8小时问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/13/高效用Google/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">高效用Google</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/13/让man看起来色彩更加绚丽/">让man看起来色彩更加绚丽</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/nginx正则说明/">nginx正则说明</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/rsync-log日志时间差8小时问题/">rsync log日志时间差8小时问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">终极Web应用性能和压力测试工具Gor</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/高效用Google/">高效用Google</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 silverfox2016<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Silverfox2016</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Silverfox2016">
+<meta property="og:url" content="http://silverfox2016.github.com/page/2/index.html">
+<meta property="og:site_name" content="Silverfox2016">
+<meta property="og:description" content="blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Silverfox2016">
+<meta name="twitter:description" content="blog">
+  
+    <link rel="alternate" href="/atom.xml" title="Silverfox2016" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Silverfox2016</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://silverfox2016.github.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-rm反向删除" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/13/rm反向删除/" class="article-date">
+  <time datetime="2017-09-13T08:27:58.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/13/rm反向删除/">rm反向删除</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> shopt -s extglob 开启其他5个模式匹配操作符<br>rm !(file)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://silverfox2016.github.com/2017/09/13/rm反向删除/" data-id="cj7iuj4fv00057u5w7ii9zjkg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-如何快速处理线上故障" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/13/如何快速处理线上故障/" class="article-date">
+  <time datetime="2017-09-13T08:23:33.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/13/如何快速处理线上故障/">如何快速处理线上故障</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 线上故障通常是指大规模的影响线上服务可用性的问题或者事件，通俗点讲就是：掉‘坑’里了，这个‘坑’就是线上故障！线上故障的处理过程可以形象地表达为：‘踩坑’、‘跳坑’、‘填坑’、‘避坑’。</p>
+<p>线上故障的处理不仅是一项技术活，更是对技术人员/技术团队反应能力、决策能力、判定能力、组织能力的考验。面对突发的生产故障，需要快速定位问题，找到解决方案，快速实施解决方案并不是一件容易的事情。本文主要包括如下内容：线上故障处理的目标、思路、步骤、基础设施。</p>
+<p>本文是依据平时经历的生产故障排查和处理，总结一些肤浅的方法论，以求共同探讨，共同提高，欢迎探讨。</p>
+<p>线上故障处理的目标</p>
+<p>任何动物一旦掉进坑里，明智的做法一定是：跳坑–&gt;填坑–&gt;避坑，线上故障处理的过程也一样，优先级从高到低，线上故障处理的目标如下：</p>
+<p>跳坑</p>
+<p>‘跳坑’——快速恢复线上服务，或者将对线上服务的影响降到最低。</p>
+<p>线上服务的可用性决定着服务者的客户利益，影响着公司的收益。一旦线上环境不可用，无法服务用户，给公司/团队带来经济利益损失的同时，更为严重的会给公司/团队带来恶劣的名声。所以一般公司都会对线上环境提出稳定性和可靠性的要求，这也是团队乃至部门的kpi。为此，遇到生产故障后的第一要务是：恢复生产服务，即使不能完全恢复线上服务，也要想尽办法将对线上服务的影响降到最低。</p>
+<p>填坑</p>
+<p>‘填坑’——找到问题原因，根本上解决问题。</p>
+<p>在恢复线上服务，尽最大限度减掉对用户/公司/团队带来的影响后，我们需要彻查问题，搞清楚故障发生的根本原因，从根本上解决问题。通常情况下，‘填坑’和‘跳坑’是同步在做的，完成‘填坑’也就意味中‘跳坑’成功，但是也有一些紧急情况下的特别‘跳坑’方法，比如重启服务，或者服务降级/熔断等等，实际并未在当时完成‘填坑’，而是先采取非常规手段‘跳坑’，之后再慢慢‘填坑’。</p>
+<p>避坑</p>
+<p>‘避坑’——举一反三，消灭隐患。</p>
+<p>找到了根本原因，解决了问题之后，我们需要举一反三，以此及彼，想想在这个故障排查和处理过程中，那些环节存在弱点？那些流程/规范/制度需要优化？这类问题是否在其他系统或者团队中也存在？通过这样的反思和自我批评，形成一份线上事故报告，不断完善流程，避免再次踩坑，也在团队中交流经验，共同提高。</p>
+<p>线上故障处理的思路</p>
+<p>依据线上故障处理的目标及目标的优先级，线上排障的第一目标是恢复线上服务或者降低对线上服务的影响，关键点在于快速二字，在‘跳坑’-‘填坑’之后，再行回溯总结，以便‘避坑’。因此，可以将线上故障处理的步骤分为：</p>
+<p>故障发现<br>故障定位<br>故障排除<br>故障回溯</p>
+<p>其中前三步是‘跳坑’行为，后面一步包含了‘填坑’和‘避坑’。</p>
+<p>上述步骤并不是说要从上到下顺序进行，建议在不乱阵脚的情况下，并行去做，因为通常线上故障后会紧急启动故障处理程序，运维、开发、测试、产品各个角色都会参与进来，这时候分工下去，并行去做，不断汇总消息，做出判断，以求快速排障，恢复服务。这个思路类似于操作系统的fork/join设计思想，目的在于提高效率。</p>
+<p>在无法快速找到故障原因的时候，需要果断跳过故障定位环节，直接进行故障排除，比如采用服务降级、服务器扩容等手段，确保对线上服务降到最低且可控。等到线上服务’撑’过去之后，我们再慢慢定位故障原因，根本上解决问题。<br>下面我们会对这四个步骤进行详细说明。</p>
+<p>故障发现</p>
+<p>线上故障一般可以通过如下几种途径传递到开发/运维人员手中，按照从上到下的顺序，故障的严重程度依次变高。</p>
+<p>主动发现——可能是开发或者运维不经意间查看生产环境的error日志，或者例行检查监控项时，看到了一些异常的现象，进而发现了故障；</p>
+<p>系统监控告警——通常包括cpu、内存、io、tcp连接数、disk、线程数、GC、连接池等各个服务器指标异常，可能是服务器出现了异常，但是业务还未受到大面积影响；</p>
+<p>业务监控告警——如用户登录失败率增加，订单堆积量增大，则意味中系统的异常已经很严重，影响了业务处理；</p>
+<p>关联系统故障追溯——上游系统或者下游系统的故障处理邮件/电话追溯，可能和本系统有关系，而且情况已经变得很糟糕了，需要快速定位；</p>
+<p>生产事件上报——通常业务异常带来的影响传递到用户，再从用户传递到客服人员，再到技术人员手里，会存在一定时延，所以一旦有生产事件上报，这个时候严重性已经到了最高，技术人员的压力也会增大，因为会有领导的关注，产品经理的询问和催促，客户人员的焦虑带来的压力。</p>
+<p>上述途径传递过来的信息仅仅只是线上故障苗头，并非一定就发生了大规模的线上故障，所以首先需要确认的是这是不是一次线上故障？还是只是个例生产问题？是否和本系统有关系？一般来讲：‘系统监控告警’和‘业务监控告警’的情况下，大部分都和本系统有关，且可能是线上故障；而‘主动发现’和‘生产事件上报’则需要做甄别，可以根据上报事件个数或者问题复现的方式来评估是否是大规模线上故障，或者跟踪日志信息或者特定用户问题追溯来确定。至于‘关联系统故障追溯’的情况，首先不要慌，先从宏观上确定本系统服务正常，一般可以检查是否有服务器监控报警，是否有业务监控报警等来确定，如果上游或者下游提供了日志，可以通过日志进行追踪，从而确定本系统是否存在故障。</p>
+<p>因此在得到一些线上故障苗头之后，可以通过以下途径确定是否是线上故障：业务监控告警、上报事件个数、问题重现、服务器监控等。这些途径可以并行进行，灵活组合，有时候一个手段就能确定，有时候需要组合多个手段予以判定。</p>
+<p>故障定位</p>
+<p>一旦确定是线上故障后，我们需要快速定位故障点，找到问题原因，以便对症下药，快速排除故障。</p>
+<p>故障定位是一个不断‘收集信息–假设–验证–尝试’的循环过程，基本思路：拿到线上信息，产生怀疑点，拿到更详细的信息，进行推理验证，必要时刻，找到可行的验证措施，进行可控的尝试，或者在测试环境进行业务测试重现，性能测试重现。</p>
+<p>可能存在的怀疑点有：</p>
+<p>新版本发布有问题</p>
+<p>潜在的程序bug被激发，比如在访问量暴增的情况下，并发bug被激发</p>
+<p>业务量暴涨</p>
+<p>遭遇攻击，如活动期间羊毛党刷积分等</p>
+<p>上游服务调用异常，如上游系统升级httpclient后，将长连接改为短连接</p>
+<p>下游服务异常，下游服务宕机</p>
+<p>网络问题</p>
+<p>服务器故障，如磁盘满，内存爆掉等</p>
+<p>应用故障</p>
+<p>数据库故障</p>
+<p>为此，可以通过如下几方面收集信息，以便支撑你的怀疑点：</p>
+<p>最近新版本的发布情况</p>
+<p>本服务的异常/error日志</p>
+<p>本服务的调用量变化情况，是否存在暴涨？</p>
+<p>本服务的吞吐量，是否出现下降？</p>
+<p>本服务的时延，是否出现突然增大？</p>
+<p>服务器TCP的链接情况，是否存在大量的CLOSE_WAIT？</p>
+<p>服务器的cpu使用率，是否突然飙升？</p>
+<p>服务器的disk，磁盘空间是否已经用完？</p>
+<p>服务器的内存，内存是否爆掉？</p>
+<p>数据库或者存储是否挂掉？</p>
+<p>很多故障并不是由于单一原因造成的，而是多个条件同时满足时才出现的，所以，需要多收集信息，综合得到的信息，产生怀疑点，快速推理和验证，最后找到问题点，定位到故障。这个过程中可以集合大家的力量，并行去check各个点，并快速反馈信息。</p>
+<p>由于组合情况众多，这里只将明显的故障定位场景列出，更多的需要总结归纳：</p>
+<p>发布了最新版本，且故障最早出现时间在版本发布之后，很大程度上时由于新版本发布带来的问题，可能是bug，也可能是部署出现问题；</p>
+<p>未发布新版本，业务访问量猛增，服务时延增大，吞吐量先上升后下降，到最后服务直接不可用，可能原因是：业务量暴涨/遭遇攻击/上游服务异常调用；</p>
+<p>未发布新版本，部分服务失败，服务错误率增加，业务访问量增加，可能原因是业务访问量增大激发了潜在的并发bug，或者出现了io瓶颈等；</p>
+<p>业务访问量并未增加，但是服务时延下降，吞吐量下降，服务错误率增加，且服务器TCP的CLOSE_WAIT增大，这时候需要怀疑下游依赖服务是否异常。</p>
+<p>业务访问量并未增加，服务大范围不可用，日志中出现大量数据库错，很明显数据库可能出现问题，或者应用的数据库连接池出现问题。</p>
+<p>不一而足，需要逐步积累。下图是对上面描述的总结。</p>
+<p>故障定位的初期，一般会先通过邮件+电话的方式进行沟通，如果几分钟之后事态变糟糕，且没有眉目，则需要紧急启动会议形式的联合排障，所有相关人员需要放下手头事情，集中到一个特定会议室进行联合排障。这样的好处也在于能够迅速共享信息，快速做出决策。联合排障人员通常会包括：开发、运维、测试、产品，主力应当是开发和运维，测试和产品需要帮忙快速确认一些东西，如复现问题，或者确认业务逻辑等。</p>
+<p>从上面可以看到，故障定位过程中，追求‘快速’二字，为此多项事情是并行去做的。为了避免出现群龙无首的慌乱局面，需要有一个主心骨坐镇，把握排障的方向并最终做出决策，这个人是master，需要冷静沉着，且要能调度尽可能多的资源，所以技术leader或者运维leader会比较合适。这个类似于分布式系统的设计思路。</p>
+<p>另外，在故障定位过程中，获得的线上一线信息需要通过某种形式记录下来，邮件往来是一种比较好的方式，在完成通信和信息共享的基础上，也无形中保留了现场。其他的信息包括：error log，dump文件，服务器各个指标的状态值等等。</p>
+<p>故障排除</p>
+<p>一旦定位到故障原因，对症下药地排除故障就不是什么难事了，具体的措施可以参考下图中的总结：</p>
+<p>这里需要特别指出一个特别的场景：无法定位故障的情况下如何迅速排除故障。</p>
+<p>很多时候无法及时找到故障原因，必须直接进入故障排除，这时候的思路就在于：尽最大可能降低线上服务影响了。可以采用的手段有如下几项:</p>
+<p>服务降级——定位到某些服务有异常，但不清楚异常出现的原因，直接将这些服务降级，确保其他服务不受影响；</p>
+<p>服务紧急扩容——无法定位到是哪些服务造成的，服务器资源彪升，扛不住压力时，紧急扩容服务器；比如恶意攻击、营销活动，秒杀等场景带来的突发情况；</p>
+<p>回退版本——有新版本发布，但是不能迅速确定是否和新版本有关系，先做版本回退，确保线上服务回到上一个稳定版本。</p>
+<p>还是那句话，故障排除的原则是：确保线上服务快速恢复，不能完全恢复的情况下，确保线上服务尽可能少地受到影响。</p>
+<p>故障回溯</p>
+<p>故障回溯的目的是在故障排除后，冷静地回溯整个线上故障的发现/定位/排除过程，找出流程中/架构中/制度中的缺陷，并将该缺陷消灭掉，同时推而广之到其他系统。在‘跳坑’–‘填坑’之后，我们需要通过故障回溯的过程达到‘避坑’的效果，即要保证自己能‘避坑’，也保证团队/公司能够避开类似的坑。</p>
+<p>故障回溯的过程，因人因团队而异，最重要的是要有严肃的‘形式’和最终的产出物。之所以提到严肃的‘形式’，是因为线上故障无小事，一定要让大家牢记在心。</p>
+<p>至于如何达到‘严肃’，可以参考如下形式：</p>
+<p>可以和kpi挂钩。慎用，可能会伤害到技术人员的心，造成‘懒政’现象——“多干多出事，少干少出事”出现；</p>
+<p>可以实施追责制度。同上；</p>
+<p>还可以进行邮件或者会议形式的讨论，广而告之。</p>
+<p>总之，故障回溯的最终的目标不是为了追责，更重要的是让大家长记性，避免后续再次踩坑，而且线上故障报告的产出物一定要有，一方面是经验的积累，便于分享，另一方面也让当事人撸清楚事件过程，吃一堑长一智。</p>
+<p>可以参考的一个流程如下：</p>
+<p>线上故障处理的‘后勤保障’</p>
+<p>前面谈了线上故障处理的目标、思路和步骤，回过头来看下，要快速准确地定位和排除线上故障，需要很多基础设施支撑，它们是线上故障处理的‘后勤保障’。结合上面的内容归纳总结如下：</p>
+<p>完善的监控/告警体系</p>
+<p>通过告警，能让我们迅速知道自己的服务出了问题，通过监控可以从时间维度进行对比分析，找到可疑点，进而定位故障。</p>
+<p>监控通常分为：</p>
+<p>服务器监控——针对操作系统资源使用情况(比如cpu使用率、内容使用率、磁盘空间、io、network等)，容器健康程度（内存使用情况、线程数、GC情况等），application健康程度的（服务的可访问性等）;</p>
+<p>服务监控——包括吞吐量、时延等，这些指标至少包括：最大值、平均值，通过这些指标可以判断单个服务的变化情况和健康程度；</p>
+<p>业务监控——包括访问量、错误率等，一个业务场景往往会包含多个服务调用，因此通过业务监控，可以发现一些关联问题。</p>
+<p>告警方面，需要根据实际情况和业务场景进行阈值设定，告警阈值的设定是一个动态调整的过程。</p>
+<p>监控系统最基本的需要保证：按照时间序列进行统计、对比。</p>
+<p>完善的日志trace体系</p>
+<p>在线上故障处理过程中，日志尤其重要，通过日志能够定位到问题或者bug细节。在分布式架构的系统中，多实例的部署导致日志分散在多台机器上，靠人肉查看耗时费力，效率低下；另一方面，业务发展壮大后，业务系统越来越多，系统间依赖越来越多，各个业务系统的日志需要通过唯一的标识串联起来，否则会出现信息断层的问题，日志变得无用。所以完善的日志trace系统非常必要。</p>
+<p>日志trace体系的几个关键点：</p>
+<p>有唯一的标识串联上下游系统日志</p>
+<p>能自动收集分布式应用日志</p>
+<p>日志收集时延不能超过10分钟（具体时间试实际情况而定，如果时延太长，日志没有多大意义）</p>
+<p>支持多种形式的查询/过滤/统计等</p>
+<p>可以看到时间序列上的变化趋势</p>
+<p>推荐使用开源的日志架构：logstash+elasticsearch+kibana。</p>
+<p>完善的故障处理机制</p>
+<p>线上故障处理的要点在于快速，所以需要有完善便捷的事件流转机制和故障处理机制来保证：生产事件能快速推送到相关责任人进行联合排除，保证事件排查过程中快速共享信息，快速完成决策。</p>
+<p>对于事件上报，一般的公司会有专用的通道给到一线客服人员，客户人员填报工单，上报事件，关键点在于事件处理中担任‘路由’角色的人员，他需要对业务系统比较熟悉，对于上报的问题能快速确定相关的业务系统和负责人，并通知到对方，这个角色既要熟知业务，也要熟知系统架构和组织架构，这个角色一般会交由专门人员处理，称之为‘二线’人员，或者由运维人员兼职。</p>
+<p>排查生产事件/故障时，推荐进行集中版本，便于快速共享信息，同时需要有一个master，以便把握大的方向，并快速完成决策。</p>
+<p>总结</p>
+<p>以上，对线上故障处理的目标、思路、步骤及基础设施进行了讨论，先总结如下：</p>
+<p>线上排障的第一目标是恢复线上服务或者降低对线上服务的影响，关键点在于快速二字，在‘跳坑’-‘填坑’之后，需要总结以便‘避坑’。</p>
+<p>一切的流程或者手段都是为‘快速’二字服务的，所以线上故障是最高优先级的任务，任何人需要第一时间予以响应；同时，尽早地反馈故障问题，尽早地集结各个角色，群策群力地进行排障值得提倡；这个过程中，需要有一位有‘威望’的master坐镇，主持大局；在保证有序推进的情况下，尽可能地并行地收集信息，进行尝试。这个有点分布式架构的味道了，master坐镇，slave并行干活，提高效率。</p>
+<p>必须要有一个‘严肃’的形式让当事人及旁观者‘吃一堑长一智’，线上故障处理报告是必须的产出物。</p>
+<p>为了更加高效的处理线上故障，需要有完善的基础设施支撑：监控/告警体系、日志trace体系、事件流转机制。</p>
+<p>对于线上排障的流程整理了一个大图，如下：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://silverfox2016.github.com/2017/09/13/如何快速处理线上故障/" data-id="cj7iuj4g000077u5wcfnng9gd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-开源系统管理资源大合辑Open-Source-SysAdmin-Resources" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/13/开源系统管理资源大合辑Open-Source-SysAdmin-Resources/" class="article-date">
+  <time datetime="2017-09-13T08:22:09.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/13/开源系统管理资源大合辑Open-Source-SysAdmin-Resources/">开源系统管理资源大合辑Open Source SysAdmin Resources</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【开源系统管理资源大合辑】Open Source SysAdmin Resources<br> Automation build.<br>自动化构建</p>
+<p>Apache Ant – 用 Java 编写的自动化构建工具，与 make 类似<br>Apache Maven – 主要为 Java 开发的自动化构建工具<br>Bazel – Google 的分布式构建系统<br>GNU Make – 最流行的自动化构建系统<br>Gradle – 另一个自动化构建系统<br>Backup software.</p>
+<p>备份软件</p>
+<p>Amanda – C/S 模式的备份软件<br>Attic – 用 Python 编写的去重备份程序<br>Bareos – Bacula 备份程序的衍生版本<br>Backupninja – 轻量级、可扩展的元数据备份<br>Brebis – 全自动的备份检查<br>Burp – 网络备份和还原程序<br>Duplicity – 使用 rsync 算法加密的带宽-效率备份软件<br>Elkarbackup – 基于 RSnapshot 的、带有简单 Web 交互接口的备份解决方案<br>Lsyncd – 对文件进行监控，并开启一个进程来同步更改（默认是用 rsync）<br>Obnam – 一个简便、安全、基于快照、带有数据备份程序<br>Rdiff-backup – 远程增量备份工具<br>Rsnapshot – 文件系统快照辅助工具<br>Snebu – 带有多客户端去重和透明压缩的快照备份程序<br>UrBackup – 另一个 C/S 备份系统<br>DREBS – 官方策略支持的 AWS EBS 备份脚本<br>ZBackup – 一个通用去重备份工具<br>Build and software organization tools</p>
+<p>构建和软件安排</p>
+<p>EasyBuild – EasyBuild builds software and modulefiles for High Performance Computing (HPC) systems in an efficient way.<br>environment-modules Lmod – Lmod is a Lua based module system that easily handles the MODULEPATH Hierarchical problem.<br>HPCBIOS – HPCBIOS is an effort to setup a common, well-documented and reproducible, environment spanning across multiple HPC systems &amp; sites, inclusive of documentation.<br>ChatOps</p>
+<p>运维机器人</p>
+<p>对话驱动的运维和管理。请看 reddit 查看更多信息 </p>
+<ul>
+<li>CloudBot – Python 编写的简单、快速、可扩展的 IRC 机器人 </li>
+<li>Eggdrop – the world’s most popular IRC bot, designed for flexibility and ease of use, and is freely distributable under the GNU GPL. </li>
+<li>Err – a plugin based chatbot designed to be easily deployable, extensible and maintainable. </li>
+<li>Hubot – 可定制的、生活改良型机器人 </li>
+<li>Lazlo – 用 Go 编写的运维机器人自动化框架 </li>
+<li>Lita – 你公司的聊天室的机器人同伴</li>
+</ul>
+<p>Client management</p>
+<p>客户端管理</p>
+<p>OCS Inventory NG – 资产管理、部署和网络扫描<br>Opsi (开放式 PC 服务器集合) – 运行于 Debian 专为 Windows 客户端开发的客户端管理软件<br>WAPT – 全网范围的 Windows 软件安装、卸载、配置和升级<br>WPKG – Windows 程序的部署、升级和移除<br>Cloning</p>
+<p>克隆软件</p>
+<p>Clonezilla – 硬盘分区、硬盘镜像/克隆程序<br>Fog – 另一个计算机克隆问题解决方案<br>Cloud Computing</p>
+<p>云计算</p>
+<p>AppScale – 兼容 GAE 的云计算软件<br>Archipel – Manage and supervise virtual machines using Libvirt.<br>CloudStack – Cloud computing software for creating, managing, and deploying infrastructure cloud services.<br>Cobbler – Cobbler is a Linux installation server that allows for rapid setup of network installation environments.<br>Cracow Cloud One – Polish Private Cloud – The CC1 system provides a complete solution for Private Cloud Computing.<br>Eucalyptus – Private cloud software with AWS compatibility.<br>Flynn – PaaS<br>Mesos – Develop and run resource-efficient distributed systems.<br>OpenNebula – User-driven cloud management platform for sysadmins and devops.<br>Openshift – PaaS product from Red Hat.<br>OpenStack – 构建你的私有或共有云<br>The Foreman – 面向物理和虚拟服务器的全生命周期管理工具<br>Tsuru – Tsuru is an extensible Platform as a Service software.<br>Cloud Orchestration</p>
+<p>云业务流程</p>
+<p>BOSH – IaaS orchestration platform originally written for deploying and managing Cloud Foundry PaaS, but also useful for general purpose distributed systems.<br>Cloudify – 使用 Python 和 YAML 编写，基于 TOSCA 的云业务流程软件平台<br>CloudSlang – 面向管理开发应用程序、基于流的业务流程管理工具，支持 Docker<br>Juju – Cloud orchestration tool which manages services as charms, YAML configuration and deployment script bundles.<br>MCollective – 用于管理服务器的业务流程的 Ruby 框架，由 Puppet 实验室开发<br>Overcast – Deploy VMs across different cloud providers, and run commands and scripts across any or all of them in parallel via SSH.<br>Rundeck – 简单的业务流程工具<br>Salt – 用 Python/ZeroMQ 编写的快速、可扩展、灵活的系统管理软件<br>StackStorm – Event Driven Operations and ChatOps platform for infrastructure management. Written in Python<br>Cloud Storage</p>
+<p>云存储</p>
+<p>git-annex assistant – 你全部设备的同步文件夹（包括你的 OSX 、 Linux 、安卓设备 、可移动设备 、NAS 、 NAS 应用、 云服务）<br>ownCloud – 通过 Web 端、电脑以及移动设备来提供对你文件和数据的通用访问<br>Pydio – Pydio (formerly AjaXplorer) is a mature solution for file sharing and synchronization.<br>Seafile – 另一个云存储解决方案<br>SparkleShare – 提供云存储和文件同步服务，默认使用 Git 作为存储后端<br>Swift – 高可用、分布式、最终一致的对象/二进制大对象存储<br>Syncthing – 私人、加密、带有身份验证的分布式数据系统<br>Code Review</p>
+<p>代码评审</p>
+<p>Gerrit – 基于 Git 的版本控制，可以帮助软件开发者通过接受或拒绝源代码的改动来评审、改进源代码<br>Phabricator – 由 Facebook 开发的代码评审工具，被 WikiMedia 、Facebook 、Dropbox 等公司使用。附带了一个集成的 Wiki 、Bug 跟踪、 VC 集成、 和一个被叫做“奥术师”的 CLI 工具。<br>Review Board – MIT 许可证下的免费软件<br>Collaborative Software</p>
+<p>协作软件</p>
+<p>Citadel/UX – Collaboration suite (messaging and groupware) that is descended from the Citadel family of programs.<br>EGroupware – 用 PHP 编写的协作软件<br>Horde Groupware – 基于 PHP 的协作软件套件，包括电子邮件、日历、Wiki、进度跟踪和文件管理<br>Kolab – 另一个协作套件<br>SOGo – 专注于简单和弹性的协作软件服务器<br>Zimbra – 包含电子邮件服务器和 Web 客户端的协作软件套件<br>Configuration Management Database</p>
+<p>配置管理数据库软件</p>
+<p>i-doit – IT 文档和配置数据库管理<br>iTop – Complete ITIL web based service management tool.<br>Ralph – Asset management, DCIM and CMDB system for large Data Centers as well as smaller LAN networks.<br>Clusto – Helps you keep track of your inventory, where it is, how it’s connected, and provides an abstracted interface for interacting with the elements of the infrastructure.<br>Collins – At Tumblr, it’s the infrastructure source of truth and knowledge.<br>Configuration Management</p>
+<p>配置管理工具</p>
+<p>Ansible – 用 Python 编写的，使用 SSH 来管理节点<br>CFEngine – 轻量级代理系统，配置情况通过声明式语言指定<br>Chef – 使用 Ruby 和 Erlang 编写的，使用纯 Ruby 的 DSL<br>Pallet – 通过 Clojure DSL 来进行基础设施的定义、配置和管理<br>Puppet – 用 Ruby 编写的，使用 Puppet 的声明式语言或者 Ruby 的 DSL<br>Salt – 用 Python 编写的配置管理工具<br>Slaughter – 用 Perl 编写的配置管理工具<br>Continuous Integration &amp; Continuous Deployment</p>
+<p>持续集成和持续部署</p>
+<p>Buildbot – 基于 Python 的持续集成套件<br>Drone – 基于 Docker 构建的持续集成服务器，使用 YAML 文件进行配置<br>GitLab CI – Based off of ruby. They also provide GitLab, which manages git repositories.<br>Go – 持续交付服务器<br>Jenkins – 一个可扩展的持续集成服务器</p>
+<p>Control Panels</p>
+<p>控制面板</p>
+<p>◦Froxlor – 使用 Nginx 和 PHP-FPM 开发的面向 Linux 的使用面板<br>◦ISPConfig – Linux 主机控制面板<br>◦Sentora – Control panel for Linux, BSD, and Windows based on ZPanel.<br>◦VestaCP – 使用 Nginx 的面向 Linux 的主机控制面板</p>
+<p>DNS<br>域名解析</p>
+<p>◦Atomia DNS – DNS 管理系统<br>◦PDNS Gui – 拥有管理域名的 Web 界面，并将记录通过 PowerDNS 记录到 MySQL 中<br>◦Poweradmin – 基于 PowerDNS 服务器友好的 Web 管理工具</p>
+<p>Revision Control<br>版本控制</p>
+<p>◦iF.SVNAdmin – 通过 Web 界面来管理资料库和用户/组的权限<br>◦SCM-Manager – 用最简单的办法来管理你的 Git、Mercurial 和资料库<br>◦WebSVN – 开源的 Web 资料库浏览器</p>
+<p>Virtualization<br>虚拟化</p>
+<p>◦Feathur – VPS 资源调配和管理软件<br>◦Panamax – Project that makes deploying complex containerized apps as easy as Drag-and-Drop.<br>◦OpenVZ Web Panel – 控制你的 OpenVZ 服务器的 Web 面板<br>◦Virtkick – 简易管理虚拟机或 Docker 容器的控制器<br>◦WebVirtMgr – 基于 libvirt 的管理虚拟机 Web 接口 machines.</p>
+<p>Server<br>服务器</p>
+<p>◦Ajenti – Linux 和 BSD 的控制面板<br>◦Cockpit – 用 C 编写的，针对 Linux 服务器的， 多服务器 Web 管理接口<br>◦Virtualmin – 基于 webmin 的 Linux 系统控制面板<br>◦Webmin – Linux 服务器控制面板</p>
+<p>•Deployment Automation</p>
+<p>自动部署</p>
+<p>Capistrano – Deploy your application to any number of machines simultaneously, in sequence or as a rolling set via SSH (rake based).<br>Fabric – Python 库和命令行工具，为了简化应用部署时 SSH 的使用、系统管理任务等<br>Mina – 基于 rake 的快速部署和服务器自动化工具<br>Rocketeer – PHP 任务运行和部署工具<br>Vlad the Deployer – 基于 rake 的自动化部署工具<br>Distributed Filesystems</p>
+<p>分布式存储系统</p>
+<p>Ceph – 分布式对象存储和文件系统<br>DRBD – 分布式复制块设备<br>LeoFS – 非结构化对象/数据存储，高可用、分布式、一致的存储系统<br>GlusterFS – Scale-out network-attached storage file system.<br>HDFS – 用 Java 编写的，面向 hadoop 框架的分布式、可伸缩、便携式文件系统<br>Lustre – Parallel distributed file system, generally used for large-scale cluster computing.<br>MooseFS – 容错的网络分布式文件系统<br>MogileFS – 应用层的网络分布式文件系统<br>OpenAFS – Distributed network file system with read-only replicas and multi-OS support.<br>TahoeLAFS – 安全、分散、容错、点对点分布式数据存储和分布式文件系统<br>XtreemFS – XtreemFS is a fault-tolerant distributed file system for all storage needs.<br>DNS</p>
+<p>域名解析系统</p>
+<p>Bind – 最广泛使用的域名服务器软件<br>djbdns – DNS 应用集合，包括 tinydns<br>Designate – DNS REST API that support several DNS servers as its backend.<br>dnsmasq – 一个轻量级的为小型网络提供 DNS \ DHCP \ TFTP 服务的服务<br>Knot – 高性能授权的 DNS 服务器<br>NSD – 仅权威的、高效、简单的域名服务器<br>PowerDNS – 带有后端海量数据存储和负载均衡的DNS 服务器<br>Unbound – 验证、递归和缓存 DNS 解析程序<br>Yadifa – 使用 DNSSEC 提供的 .eu 顶级域名的轻量级权威域名服务器<br>Editors</p>
+<p>开源代码编辑器</p>
+<p>Atom – Github 开发的一个可编程文本编辑器<br>Brackets – 面向前段工程师和 Web 设计师的代码编辑器<br>Eclipse – 用 Java 编写的可扩展插件的 IDE<br>Geany – GTK2 文本编辑器<br>GNU Emacs – 可扩展的、可自定义的文本编辑器<br>Haroopad – 带有实时预览的 Markdown 编辑器<br>ICEcoder – 彪悍的代码编辑器，用来架构常见的 Web 语言<br>jotgit – 基于 Git 的实时协作代码编辑<br>KDevelop – IDE by the people behind KDE.<br>Light Table – 下一代编辑器<br>Lime – 旨在提供一个对标 Sublime Text 且开放源代码的解决方案<br>TextMate – OS X 上的图形文本编辑器.<br>Vim – 目的是高效编辑的高度可配置的文本编辑器<br>Identity Management</p>
+<p>身份管理</p>
+<p>LDAP </p>
+<ul>
+<li>389 Directory Server – 由 Red Hat 开发的 </li>
+<li>Apache Directory Server – 用 Java 编写的， Apache 软件基金会项目 </li>
+<li>OpenDJ – 是 OpenDS 令一个实现版本 </li>
+<li>OpenDS – 用 Java 写的另一个目录服务器 </li>
+<li>OpenLDAP – 由 OpenLDAP 项目组开发</li>
+</ul>
+<p>Tools and web interfaces</p>
+<p>工具和 Web 接口</p>
+<p>Fusion Directory – 改善基于 OpenLDAP 的公司目录和服务的管理<br>FreeIPA – 安全管理解决方案，可以管理 LDAP、KRB、DNS、sudo 等等<br>LDAP Account Manager (LAM) – 存储在 LDAP 的 Web 前端管理条目（包括用户、组、DHCP 设置等）<br>Samba – 活动目录和 CIFS 协议控制<br>IT Asset Management</p>
+<p>IT 资产管理软件</p>
+<p>GLPI – 带有额外管理接口的信息资源管理<br>OCS Inventory NG – 管理 IT 资产清单<br>RackTables – Datacenter and server room asset management like document hardware assets, network addresses, space in racks, networks configuration.<br>Ralph – 面向大型数据中心和小型局域网的资产管理、DCIM 、CMDB 系统<br>Snipe IT – 资产和许可证管理软件<br>Log Management</p>
+<p>日志管理工具（包括收集、分析、可视化）</p>
+<p>Elasticsearch – 基于 Lucene 的文档存储，主要用于日志索引、存储和分析<br>Fluentd – 日志收集和传送<br>Flume – 分布式日志收集和聚合系统<br>Graylog2 – 带有报警选项的插件化日志、事件分析服务器<br>Heka – 用于日志聚合的流处理系统<br>Kibana – 日志和时间戳数据的可视化<br>Logstash – 用于管理事件和日志的工具<br>Octopussy – 日志管理解决方案（可视化、报警、报告）<br>Mail Clients</p>
+<p>邮件客户端</p>
+<p>Claws Mail – Old school email client (and news reader), based on GTK+.<br>Mutt – 强大的基于文本的邮件客户端<br>Thunderbird – 易于设置和自定义的免费邮件应用<br>Webmail</p>
+<p>Web 邮件应用</p>
+<p>Roundcube – 带有用户接口的基于浏览器的 IMAP 客户端<br>SquirrelMail – 另一个基于浏览器的 IMAP 客户端<br>Horde – Web 电子邮件和群组客户端<br>Rainloop – 支持 IMAP / SMTP 和多账户的 Web 电子邮件<br>Mail Servers</p>
+<p>邮件服务器</p>
+<p>MDA (IMAP/POP3)<br>Mail Delivery Agents (IMAP/POP3 software). </p>
+<ul>
+<li>Courier IMAP/POP3 – 快速、弹性、企业级 IMAP 和 POP3 服务器 </li>
+<li>Cyrus IMAP/POP3 – Intended to be run on sealed servers, where normal users are not permitted to log in. </li>
+<li>Dovecot – IMAP and POP3 server written primarily with security in mind.</li>
+</ul>
+<p>MTA (SMTP)<br>Mail Transfer Agents (SMTP servers). </p>
+<ul>
+<li>Exim – Message transfer agent (MTA) developed at the University of Cambridge. </li>
+<li>Haraka – A high-performance, pluginable SMTP server written in JavaScript. </li>
+<li>MailCatcher – Ruby gem that deploys a simply SMTP MTA gateway that accepts all mail and displays in web interface. Useful for debugging or development. </li>
+<li>Maildrop – Disposable email SMTP server, also useful for development. </li>
+<li>OpenSMTPD – Secure SMTP server implementation from the OpenBSD project. </li>
+<li>Postfix – Fast, easy to administer, and secure Sendmail replacement. </li>
+<li>Qmail – Secure Sendmail replacement. </li>
+<li>Sendmail – Message transfer agent (MTA).</li>
+</ul>
+<p>complete solutions</p>
+<p>Software for simple deployment of a mail server, e.g. for inexperienced or impatient admins. </p>
+<ul>
+<li>hMailServer – Open source e-mail server for Microsoft Windows </li>
+<li>Mail-in-a-Box – Take back control of your email with this easy-to-deploy mail server in a box. </li>
+<li>iRedMail – Full-featured mail server solution based on Postfix and Dovecot. </li>
+<li>Citadel – Feature packed, easy, versatile, and powerful mail server, thanks to exclusive “rooms” based architecture. </li>
+<li>Modoboa – Modoboa is a mail hosting and management platform including a modern and simplified Web User Interface. </li>
+<li>Fufix – Fufix is a mailserver installer based on Dovecot, Postfix, Postfixadmin, Nginx, PHP, MySQL and Fail2ban.</li>
+</ul>
+<p>Monitoring</p>
+<p>监控软件</p>
+<p>Alerta – 分布式、可扩展、灵活的监控系统<br>Cacti – 带有制图工具的基于 Web 的网络监控<br>Cabot – 带有监视和报警功能，与 PagerDuty 类似<br>check_mk – Nagios 的扩展<br>Dash – 对 GNU/Linux 机器的低开销的监控 Web 仪表盘<br>Flapjack – 监控通知事件处理系统<br>Icinga – Nagios 的另一个分支版本<br>LibreNMS – 全功能网络监视系统，提供了丰富的功能和设备支持<br>Monit – 使用小程序，用于管理、监控 Unix 系统<br>Munin – 网络资源监控工具<br>Naemon – Network monitoring tool based on the基于 Nagios 4 的网络监控工具，带有核心性能和新功能改进<br>Nagios – 计算机系统、网络和基础设施监控软件<br>Node-Bell – Real-time anomalies detection for periodic time series, metrics monitor.<br>Observium – 通过 SNMP 监控服务器和网络设备，运行在 Linux 上<br>OMD – 分布式监控<br>PhpSysInfo – 可定制的 PHP 脚本，更好地显示相关系统信息<br>Riemann – 复杂、快速的事项处理<br>Sensu – 监控框架<br>Sentry – 应用程序监视、事件日志和聚合<br>ServerStatus BotoX – 监视并展示你的服务器统计信息<br>ServerStatus moejda – 服务器状态脚本，展示正常运行时间、空闲 RAM、空闲硬盘空间<br>Shinken – 另一个监控框架<br>Thruk – Multibackend monitoring web interface with support for Naemon, Nagios, Icinga and Shinken.<br>Xymon – 受到 Big Brother 启发的网络监控<br>Zabbix – 为监控网络和应用开发的企业级软件<br>Zenoss – 基于 Zope 的应用程序、服务器和网络管理平台<br>Metric &amp; Metric Collection</p>
+<p>度量收集和展示软件</p>
+<p>Collectd – 守护进程的系统统计信息的收集<br>Collectl – 高精度系统性能指标收集工具<br>Dashing – Ruby gem that allows for rapid statistical dashboard development. An all HTML5 approach allows for big screen displays in data centers or conference rooms.<br>Diamond – 基于 Python 的统计信息收集守护程序<br>Facette – Time series data visualization and graphing software written in Go.<br>Freeboard – 一个前端实时控制面板，原生的 JSON 串转换成 UI<br>Ganglia – High performance, scalable RRD based monitoring for grids and/or clusters of servers. Compatible with Graphite using a single collection process.<br>Grafana – Graphite 和 InfluxDB 的仪表盘和图形编辑<br>Graphite – 弹性的图形显示服务器<br>InfluxDB – 不需要外部依赖的分布式时间序列数据库<br>KairosDB – Fast distributed scalable time series database, fork of OpenTSDB 1.x.<br>OpenTSDB – 没有粒度损失的服务器时间序列数据存储收集<br>Packetbeat – 捕获网络流量并显示到 Kibana 的仪表盘上<br>Prometheus – 服务监控系统和时间序列数据库<br>RRDtool – 应用于时间序列数据的行业标准、高性能数据日志和绘图系统<br>Statsd – 应用统计监听程序<br>Network Configuration Management</p>
+<p>网络配置管理工具</p>
+<p>GestióIP – 自动化的基于 Web 的 IPv4/IPv6 地址管理工具<br>Oxidized – 用 Web 接口和 Git 存储的网络设备配置监控模块<br>RANCID – 监视网络设备的配置和维护变换的历史<br>rConfig – 另一个网络设备配置管理工具<br>trigger – 用 Python 编写的强大网络自动化工具集<br>Newsletters</p>
+<p>通讯软件</p>
+<p>DadaMail – 用 Perl 编写的邮件列表管理<br>phpList – 用 PHP 编写的通信管理<br>LibreMailer – Libre Mailer is a modest and simple web based email marketing application.<br>Lewsnetter – 电子邮件营销管理程序（通过 SES 创建和发送电子邮件）包括订阅管理、交付、投诉通知、模版和数据.<br>NoSQL</p>
+<p>NoSQL 数据库</p>
+<p>Column-Family<br>◦Apache Hbase – Hadoop 数据库，分布式的大数据存储<br>◦Cassandra – 设计为处理跨多台服务器的海量数据的分布式数据库管理系统<br>◦Hypertable – C++ based BigTable-like DBMS, communicates through Thrift and runs either as stand-alone or on distributed FS such as Hadoop.</p>
+<p>Document Store （面向海量数据访问）<br>◦CouchDB – 易用的、多主机复制的文档型数据库<br>◦ElasticSearch – 基于 Java 的数据库，因为日志聚合以及电子邮件归档而流行<br>◦MongoDB – 另一个文档型数据库<br>◦RavenDB – 用于 ACID/事务性功能基于文档的数据库<br>◦RethinkDB – 分布式文档存储数据库，聚焦与 JSON</p>
+<p>Graph<br>◦FlockDB – Twitter 的分布式容错图数据库<br>◦Neo4j – 图型数据库</p>
+<p>Key-Value （面向高性能并发读写）<br>◦LevelDB – Google 的高性能键值对数据库<br>◦Redis – 网络上、内存中、键值对存储，持久性数据库<br>◦Riak – 另一个容错的键值对 NoSQL 数据库</p>
+<p>Packaging</p>
+<p>打包工具</p>
+<p>fpm – Versatile multi format package creator.<br>omnibus-ruby – 依赖 Ruby 的全栈、跨平台的打包软件<br>packman – 依赖 Python 的全栈、跨平台的打包软件<br>tito – 为基于 Git 的项目构建 RPM 包<br>Project Management</p>
+<p>项目管理和 Bug 跟踪</p>
+<p>CaseBox – 在一个系统中管理你组织的全部信息<br>ChiliProject – Redmine 的另一个分支版本<br>GitBucket – 用 Scala 编写的 Github 的克隆<br>GitLab – 用 Ruby 编写的 Github 的克隆<br>Gogs – 用 Go 编写的自托管 Git 服务<br>OpenProject – 项目协同<br>Phabricator 用 PHP 编写<br>Redmine – 用 Ruby 编写的跑在 rails 上<br>Taiga – 基于 Kanban 和 Scrum 的敏捷项目管理工具<br>The Bug Genie – 用 PHP 编写<br>Trac – 用 Python 编写<br>Queuing</p>
+<p>消息队列</p>
+<p>ActiveMQ – Java 消息代理<br>BeanstalkD – 简单、快速的工作队列<br>Gearman – 快速、多语言队列/任务处理平台<br>Kafka – 性能极高的发布/订阅消息系统<br>NSQ – 实时分布式消息平台<br>RabbitMQ – 功能齐全、跨各发行版的队列系统<br>ZeroMQ – 轻量级队列系统<br>RDBMS</p>
+<p>关系型数据库管理系统</p>
+<p>Firebird – 通用数据库<br>Galera – Galera Cluster for MySQL is an easy-to-use high-availability solution with high system up-time, no data loss, and scalability for future growth.<br>MariaDB – 社区驱动的 MySQL 分支版本<br>Percona Server – Enhanced, drop-in MySQL replacement.<br>PostgreSQL – 对象关系型数据库管理系统<br>PostgreSQL-XL – 可伸缩、基于 PostgreSQL 的数据库集群<br>SQLite – 实现了独立的、无服务器、零配置、事务性 SQL 数据库<br>Security</p>
+<p>安全工具</p>
+<p>Blackbox – 在 Git 中安全存储机密信息，提供工具来自动加密机密信息（例如密码）<br>Bro – 网络分析和安全监控的强大框架<br>Denyhosts – 守卫 SSH 免受字典和暴力破解攻击<br>Fail2Ban – 扫描日志文件并显示出恶意行为的 IP 地址<br>fwknop – 通过单个数据包授权来保护你防火墙的端口<br>Glastopf – 用于模拟漏洞和共济数据的收集的低交互蜜罐<br>Kippo – 中交互的 SSH 蜜罐，主要是带有可配置文件系统沙盒的独立 SSH 守护进程<br>Linux Malware Detect – 为了解决共享主机环境所面临风险的 Linux 恶意软件扫描器<br>OSSEC – 一个可执行日至分析、FIM、Rootkit 检测等的 HIDS<br>OSQuery – 通过类似 SQL 的用户接口来查询你服务器的状态和相关信息<br>pfSense – FreeBSD 的防火墙和路由器分支<br>Snort – 网络入侵防御系统(NIPS)和网络入侵检测系统(NIDS)<br>SpamAssassin – 使用各种检测技术的垃圾电子邮件过滤器<br>Service Discovery</p>
+<p>服务发现</p>
+<p>Consul – 服务发现、监控和配置的工具<br>Doozerd – Doozer is a highly-available, completely consistent store for small amounts of extremely important data.<br>etcd – distributed K/V-Store, authenticating via SSL PKI and a REST HTTP Api for shared configuration and service discovery.<br>ZooKeeper – 一个集中维护配置信息服务、命名、提供分布式同步并提供服务的系统<br>Software Containers</p>
+<p>软件容器</p>
+<p>Docker – 为开发人员和系统管理员建立的分布式应用程序<br>LXC – Userspace interface for the Linux kernel containment features.<br>OpenVZ – Container-based virtualization for Linux.<br>SSH</p>
+<p>SSH 工具</p>
+<p>Advanced SSH config – 全透明地增强 ssh_config 文件能力<br>autossh – 在网络中断后自动重连的 ssh 会话<br>Cluster SSH – 通过单一的图形化控制台控制一系列窗口<br>DSH – 分布式 Shell， 通过一个命令终端在多个远程 Shell 中执行命令<br>Mosh – 手机 Shell<br>parallel-ssh – 提供 OpenSSH 的并行版本和相关工具<br>ssh-cert-authority – 一个 SSH 证书颁发工具<br>ssh-ca – 推送用户密钥到服务器，从而允许 SSH 对服务器的访问权限<br>SSH Power Tool – 同时使用预共享的密钥来执行命令、上传文件到多个服务器<br>sshrc – sources ~/.sshrc on your local computer after logging in remotely.<br>stormssh – 一个用来管理 SSH 连接的命令行工具<br>Statistics</p>
+<p>统计分析软件</p>
+<p>AWStats – 生成 Web 、流、FTP、邮件服务器的统计图<br>GoAccess – 实时 Web 日志分析和交互查看器，在终端中运行<br>Open Web Analytics – 使用 JS、 PHP or REST APIs 向网站中添加 Web 网站分析<br>Piwik – Web 分析应用<br>Webalizer – 快速 Web 服务器日志文件分析<br>Status Pages</p>
+<p>状态页</p>
+<p>Cachet – 用 PHP 编写的状态页系统<br>Stashboard – 为云服务和 API 开发的状态页<br>System Status Dashboard (SSD) – 概览组织的基础设施健康状况<br>Staytus – 一个完整的发布信息的解决方案，关于你的 Web 应用、网络或者服务的最新信息<br>Ticketing systems</p>
+<p>任务跟踪系统</p>
+<p>Bugzilla – 通用的 Bug 跟踪和测试工具，最初由 Mozilla 项目组开发<br>Cerb – 小组的电子邮件管理项目<br>Flyspray – 用 PHP 编写的，基于 Web 的 Bug 跟踪系统<br>MantisBT – 基于 Web 的 Bug 跟踪系统<br>osTicket – Simple support ticket system.<br>OTRS – Trouble ticket system for assigning tickets to incoming queries and tracking further communications.<br>Request Tracker – 用 Perl 编写的任务跟踪系统<br>TheBugGenie – 可扩展的用户权限的跟踪系统<br>Troubleshooting</p>
+<p>故障排除工具</p>
+<p>grml – 带有强大 CLI 工具的 Debian 启动盘<br>mitmproxy – 用于拦截、查看、修改网络流量的 Python 工具，在确定的问题的故障排除时是神器<br>Sysdig – 在 Linux 实例中捕捉系统状态和活动，保存、过滤并分析数据<br>Wireshark – 世界上最好的网络协议分析工具<br>Version control</p>
+<p>版本控制</p>
+<p>Fossil – 内置 Wiki 和 Bug 跟踪的分布式版本控制<br>Git – 以速度为重点的分布式版本控制和源码管理<br>GNU Bazaar – 由 Canonical 发起的分布式版本控制系统<br>Mercurial – 另一个分布式版本控制系统<br>Subversion – C/S 架构的版本控制系统<br>Virtualization</p>
+<p>虚拟化软件</p>
+<p>Archipel – 基于 XMPP 的虚拟化管理平台<br>ConVirt – 为集中管理您的 KVM 和 Xen 虚拟化环境提供核心功能<br>Ganeti – Cluster virtual server management software tool built on top of KVM and Xen.<br>KVM – Linux 内核虚拟机<br>OpenNebula – 灵活的企业云<br>oVirt – 管理虚拟机，存储和虚拟网络<br>Packer – A tool for creating identical machine images for multiple platforms from a single source configuration.<br>Proxmox VE – 虚拟化管理解决方案<br>QEMU – QEMU is a generic machine emulator and virtualizer.<br>Vagrant – 构建完整开发环境的工具<br>VirtualBox – 甲骨文公司的虚拟化产品<br>Xen – Virtual machine monitor for 32/64 bit Intel / AMD (IA 64) and PowerPC 970 architectures.<br>VPN</p>
+<p>VPN 软件</p>
+<p>OpenVPN – 使用自定义的安全协议，使用 SSL/TLS 进行密钥交换<br>Pritunl – OpenVPN based solution. Easy to set up.<br>SoftEther – 具有高级功能的多协议 VPN 软件<br>sshuttle – Poor man’s VPN.<br>strongSwan – Complete IPsec implementation for Linux.<br>tinc – 分布式 P2P VPN<br>XMPP</p>
+<p>XMPP 服务器</p>
+<p>ejabberd – 用 Erlang/OTP 编写的 XMPP 即时消息服务器<br>Metronome IM – Prosody 的分支版本<br>MongooseIM – ejabberd 的分支版本<br>Openfire – 实时协作（RTC）服务器<br>Prosody IM – 用 Lua 编写的 XMPP 服务器<br>Tigase – 用 Java 实现的 XMPP 服务器<br>XMPP Web Clients</p>
+<p>XMPP Web 客户端</p>
+<p>Candy – 使用 Javascript 编写的多用户 XMPP 客户端<br>Kaiwa – 现代风格基于 Web 的聊天客户端<br>Lets-Chat – 用 Node 编写的自托管的聊天套件<br>Web</p>
+<p>Web 服务器</p>
+<p>Apache – 最流行的 Web 服务器<br>Cherokee – 轻量级、高性能 Web 服务器/反向代理服务器<br>Lighttpd – 高速环境下最优的 Web 服务器<br>Nginx – 反向代理、负载均衡、HTTP 缓存和 Web 服务器<br>uWSGI – The uWSGI project aims at developing a full stack for building hosting services.<br>Web Performance</p>
+<p>Web 性能</p>
+<p>HAProxy – 基于软件的负载均衡，使用 SSL 减轻负载，进行性能优化、压缩和通用 Web 路由<br>Varnish – 关注优化缓存和压缩的基于 HTTP 的 Web 应用程序加速器<br>Wiki Software</p>
+<p>Wiki 软件</p>
+<p>DokuWiki – 简易、高度灵活的 Wiki，不需要数据库<br>Gollum – 带有 API 接口、本地前端，简易、Git 驱动的 Wiki<br>ikiwiki – 一个 Wiki 编译器<br>MDwiki – 完全基于 HTML5/Javascript 的 Wiki<br>Mediawiki – Used to power Wikipedia.<br>MoinMoin – 拥有很大用户群的、易于使用、可扩展的 Wiki 引擎<br>Ōlelo Wiki – 页面存储在 Git 仓库中的 Wiki<br>PmWiki – Wiki-based system for collaborative creation and maintenance of websites.<br>TiddlyWiki – 用 Javascript 编写的完整交互式 Wiki  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://silverfox2016.github.com/2017/09/13/开源系统管理资源大合辑Open-Source-SysAdmin-Resources/" data-id="cj7iuj4g4000a7u5wq5y3tywf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-netstat-ntlp-PID不显示的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/13/netstat-ntlp-PID不显示的解决办法/" class="article-date">
+  <time datetime="2017-09-13T08:19:45.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/13/netstat-ntlp-PID不显示的解决办法/">netstat -ntlp PID不显示的解决办法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>查看线上机器 发现PID有- 如下图 遂 lsof 查看</p>
+<p>我嘞个去  木有诶。。。<br>去伪系统看看<br>ll /proc/*/fd &gt; proc.txt</p>
+<p>搜索下511398198 511398183 511398188 511398200<br>grep -E “511398198|511398183|511398188|511398200” proc.txt</p>
+<p>我擦 还没有。。。。<br>懵逼了<br>遂 群里寻求帮助<br>无解 。。。。下班 回家<br>周一 有大牛提供systemtap<br>这是个什么东西呢。。。 擦 木有玩过哇。。。<br>遂百度先看看</p>
+<p> 安装systemtap<br>1.查看当前内核版本<br>uname -a<br>2 查看当前安装kernel版本 kernel-devel kernel-debuginfo kernel-debuginfo-common<br>rpm -qa| grep kernel<br>所有版本需要跟uname -r版本一致<br>kernel-debuginfo kernel-debuginfo-common 这两个包去<a href="http://debuginfo.centos.org/" target="_blank" rel="external">http://debuginfo.centos.org/</a> 这里下载<br>（版本需要跟uname -r 版本一致）</p>
+<p>安装完毕后<br>yum install systemtap -y</p>
+<p>rpm -qa | grep systemtap</p>
+<p>rpm -ql systemtap-client | grep examples | head -n 1</p>
+<p>nginx 简单配置个页面 root /usr/share/doc/systemtap-client-2.9/examples</p>
+<p>nginx 配置 （略）</p>
+<p>全E文 啃啃吧<br>by keyword （关键字）<br>点下</p>
+<p>我们要查的玩意跟socket有关系 点下 会自动跳转到相关内容</p>
+<p>network/tcp_connections.stp - Track Creation of Incoming TCP Connections<br>keywords: NETWORK TCP SOCKET<br>The tcp_connections.stp script prints information for each new incoming TCP connection accepted by the computer. The information includes the UID, the command accepting the connection, the PID of the command, the port the connection is on, and the IP address of the originator of the request.<br>tcp_connections.stp脚本打印计算机接受的每个新的传入TCP连接的信息。 信息包括UID，接受连接的命令，命令的PID，连接的端口以及请求的发起方的IP地址。<br>（大体就是tcp链接能得到展现pid之类的 正是我们需要的 ）</p>
+<h1 id="stap-tcp-connections-stp-c-“sleep-1”"><a href="#stap-tcp-connections-stp-c-“sleep-1”" class="headerlink" title="stap tcp_connections.stp -c “sleep 1”"></a>stap tcp_connections.stp -c “sleep 1”</h1><p>执行 satp -r <code>uname -r</code> tcp_connections.stp  </p>
+<p>然后 再开个crt或者xshell的窗口 （session）<br>telnet 0 14489 </p>
+<p>久违的pid出现了  就是9929 和 9933<br>哦了 pid 找到了  咦 连带着cmd也找到了<br>啊哦 好像是nfs相关服务<br>查看下本机 发现 没有nfs存在的必要<br>遂<br>/etc/init.d/nfs stop</p>
+<p>全世界清静咯 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://silverfox2016.github.com/2017/09/13/netstat-ntlp-PID不显示的解决办法/" data-id="cj7iuj4fr00027u5wgjhb2qvx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/" class="article-date">
+  <time datetime="2017-09-13T08:11:29.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/">如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>IDE（集成开发环境[1]）就是这样一个软件，它为了最大化程序员生产效率，提供了很多编程所需的设施和组件。 IDE 将所有开发工作集中到一个程序中，使得程序员可以编写、修改、编译、部署以及调试程序。<br>在这篇文章中，我们会介绍如何通过使用 bash-support vim 插件将 Vim 编辑器安装和配置[2] 为一个编写 Bash 脚本的 IDE。</p>
+<p>什么是 bash-support.vim 插件？</p>
+<p>bash-support 是一个高度定制化的 vim 插件，它允许你插入：文件头、补全语句、注释、函数、以及代码块。它也使你可以进行语法检查、使脚本可执行、一键启动调试器；而完成所有的这些而不需要关闭编辑器。</p>
+<p>它使用快捷键（映射），通过有组织地、一致的文件内容编写/插入，使得 bash 脚本编程变得有趣和愉快。</p>
+<p>插件当前版本是 4.3，4.0 版本 重写了之前的 3.12.1 版本，4.0 及之后的版本基于一个全新的、更强大的、和之前版本模板语法不同的模板系统。</p>
+<p>如何在 Linux 中安装 Bash-support 插件</p>
+<p>用下面的命令下载最新版本的 bash-support 插件：</p>
+<h1 id="cd-Downloads"><a href="#cd-Downloads" class="headerlink" title="cd Downloads"></a>cd Downloads</h1><h1 id="curl-http-www-vim-org-scripts-download-script-php-src-id-24452-gt-bash-support-zip"><a href="#curl-http-www-vim-org-scripts-download-script-php-src-id-24452-gt-bash-support-zip" class="headerlink" title="curl http://www.vim.org/scripts/download_script.php?src_id=24452 &gt;bash-support.zip"></a>curl <a href="http://www.vim.org/scripts/download_script.php?src_id=24452" target="_blank" rel="external">http://www.vim.org/scripts/download_script.php?src_id=24452</a> &gt;bash-support.zip</h1><p>按照如下步骤安装；在你的主目录创建 .vim 目录（如果它不存在的话），进入该目录并提取 bash-support.zip 内容：</p>
+<h1 id="mkdir-vim"><a href="#mkdir-vim" class="headerlink" title="mkdir ~/.vim"></a>mkdir ~/.vim</h1><h1 id="cd-vim-unzip-Downloads-bash-support-zip"><a href="#cd-vim-unzip-Downloads-bash-support-zip" class="headerlink" title="cd .vim$ unzip ~/Downloads/bash-support.zip"></a>cd .vim$ unzip ~/Downloads/bash-support.zip</h1><p>下一步，在 .vimrc 文件中激活它：</p>
+<h1 id="vi-vimrc"><a href="#vi-vimrc" class="headerlink" title="vi ~/.vimrc"></a>vi ~/.vimrc</h1><p>并插入下面一行：</p>
+<p>filetype plug-in on set number # 可选，增加这行以在 vim 中显示行号<br>如何在 Vim 编辑器中使用 Bash-support 插件</p>
+<p>为了简化使用，通常使用的结构和特定操作可以分别通过键映射来插入/执行。~/.vim/doc/bashsupport.txt 和 ~/.vim/bash-support/doc/bash-hotkeys.pdf 或者 ~/.vim/bash-support/doc/bash-hotkeys.tex 文件中介绍了映射。</p>
+<p>重要：</p>
+<p>所有映射（+字符 组合）都是针对特定文件类型的：为了避免和其它插件的映射冲突，它们只适用于 sh 文件。<br>使用键映射的时候打字速度也有关系，引导符 \ 和后面字符的组合要在特定短时间内才能识别出来（很可能少于 3 秒 - 基于假设）。<br>下面我们会介绍和学习使用这个插件一些显著的功能：</p>
+<p>如何为新脚本自动生成文件头<br>看下面的示例文件头，为了要在你所有的新脚本中自动创建该文件头，请按照以下步骤操作。</p>
+<p>脚本示例文件头选项<br>脚本示例文件头选项<br>首先设置你的个人信息（作者名称、作者参考、组织、公司等）。在一个 Bash 缓冲区（像下面这样打开一个测试脚本）中使用映射 \ntw 启动模板设置向导。</p>
+<p>选中选项 1 设置个性化文件，然后按回车键。</p>
+<h1 id="vi-test-sh"><a href="#vi-test-sh" class="headerlink" title="vi test.sh"></a>vi test.sh</h1><p>在脚本文件中设置个性化信息<br>在脚本文件中设置个性化信息<br>之后，再次输入回车键。然后再一次选中选项 1 设置个性化文件的路径并输入回车。</p>
+<p>设置个性化文件路径<br>设置个性化文件路径<br>设置向导会把目标文件 .vim/bash-support/rc/personal.templates 拷贝到.vim/templates/personal.templates，打开并编辑它，在这里你可以输入你的信息。</p>
+<p>按 i 键像截图那样在单引号中插入合适的值。</p>
+<p>在脚本文件头添加信息<br>在脚本文件头添加信息<br>一旦你设置了正确的值，输入 :wq 保存并退出文件。关闭 Bash 测试脚本，打开另一个脚本来测试新的配置。现在文件头中应该有和下面截图类似的你的个人信息：</p>
+<h1 id="vi-test2-sh"><a href="#vi-test2-sh" class="headerlink" title="vi test2.sh"></a>vi test2.sh</h1><p>自动添加文件头到脚本<br>自动添加文件头到脚本<br>添加 Bash-support 插件帮助信息<br>为此，在 Vim 命令行输入下面的命令并按回车键，它会创建 .vim/doc/tags 文件：</p>
+<p>:helptags $HOME/.vim/doc/<br>在 Vi 编辑器添加插件帮助<br>在 Vi 编辑器添加插件帮助<br>如何在 Shell 脚本中插入注释<br>要插入一个块注释，在普通模式下输入 \cfr：</p>
+<p>添加注释到脚本<br>添加注释到脚本<br>如何在 Shell 脚本中插入语句<br>下面是一些用于插入语句的键映射（n – 普通模式, i – 插入模式，v 可视模式）：</p>
+<p>\sc – case in … esac (n, i)<br>\sei – elif then (n, i)<br>\sf – for in do done (n, i, v)<br>\sfo – for ((…)) do done (n, i, v)<br>\si – if then fi (n, i, v)<br>\sie – if then else fi (n, i, v)<br>\ss – select in do done (n, i, v)<br>\su – until do done (n, i, v)<br>\sw – while do done (n, i, v)<br>\sfu – function (n, i, v)<br>\se – echo -e “…” (n, i, v)<br>\sp – printf “…” (n, i, v)<br>\sa – 数组元素, ${.[.]} （n, i, v） 和其它更多的数组功能。<br>插入一个函数和函数头<br>输入 \sfu 添加一个新的空函数，然后添加函数名并按回车键创建它。之后，添加你的函数代码。</p>
+<p>在脚本中插入新函数<br>在脚本中插入新函数<br>为了给上面的函数创建函数头，输入 \cfu，输入函数名称，按回车键并填入合适的值（名称、介绍、参数、返回值）：</p>
+<p>在脚本中创建函数头<br>在脚本中创建函数头<br>更多关于添加 Bash 语句的例子<br>下面是一个使用 \si 插入一条 if 语句的例子：</p>
+<p>在脚本中插入语句<br>在脚本中插入语句<br>下面的例子显示使用 \se 添加一条 echo 语句：</p>
+<p>在脚本中添加 echo 语句<br>在脚本中添加 echo 语句<br>如何在 Vi 编辑器中使用运行操作<br>下面是一些运行操作键映射的列表：</p>
+<p>\rr – 更新文件，运行脚本 (n, i)<br>\ra – 设置脚本命令行参数 (n, i)<br>\rc – 更新文件，检查语法 (n, i)<br>\rco – 语法检查选项 (n, i)<br>\rd – 启动调试器 (n, i)<br>\re – 使脚本可/不可执行 ( * ) (n, i)</p>
+<p>使脚本可执行<br>编写完脚本后，保存它然后输入 \re 和回车键使它可执行。</p>
+<p>使脚本可执行<br>使脚本可执行<br>如何在 Bash 脚本中使用预定义代码片段<br>预定义代码片段是为了特定目的包含了已写好代码的文件。为了添加代码段，输入 \nr 和 \nw 读/写预定义代码段。输入下面的命令列出默认的代码段：</p>
+<p>$ .vim/bash-support/codesnippets/<br>代码段列表<br>代码段列表<br>为了使用代码段，例如 free-software-comment，输入 \nr 并使用自动补全功能选择它的名称，然后输入回车键：</p>
+<p>添加代码段到脚本<br>添加代码段到脚本<br>创建自定义预定义代码段<br>可以在  ~/.vim/bash-support/codesnippets/ 目录下编写你自己的代码段。另外，你还可以从你正常的脚本代码中创建你自己的代码段：</p>
+<p>选择你想作为代码段的部分代码，然后输入  \nw 并给它一个相近的文件名。<br>要读入它，只需要输入  \nr 然后使用文件名就可以添加你自定义的代码段。<br>在当前光标处查看内建和命令帮助<br>要显示帮助，在普通模式下输入：</p>
+<p>\hh – 内建帮助<br>\hm – 命令帮助<br>查看内建命令帮助<br>查看内建命令帮助<br>更多参考资料，可以查看文件：</p>
+<p>~/.vim/doc/bashsupport.txt #在线文档的副本~/.vim/doc/tags<br>访问 Bash-support 插件 GitHub 仓库：<a href="https://github.com/WolfgangMehner/bash-support" target="_blank" rel="external">https://github.com/WolfgangMehner/bash-support</a><br>在 Vim 网站访问 Bash-support 插件：<a href="http://www.vim.org/scripts/script.php?script_id=365" target="_blank" rel="external">http://www.vim.org/scripts/script.php?script_id=365</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://silverfox2016.github.com/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/" data-id="cj7iuj4g200087u5wxsbokr0z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/13/让man看起来色彩更加绚丽/">让man看起来色彩更加绚丽</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/nginx正则说明/">nginx正则说明</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/rsync-log日志时间差8小时问题/">rsync log日志时间差8小时问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">终极Web应用性能和压力测试工具Gor</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/高效用Google/">高效用Google</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 silverfox2016<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE | Silverfox2016</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="IDE（集成开发环境[1]）就是这样一个软件，它为了最大化程序员生产效率，提供了很多编程所需的设施和组件。 IDE 将所有开发工作集中到一个程序中，使得程序员可以编写、修改、编译、部署以及调试程序。在这篇文章中，我们会介绍如何通过使用 bash-support vim 插件将 Vim 编辑器安装和配置[2] 为一个编写 Bash 脚本的 IDE。 什么是 bash-support.vim 插件？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE">
+<meta property="og:url" content="http://silverfox2016.github.com/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/index.html">
+<meta property="og:site_name" content="Silverfox2016">
+<meta property="og:description" content="IDE（集成开发环境[1]）就是这样一个软件，它为了最大化程序员生产效率，提供了很多编程所需的设施和组件。 IDE 将所有开发工作集中到一个程序中，使得程序员可以编写、修改、编译、部署以及调试程序。在这篇文章中，我们会介绍如何通过使用 bash-support vim 插件将 Vim 编辑器安装和配置[2] 为一个编写 Bash 脚本的 IDE。 什么是 bash-support.vim 插件？">
+<meta property="og:updated_time" content="2017-09-13T09:48:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE">
+<meta name="twitter:description" content="IDE（集成开发环境[1]）就是这样一个软件，它为了最大化程序员生产效率，提供了很多编程所需的设施和组件。 IDE 将所有开发工作集中到一个程序中，使得程序员可以编写、修改、编译、部署以及调试程序。在这篇文章中，我们会介绍如何通过使用 bash-support vim 插件将 Vim 编辑器安装和配置[2] 为一个编写 Bash 脚本的 IDE。 什么是 bash-support.vim 插件？">
+  
+    <link rel="alternate" href="/atom.xml" title="Silverfox2016" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Silverfox2016</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://silverfox2016.github.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/" class="article-date">
+  <time datetime="2017-09-13T08:11:29.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>IDE（集成开发环境[1]）就是这样一个软件，它为了最大化程序员生产效率，提供了很多编程所需的设施和组件。 IDE 将所有开发工作集中到一个程序中，使得程序员可以编写、修改、编译、部署以及调试程序。<br>在这篇文章中，我们会介绍如何通过使用 bash-support vim 插件将 Vim 编辑器安装和配置[2] 为一个编写 Bash 脚本的 IDE。</p>
+<p>什么是 bash-support.vim 插件？</p>
+<p>bash-support 是一个高度定制化的 vim 插件，它允许你插入：文件头、补全语句、注释、函数、以及代码块。它也使你可以进行语法检查、使脚本可执行、一键启动调试器；而完成所有的这些而不需要关闭编辑器。</p>
+<p>它使用快捷键（映射），通过有组织地、一致的文件内容编写/插入，使得 bash 脚本编程变得有趣和愉快。</p>
+<p>插件当前版本是 4.3，4.0 版本 重写了之前的 3.12.1 版本，4.0 及之后的版本基于一个全新的、更强大的、和之前版本模板语法不同的模板系统。</p>
+<p>如何在 Linux 中安装 Bash-support 插件</p>
+<p>用下面的命令下载最新版本的 bash-support 插件：</p>
+<h1 id="cd-Downloads"><a href="#cd-Downloads" class="headerlink" title="cd Downloads"></a>cd Downloads</h1><h1 id="curl-http-www-vim-org-scripts-download-script-php-src-id-24452-gt-bash-support-zip"><a href="#curl-http-www-vim-org-scripts-download-script-php-src-id-24452-gt-bash-support-zip" class="headerlink" title="curl http://www.vim.org/scripts/download_script.php?src_id=24452 &gt;bash-support.zip"></a>curl <a href="http://www.vim.org/scripts/download_script.php?src_id=24452" target="_blank" rel="external">http://www.vim.org/scripts/download_script.php?src_id=24452</a> &gt;bash-support.zip</h1><p>按照如下步骤安装；在你的主目录创建 .vim 目录（如果它不存在的话），进入该目录并提取 bash-support.zip 内容：</p>
+<h1 id="mkdir-vim"><a href="#mkdir-vim" class="headerlink" title="mkdir ~/.vim"></a>mkdir ~/.vim</h1><h1 id="cd-vim-unzip-Downloads-bash-support-zip"><a href="#cd-vim-unzip-Downloads-bash-support-zip" class="headerlink" title="cd .vim$ unzip ~/Downloads/bash-support.zip"></a>cd .vim$ unzip ~/Downloads/bash-support.zip</h1><p>下一步，在 .vimrc 文件中激活它：</p>
+<h1 id="vi-vimrc"><a href="#vi-vimrc" class="headerlink" title="vi ~/.vimrc"></a>vi ~/.vimrc</h1><p>并插入下面一行：</p>
+<p>filetype plug-in on set number # 可选，增加这行以在 vim 中显示行号<br>如何在 Vim 编辑器中使用 Bash-support 插件</p>
+<p>为了简化使用，通常使用的结构和特定操作可以分别通过键映射来插入/执行。~/.vim/doc/bashsupport.txt 和 ~/.vim/bash-support/doc/bash-hotkeys.pdf 或者 ~/.vim/bash-support/doc/bash-hotkeys.tex 文件中介绍了映射。</p>
+<p>重要：</p>
+<p>所有映射（+字符 组合）都是针对特定文件类型的：为了避免和其它插件的映射冲突，它们只适用于 sh 文件。<br>使用键映射的时候打字速度也有关系，引导符 \ 和后面字符的组合要在特定短时间内才能识别出来（很可能少于 3 秒 - 基于假设）。<br>下面我们会介绍和学习使用这个插件一些显著的功能：</p>
+<p>如何为新脚本自动生成文件头<br>看下面的示例文件头，为了要在你所有的新脚本中自动创建该文件头，请按照以下步骤操作。</p>
+<p>脚本示例文件头选项<br>脚本示例文件头选项<br>首先设置你的个人信息（作者名称、作者参考、组织、公司等）。在一个 Bash 缓冲区（像下面这样打开一个测试脚本）中使用映射 \ntw 启动模板设置向导。</p>
+<p>选中选项 1 设置个性化文件，然后按回车键。</p>
+<h1 id="vi-test-sh"><a href="#vi-test-sh" class="headerlink" title="vi test.sh"></a>vi test.sh</h1><p>在脚本文件中设置个性化信息<br>在脚本文件中设置个性化信息<br>之后，再次输入回车键。然后再一次选中选项 1 设置个性化文件的路径并输入回车。</p>
+<p>设置个性化文件路径<br>设置个性化文件路径<br>设置向导会把目标文件 .vim/bash-support/rc/personal.templates 拷贝到.vim/templates/personal.templates，打开并编辑它，在这里你可以输入你的信息。</p>
+<p>按 i 键像截图那样在单引号中插入合适的值。</p>
+<p>在脚本文件头添加信息<br>在脚本文件头添加信息<br>一旦你设置了正确的值，输入 :wq 保存并退出文件。关闭 Bash 测试脚本，打开另一个脚本来测试新的配置。现在文件头中应该有和下面截图类似的你的个人信息：</p>
+<h1 id="vi-test2-sh"><a href="#vi-test2-sh" class="headerlink" title="vi test2.sh"></a>vi test2.sh</h1><p>自动添加文件头到脚本<br>自动添加文件头到脚本<br>添加 Bash-support 插件帮助信息<br>为此，在 Vim 命令行输入下面的命令并按回车键，它会创建 .vim/doc/tags 文件：</p>
+<p>:helptags $HOME/.vim/doc/<br>在 Vi 编辑器添加插件帮助<br>在 Vi 编辑器添加插件帮助<br>如何在 Shell 脚本中插入注释<br>要插入一个块注释，在普通模式下输入 \cfr：</p>
+<p>添加注释到脚本<br>添加注释到脚本<br>如何在 Shell 脚本中插入语句<br>下面是一些用于插入语句的键映射（n – 普通模式, i – 插入模式，v 可视模式）：</p>
+<p>\sc – case in … esac (n, i)<br>\sei – elif then (n, i)<br>\sf – for in do done (n, i, v)<br>\sfo – for ((…)) do done (n, i, v)<br>\si – if then fi (n, i, v)<br>\sie – if then else fi (n, i, v)<br>\ss – select in do done (n, i, v)<br>\su – until do done (n, i, v)<br>\sw – while do done (n, i, v)<br>\sfu – function (n, i, v)<br>\se – echo -e “…” (n, i, v)<br>\sp – printf “…” (n, i, v)<br>\sa – 数组元素, ${.[.]} （n, i, v） 和其它更多的数组功能。<br>插入一个函数和函数头<br>输入 \sfu 添加一个新的空函数，然后添加函数名并按回车键创建它。之后，添加你的函数代码。</p>
+<p>在脚本中插入新函数<br>在脚本中插入新函数<br>为了给上面的函数创建函数头，输入 \cfu，输入函数名称，按回车键并填入合适的值（名称、介绍、参数、返回值）：</p>
+<p>在脚本中创建函数头<br>在脚本中创建函数头<br>更多关于添加 Bash 语句的例子<br>下面是一个使用 \si 插入一条 if 语句的例子：</p>
+<p>在脚本中插入语句<br>在脚本中插入语句<br>下面的例子显示使用 \se 添加一条 echo 语句：</p>
+<p>在脚本中添加 echo 语句<br>在脚本中添加 echo 语句<br>如何在 Vi 编辑器中使用运行操作<br>下面是一些运行操作键映射的列表：</p>
+<p>\rr – 更新文件，运行脚本 (n, i)<br>\ra – 设置脚本命令行参数 (n, i)<br>\rc – 更新文件，检查语法 (n, i)<br>\rco – 语法检查选项 (n, i)<br>\rd – 启动调试器 (n, i)<br>\re – 使脚本可/不可执行 ( * ) (n, i)</p>
+<p>使脚本可执行<br>编写完脚本后，保存它然后输入 \re 和回车键使它可执行。</p>
+<p>使脚本可执行<br>使脚本可执行<br>如何在 Bash 脚本中使用预定义代码片段<br>预定义代码片段是为了特定目的包含了已写好代码的文件。为了添加代码段，输入 \nr 和 \nw 读/写预定义代码段。输入下面的命令列出默认的代码段：</p>
+<p>$ .vim/bash-support/codesnippets/<br>代码段列表<br>代码段列表<br>为了使用代码段，例如 free-software-comment，输入 \nr 并使用自动补全功能选择它的名称，然后输入回车键：</p>
+<p>添加代码段到脚本<br>添加代码段到脚本<br>创建自定义预定义代码段<br>可以在  ~/.vim/bash-support/codesnippets/ 目录下编写你自己的代码段。另外，你还可以从你正常的脚本代码中创建你自己的代码段：</p>
+<p>选择你想作为代码段的部分代码，然后输入  \nw 并给它一个相近的文件名。<br>要读入它，只需要输入  \nr 然后使用文件名就可以添加你自定义的代码段。<br>在当前光标处查看内建和命令帮助<br>要显示帮助，在普通模式下输入：</p>
+<p>\hh – 内建帮助<br>\hm – 命令帮助<br>查看内建命令帮助<br>查看内建命令帮助<br>更多参考资料，可以查看文件：</p>
+<p>~/.vim/doc/bashsupport.txt #在线文档的副本~/.vim/doc/tags<br>访问 Bash-support 插件 GitHub 仓库：<a href="https://github.com/WolfgangMehner/bash-support" target="_blank" rel="external">https://github.com/WolfgangMehner/bash-support</a><br>在 Vim 网站访问 Bash-support 插件：<a href="http://www.vim.org/scripts/script.php?script_id=365" target="_blank" rel="external">http://www.vim.org/scripts/script.php?script_id=365</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://silverfox2016.github.com/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/" data-id="cj7iuj4g200087u5wxsbokr0z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/13/netstat-ntlp-PID不显示的解决办法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          netstat -ntlp PID不显示的解决办法
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/13/让man看起来色彩更加绚丽/">让man看起来色彩更加绚丽</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/nginx正则说明/">nginx正则说明</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/rsync-log日志时间差8小时问题/">rsync log日志时间差8小时问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">终极Web应用性能和压力测试工具Gor</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/高效用Google/">高效用Google</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 silverfox2016<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
