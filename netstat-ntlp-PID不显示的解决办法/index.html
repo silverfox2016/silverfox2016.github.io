@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>netstat -ntlp PID不显示的解决办法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt 我擦 还没有。。。。懵逼了遂 群里寻求帮助无解">
+<meta property="og:type" content="website">
+<meta property="og:title" content="netstat -ntlp PID不显示的解决办法">
+<meta property="og:url" content="http://yoursite.com/netstat-ntlp-PID不显示的解决办法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt 我擦 还没有。。。。懵逼了遂 群里寻求帮助无解">
+<meta property="og:updated_time" content="2017-09-13T08:20:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="netstat -ntlp PID不显示的解决办法">
+<meta name="twitter:description" content="查看线上机器 发现PID有- 如下图 遂 lsof 查看 我嘞个去  木有诶。。。去伪系统看看ll /proc/*/fd &amp;gt; proc.txt 搜索下511398198 511398183 511398188 511398200grep -E “511398198|511398183|511398188|511398200” proc.txt 我擦 还没有。。。。懵逼了遂 群里寻求帮助无解">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/netstat-ntlp-PID不显示的解决办法/index.html" class="article-date">
+  <time datetime="2017-09-13T08:19:45.000Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      netstat -ntlp PID不显示的解决办法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>查看线上机器 发现PID有- 如下图 遂 lsof 查看</p>
+<p>我嘞个去  木有诶。。。<br>去伪系统看看<br>ll /proc/*/fd &gt; proc.txt</p>
+<p>搜索下511398198 511398183 511398188 511398200<br>grep -E “511398198|511398183|511398188|511398200” proc.txt</p>
+<p>我擦 还没有。。。。<br>懵逼了<br>遂 群里寻求帮助<br>无解 。。。。下班 回家<br>周一 有大牛提供systemtap<br>这是个什么东西呢。。。 擦 木有玩过哇。。。<br>遂百度先看看</p>
+<p> 安装systemtap<br>1.查看当前内核版本<br>uname -a<br>2 查看当前安装kernel版本 kernel-devel kernel-debuginfo kernel-debuginfo-common<br>rpm -qa| grep kernel<br>所有版本需要跟uname -r版本一致<br>kernel-debuginfo kernel-debuginfo-common 这两个包去<a href="http://debuginfo.centos.org/" target="_blank" rel="external">http://debuginfo.centos.org/</a> 这里下载<br>（版本需要跟uname -r 版本一致）</p>
+<p>安装完毕后<br>yum install systemtap -y</p>
+<p>rpm -qa | grep systemtap</p>
+<p>rpm -ql systemtap-client | grep examples | head -n 1</p>
+<p>nginx 简单配置个页面 root /usr/share/doc/systemtap-client-2.9/examples</p>
+<p>nginx 配置 （略）</p>
+<p>全E文 啃啃吧<br>by keyword （关键字）<br>点下</p>
+<p>我们要查的玩意跟socket有关系 点下 会自动跳转到相关内容</p>
+<p>network/tcp_connections.stp - Track Creation of Incoming TCP Connections<br>keywords: NETWORK TCP SOCKET<br>The tcp_connections.stp script prints information for each new incoming TCP connection accepted by the computer. The information includes the UID, the command accepting the connection, the PID of the command, the port the connection is on, and the IP address of the originator of the request.<br>tcp_connections.stp脚本打印计算机接受的每个新的传入TCP连接的信息。 信息包括UID，接受连接的命令，命令的PID，连接的端口以及请求的发起方的IP地址。<br>（大体就是tcp链接能得到展现pid之类的 正是我们需要的 ）</p>
+<h1 id="stap-tcp-connections-stp-c-“sleep-1”"><a href="#stap-tcp-connections-stp-c-“sleep-1”" class="headerlink" title="stap tcp_connections.stp -c “sleep 1”"></a>stap tcp_connections.stp -c “sleep 1”</h1><p>执行 satp -r <code>uname -r</code> tcp_connections.stp  </p>
+<p>然后 再开个crt或者xshell的窗口 （session）<br>telnet 0 14489 </p>
+<p>久违的pid出现了  就是9929 和 9933<br>哦了 pid 找到了  咦 连带着cmd也找到了<br>啊哦 好像是nfs相关服务<br>查看下本机 发现 没有nfs存在的必要<br>遂<br>/etc/init.d/nfs stop</p>
+<p>全世界清静咯 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/netstat-ntlp-PID不显示的解决办法/index.html" data-id="cj7iswfjz0003hl5wy8c6czmn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/13/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
