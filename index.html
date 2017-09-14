@@ -82,7 +82,7 @@
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/09/13/让man看起来色彩更加绚丽/#more" class="more-link">More</a>
+        <a href="/2017/09/13/让man看起来色彩更加绚丽/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -125,7 +125,7 @@
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/09/13/nginx正则说明/#more" class="more-link">More</a>
+        <a href="/2017/09/13/nginx正则说明/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -201,19 +201,63 @@
     </header>
     <div class="entry">
       
-        <p><code>什么是Gor</code></p>
-<p>项目地址：<a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a></p>
-<p>官方描述</p>
-<p>Gor is a simple http traffic replication tool written in Go.<br>Its main goal is to replay traffic from production servers to staging and dev environments.</p>
-<p>简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">项目地址：https://github.com/buger/gor</div><div class="line"></div><div class="line">官方描述</div><div class="line"></div><div class="line">Gor is a simple http traffic replication tool written in Go.</div><div class="line">Its main goal is to replay traffic from production servers to staging and dev environments.</div><div class="line"></div><div class="line">简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</div><div class="line"></div><div class="line">&lt;!--more--&gt;</div><div class="line">Gor的功能</div><div class="line"></div><div class="line">Gor支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。Gor还支持根据正则表达式过滤流量，这意味着可以单独测试某个API服务。还可以修改HTTP请求头，比如替换User-Agent, 或者增加某些HTTPHeader。</div><div class="line"></div><div class="line">Gor还可以把请求记录到文件，以备回放和分析。Gor支持和ElasticSearch集成，将流量存入ES进行实时分析。</div><div class="line"></div><div class="line">gor的架构图</div><div class="line"></div><div class="line">![gor的架构图](终极Web应用性能和压力测试工具Gor/gor.png)</div><div class="line"></div><div class="line">非http协议的流量复制</div><div class="line"></div><div class="line">对于不是基于http协议的流量复制，可以使用流量复制工具TCPCopy, TCPCopy支持tcp协议流量的复制、转发、拦截，非常棒的工具.</div><div class="line"></div><div class="line">TCPCopy项目地址：https://github.com/session-replay-tools/tcpcopy</div><div class="line"></div><div class="line">Gor安装</div><div class="line"></div><div class="line">二进制版本</div><div class="line"></div><div class="line">官方预编译版本使用比较简单，开箱即用。</div><div class="line"></div><div class="line">通过以下地址下载最新版本</div><div class="line"></div><div class="line">https://github.com/buger/gor/releases </div><div class="line"></div><div class="line">Linux</div><div class="line"></div><div class="line">	$ wget https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$ tar xzvf gor_0.12.1_x64.tar.gz$ cp gor /usr/local/bin</div><div class="line">Mac</div><div class="line"></div><div class="line">	$ wget https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$ tar xzvf gor_0.12.1_mac.tar.gz</div><div class="line">编译安装</div><div class="line"></div><div class="line">搭建标准的Go语言环境,可参考http://golang.org/doc/code.html。并设置$GOPATH环境变量</div><div class="line"></div><div class="line">获取源代码</div><div class="line"></div><div class="line">	$ go get github.com/buger/gor</div><div class="line">编译</div><div class="line"></div><div class="line">	$ cd $GOPATH/src/github.com/buger/gor$ go build</div><div class="line">编译完成会产生一个gor二进制文件。</div><div class="line"></div><div class="line">Gor配置参数</div><div class="line"></div><div class="line">```#gor --help</div><div class="line">-cpuprofile string  write cpu profile to file</div><div class="line"></div><div class="line">-debug verbose  打开debug模式，显示所有接口的流量 </div><div class="line"></div><div class="line">-http-allow-header value     用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 `</div></pre></td></tr></table></figure>
+<p>#gor –input-raw :8080 –output-http staging.com –http-allow-header api-version:^v1 (default [])</p>
+<p>-http-allow-method value  类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.</p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-allow-method GET –http-allow-method OPTIONS (default [])<br>-http-allow-url value<br>      一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 </p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-allow-url ^www. (default [])<br>-http-disallow-header value<br>      用一个正则表达式来匹配http头部，匹配到的请求会被拒绝掉</p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-disallow-header “User-Agent: Replayed by Gor” (default [])<br>-http-disallow-url value<br>      用一个正则表达式来匹配url，如果请求匹配上了，则会被拒绝</p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-disallow-url ^www. (default [])<br>-http-header-limiter value<br>      读取请求，基于FNV32-1A散列来拒绝一定比例的特殊请求 </p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-header-imiter user-id:25% (default [])<br>-http-original-host<br>      在–output-http的输出中，通常gor会使用取代请求的http头，所以应该禁用该选项，保留原始的主机头<br>-http-param-limiter value<br>      Takes a fraction of requests, consistently taking or rejecting a request based on the FNV32-1A hash of a specific GET param:</p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-param-limiter user_id:25% (default [])<br>-http-rewrite-url value<br>      Rewrite the request url based on a mapping:</p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-rewrite-url /v1/user/([^\/]+)/ping:/v2/user/$1/ping (default [])<br>-http-set-header value<br>      Inject additional headers to http reqest:</p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-set-header ‘User-Agent: Gor’ (default [])<br>-http-set-param value<br>      Set request url param, if param already exists it will be overwritten:</p>
+<p>#gor –input-raw :8080 –output-http staging.com –http-set-param api_key=1 (default [])<br>-input-dummy value<br>      Used for testing outputs. Emits ‘Get /‘ request every 1s (default [])<br>-input-file value<br>      从一个文件中读取请求</p>
+<p>#gor –input-file ./requests.gor –output-http staging.com (default [])<br>-input-http value<br>      从一个http接口读取请求</p>
+<p>  #Listen for http on 9000</p>
+<p>  #gor –input-http :9000 –output-http staging.com (default [])</p>
+<p>  -input-raw value<br>  Capture traffic from given port (use RAW sockets and require <em>sudo</em> access):<br>1</p>
+<h1 id="Capture-traffic-from-8080-port"><a href="#Capture-traffic-from-8080-port" class="headerlink" title="Capture traffic from 8080 port"></a>Capture traffic from 8080 port</h1><p>  #gor –input-raw :8080 –output-http staging.com (default [])<br>  -input-tcp value<br>  用来在多个gor之间流转流量<br>2</p>
+<h1 id="Receive-requests-from-other-Gor-instances-on-28020-port-and-redirect-output-to-staging"><a href="#Receive-requests-from-other-Gor-instances-on-28020-port-and-redirect-output-to-staging" class="headerlink" title="Receive requests from other Gor instances on 28020 port, and redirect output to staging"></a>Receive requests from other Gor instances on 28020 port, and redirect output to staging</h1><p>  #gor –input-tcp :28020 –output-http staging.com (default [])<br>  -memprofile string<br>        write memory profile to this file<br>  -middleware string<br>        Used for modifying traffic using external command<br>  -output-dummy value<br>        用来测试输入，打印出接收的数据. (default [])<br>  -output-file value<br>        把进入的请求写入一个文件中<br>        gor –input-raw :80 –output-file ./requests.gor (default [])<br>  -output-http value<br>        转发进入的请求到一个http地址上<br>3</p>
+<h1 id="Redirect-all-incoming-requests-to-staging-com-address"><a href="#Redirect-all-incoming-requests-to-staging-com-address" class="headerlink" title="Redirect all incoming requests to staging.com address"></a>Redirect all incoming requests to staging.com address</h1><p>  #gor –input-raw :80 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a> (default [])<br>  -output-http-elasticsearch string<br>        把请求和响应状态发送到ElasticSearch:</p>
+<p>#gor –input-raw :8080 –output-http staging.com –output-http-elasticsearch ‘es_host:api_port/index_name’<br>-output-http-redirects int<br>      设置多少次重定向被允许<br>-output-http-stats<br>      每5秒钟输出一次输出队列的状态<br>-output-http-timeout duration<br>     指定http的request/response超时时间，默认是5秒<br>-output-http-workers int<br>      gor默认是动态的扩展工作者数量，你也可以指定固定数量的工作者<br>-output-tcp value<br>      用来在多个gor之间流转流量</p>
+<h1 id="Listen-for-requests-on-80-port-and-forward-them-to-other-Gor-instance-on-28020-port"><a href="#Listen-for-requests-on-80-port-and-forward-them-to-other-Gor-instance-on-28020-port" class="headerlink" title="Listen for requests on 80 port and forward them to other Gor instance on 28020 port"></a>Listen for requests on 80 port and forward them to other Gor instance on 28020 port</h1><p>#gor –input-raw :80 –output-tcp replay.local:28020 (default [])<br>-output-tcp-stats<br>      每5秒钟报告一次tcp输出队列的状态<br>-split-output true<br>      By default each output gets same traffic. If set to true it splits traffic equally<br>      among all outputs.<br>-stats<br>      打开输出队列的状态<br>-verbose<br>          Turn on more verbose output<br>Gor常用命令</p>
+<p>简单的HTTP流量复制</p>
+<pre><code>$ gor --input-raw :80 --output-http &quot;http://staging.com&quot;
+HTTP流量复制频率控制(获取每秒超过10个请求)
+
+$ gor --input-tcp :28020 --output-http &quot;http://staging.com|10&quot;
+HTTP流量复制缩小
+
+$ gor --input-raw :80 --output-tcp &quot;replay.local:28020|10%&quot;
+HTTP流量记录到本地文件
+
+$ gor --input-raw :80 --output-file requests.gor
+HTTP流量回放和压测
+
+$ gor --input-file &quot;requests.gor|200%&quot; --output-http &quot;staging.com&quot;
+HTTP流量过滤复制
+
+$ gor --input-raw :8080 --output-http staging.com --output-http-url-regexp ^www.
+自定义一些流量复制的参数
+
+$ gor --input-raw :80 --output-http 192.168.2.6:8000 --http-allow-method POST --http-set-header &apos;User-Agent: Gor&apos; -output-http-workers=1 -http-allow-url test.php
+将流量复制两份到不同的测试服务
+
+$ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-http &quot;http://dev.com&quot;
+将流量像负载均衡一样分配到不同的服务器
+
+$ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-http &quot;http://dev.com&quot; --split-output true
+测试实例
+</code></pre><p>预发布系统压力测试</p>
+<p>预发布系统主要由预发布服务器和Gor流量复制工具组成，为了查看和分析测试效果，还可以接入各种监控分析系统。<br>部署搭建预发布服务，预发布服务使用的数据库，消息队列，缓存等等需要生成环境隔离，避免对生产环境造成影响；同时，预发布环境使用的数据尽量保证和生成环境一致，以保证测试效果。<br>将线上的五台Api服务器的流量复制到了一台preview(预发布)服务器</p>
+<p>在Api服务器上启动Gor Listener，复制80端口的流量，转发到预发布服务器的28020端口<br>$ sudo gor –input-raw :80 –output-tcp preview:28020<br>在预发布服务器上启动Gor Replayer， 监听28020端口，同时将请求转发到预发布服务器<br>$ sudo gor –input-tcp preview:28020 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a><br>也可以将listener和replayer合二为一<br>$ sudo gor –input-tcp preview:28020 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a><br>注: gor使用listener捕捉请求的时候需要sudo权限</p>
+<p>测试总结<br>极少的情况下Gor会有少量的丢包问题出现，但是不影响测试效果。<br>建议将Gor的listener和replayer分开，减少对生成环境性能的影响。<br>部署搭建预发布服务，预发布服务使用的数据库，消息队列，缓存等等需要生成环境隔离，避免对生产环境造成影响；同时，预发布环境使用的数据尽量保证和生成环境一致，以保证测试效果。<br>由于预发布环境和生成环境的数据无法做到实时的同步，所以要注意区分哪些错误是有程序的bug，哪些是由数据不一致导致的。<br>预发布系统能够一站解决回归测试、abtest和压力测试，然而还是会有局限性：对于比较复杂的业务逻辑，并不能直观的表现出来，需要后台对数据进行进一步的分析比较后才能判断。</p>
+<p>参考文档</p>
+<p><a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a><br><a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a><br><a href="https://blog.eood.cn/web-performance-testing-gor" target="_blank" rel="external">https://blog.eood.cn/web-performance-testing-gor</a><br><a href="http://my.oschina.net/guol/blog/675294" target="_blank" rel="external">http://my.oschina.net/guol/blog/675294</a><br><a href="http://xuyaoqiang.com/2016/05/02/prevew-api-based-on-gor/" target="_blank" rel="external">http://xuyaoqiang.com/2016/05/02/prevew-api-based-on-gor/</a><br><a href="https://github.com/buger/gor/blob/master/ELASTICSEARCH.md" target="_blank" rel="external">https://github.com/buger/gor/blob/master/ELASTICSEARCH.md</a></p>
+
       
     </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/#more" class="more-link">More</a>
-      </div>
-    </footer>
     
     <footer>
         <div class="alignright">
@@ -255,7 +299,7 @@
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/09/13/高效用Google/#more" class="more-link">More</a>
+        <a href="/2017/09/13/高效用Google/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -302,7 +346,7 @@
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/#more" class="more-link">More</a>
+        <a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -347,7 +391,7 @@
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/#more" class="more-link">More</a>
+        <a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -450,7 +494,7 @@ time_starttransfer:  5.214
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/09/13/nginx配置陷阱和常见错误/#more" class="more-link">More</a>
+        <a href="/2017/09/13/nginx配置陷阱和常见错误/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -496,7 +540,7 @@ time_starttransfer:  5.214
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/09/13/这20个正则表达式，让你少写1-000行代码/#more" class="more-link">More</a>
+        <a href="/2017/09/13/这20个正则表达式，让你少写1-000行代码/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -521,7 +565,7 @@ time_starttransfer:  5.214
 <nav id="pagination">
   
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Nächste Seite &raquo;</a>
   </nav>
 
 </nav>
@@ -529,7 +573,7 @@ time_starttransfer:  5.214
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:silverfox2016.github.com">
   </form>
 </div>
@@ -538,7 +582,7 @@ time_starttransfer:  5.214
 
   
 <div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
+  <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
     
       <li>
