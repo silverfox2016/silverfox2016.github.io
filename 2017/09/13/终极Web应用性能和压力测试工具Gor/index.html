@@ -70,7 +70,40 @@
     </header>
     <div class="entry">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">项目地址：https://github.com/buger/gor</div><div class="line"></div><div class="line">官方描述</div><div class="line"></div><div class="line">Gor is a simple http traffic replication tool written in Go.</div><div class="line">Its main goal is to replay traffic from production servers to staging and dev environments.</div><div class="line"></div><div class="line">简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</div><div class="line"></div><div class="line">&lt;!--more--&gt;</div><div class="line">Gor的功能</div><div class="line"></div><div class="line">Gor支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。Gor还支持根据正则表达式过滤流量，这意味着可以单独测试某个API服务。还可以修改HTTP请求头，比如替换User-Agent, 或者增加某些HTTPHeader。</div><div class="line"></div><div class="line">Gor还可以把请求记录到文件，以备回放和分析。Gor支持和ElasticSearch集成，将流量存入ES进行实时分析。</div><div class="line"></div><div class="line">gor的架构图</div><div class="line"></div><div class="line">![gor的架构图](终极Web应用性能和压力测试工具Gor/gor.png)</div><div class="line"></div><div class="line">非http协议的流量复制</div><div class="line"></div><div class="line">对于不是基于http协议的流量复制，可以使用流量复制工具TCPCopy, TCPCopy支持tcp协议流量的复制、转发、拦截，非常棒的工具.</div><div class="line"></div><div class="line">TCPCopy项目地址：https://github.com/session-replay-tools/tcpcopy</div><div class="line"></div><div class="line">Gor安装</div><div class="line"></div><div class="line">二进制版本</div><div class="line"></div><div class="line">官方预编译版本使用比较简单，开箱即用。</div><div class="line"></div><div class="line">通过以下地址下载最新版本</div><div class="line"></div><div class="line">https://github.com/buger/gor/releases </div><div class="line"></div><div class="line">Linux</div><div class="line"></div><div class="line">	$ wget https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$ tar xzvf gor_0.12.1_x64.tar.gz$ cp gor /usr/local/bin</div><div class="line">Mac</div><div class="line"></div><div class="line">	$ wget https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$ tar xzvf gor_0.12.1_mac.tar.gz</div><div class="line">编译安装</div><div class="line"></div><div class="line">搭建标准的Go语言环境,可参考http://golang.org/doc/code.html。并设置$GOPATH环境变量</div><div class="line"></div><div class="line">获取源代码</div><div class="line"></div><div class="line">	$ go get github.com/buger/gor</div><div class="line">编译</div><div class="line"></div><div class="line">	$ cd $GOPATH/src/github.com/buger/gor$ go build</div><div class="line">编译完成会产生一个gor二进制文件。</div><div class="line"></div><div class="line">Gor配置参数</div><div class="line"></div><div class="line">```#gor --help</div><div class="line">-cpuprofile string  write cpu profile to file</div><div class="line"></div><div class="line">-debug verbose  打开debug模式，显示所有接口的流量 </div><div class="line"></div><div class="line">-http-allow-header value     用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 `</div></pre></td></tr></table></figure>
+        <p>什么是Gor</p>
+<p>项目地址：<a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a></p>
+<p>官方描述</p>
+<p>Gor is a simple http traffic replication tool written in Go.<br>Its main goal is to replay traffic from production servers to staging and dev environments.</p>
+<p>简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</p>
+<a id="more"></a>
+<p>Gor的功能</p>
+<p>Gor支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。Gor还支持根据正则表达式过滤流量，这意味着可以单独测试某个API服务。还可以修改HTTP请求头，比如替换User-Agent, 或者增加某些HTTPHeader。</p>
+<p>Gor还可以把请求记录到文件，以备回放和分析。Gor支持和ElasticSearch集成，将流量存入ES进行实时分析。</p>
+<p>gor的架构图</p>
+<p><img src="/2017/09/13/终极Web应用性能和压力测试工具Gor/gor.png" alt="gor的架构图"></p>
+<p>非http协议的流量复制</p>
+<p>对于不是基于http协议的流量复制，可以使用流量复制工具TCPCopy, TCPCopy支持tcp协议流量的复制、转发、拦截，非常棒的工具.</p>
+<p>TCPCopy项目地址：<a href="https://github.com/session-replay-tools/tcpcopy" target="_blank" rel="external">https://github.com/session-replay-tools/tcpcopy</a></p>
+<p>Gor安装</p>
+<p>二进制版本</p>
+<p>官方预编译版本使用比较简单，开箱即用。</p>
+<p>通过以下地址下载最新版本</p>
+<p><a href="https://github.com/buger/gor/releases" target="_blank" rel="external">https://github.com/buger/gor/releases</a> </p>
+<p>Linux</p>
+<pre><code>$ wget https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$ tar xzvf gor_0.12.1_x64.tar.gz$ cp gor /usr/local/bin
+</code></pre><p>Mac</p>
+<pre><code>$ wget https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$ tar xzvf gor_0.12.1_mac.tar.gz
+</code></pre><p>编译安装</p>
+<p>搭建标准的Go语言环境,可参考<a href="http://golang.org/doc/code.html。并设置$GOPATH环境变量" target="_blank" rel="external">http://golang.org/doc/code.html。并设置$GOPATH环境变量</a></p>
+<p>获取源代码</p>
+<pre><code>$ go get github.com/buger/gor
+</code></pre><p>编译</p>
+<pre><code>$ cd $GOPATH/src/github.com/buger/gor$ go build
+</code></pre><p>编译完成会产生一个gor二进制文件。</p>
+<p>Gor配置参数</p>
+<p>```#gor –help<br>-cpuprofile string  write cpu profile to file</p>
+<p>-debug verbose  打开debug模式，显示所有接口的流量 </p>
+<p>-http-allow-header value     用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 `</p>
 <p>#gor –input-raw :8080 –output-http staging.com –http-allow-header api-version:^v1 (default [])</p>
 <p>-http-allow-method value  类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.</p>
 <p>#gor –input-raw :8080 –output-http staging.com –http-allow-method GET –http-allow-method OPTIONS (default [])<br>-http-allow-url value<br>      一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 </p>
