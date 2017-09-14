@@ -82,13 +82,19 @@
 <pre><code># cd Downloads 
 # curl http://www.vim.org/scripts/download_script.php?src_id=24452 &gt;bash-support.zip
 </code></pre><p>按照如下步骤安装；在你的主目录创建 .vim 目录（如果它不存在的话），进入该目录并提取 bash-support.zip 内容：</p>
-<h1 id="mkdir-vim"><a href="#mkdir-vim" class="headerlink" title="mkdir ~/.vim"></a>mkdir ~/.vim</h1><h1 id="cd-vim-unzip-Downloads-bash-support-zip"><a href="#cd-vim-unzip-Downloads-bash-support-zip" class="headerlink" title="cd .vim$ unzip ~/Downloads/bash-support.zip"></a>cd .vim$ unzip ~/Downloads/bash-support.zip</h1><p>下一步，在 .vimrc 文件中激活它：</p>
-<h1 id="vi-vimrc"><a href="#vi-vimrc" class="headerlink" title="vi ~/.vimrc"></a>vi ~/.vimrc</h1><p>并插入下面一行：</p>
-<p>filetype plug-in on set number # 可选，增加这行以在 vim 中显示行号<br>如何在 Vim 编辑器中使用 Bash-support 插件</p>
+<pre><code># mkdir ~/.vim 
+# cd .vim$ unzip ~/Downloads/bash-support.zip
+</code></pre><p>下一步，在 .vimrc 文件中激活它：</p>
+<pre><code># vi ~/.vimrc
+并插入下面一行：
+
+filetype plug-in on set number # 可选，增加这行以在 vim 中显示行号
+</code></pre><p>如何在 Vim 编辑器中使用 Bash-support 插件</p>
 <p>为了简化使用，通常使用的结构和特定操作可以分别通过键映射来插入/执行。~/.vim/doc/bashsupport.txt 和 ~/.vim/bash-support/doc/bash-hotkeys.pdf 或者 ~/.vim/bash-support/doc/bash-hotkeys.tex 文件中介绍了映射。</p>
 <p>重要：</p>
 <p>所有映射（+字符 组合）都是针对特定文件类型的：为了避免和其它插件的映射冲突，它们只适用于 sh 文件。<br>使用键映射的时候打字速度也有关系，引导符 \ 和后面字符的组合要在特定短时间内才能识别出来（很可能少于 3 秒 - 基于假设）。<br>下面我们会介绍和学习使用这个插件一些显著的功能：</p>
 <p>如何为新脚本自动生成文件头<br>看下面的示例文件头，为了要在你所有的新脚本中自动创建该文件头，请按照以下步骤操作。</p>
+<p><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash2.png" alt="bash2"></p>
 <p>脚本示例文件头选项<br>脚本示例文件头选项<br>首先设置你的个人信息（作者名称、作者参考、组织、公司等）。在一个 Bash 缓冲区（像下面这样打开一个测试脚本）中使用映射 \ntw 启动模板设置向导。</p>
 <p>选中选项 1 设置个性化文件，然后按回车键。</p>
 <h1 id="vi-test-sh"><a href="#vi-test-sh" class="headerlink" title="vi test.sh"></a>vi test.sh</h1><p>在脚本文件中设置个性化信息<br>在脚本文件中设置个性化信息<br>之后，再次输入回车键。然后再一次选中选项 1 设置个性化文件的路径并输入回车。</p>
