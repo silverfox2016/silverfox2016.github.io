@@ -80,12 +80,12 @@ a:hover {
 @media screen and (max-width: 1260px) {
   #main-col {
     width: 100%;
-    margin-right: -300px;
+    margin-right: 1260px;
   }
 }
 @media screen and (max-width: 900px) {
   #main-col {
-    margin-right: 0;
+    margin-right: 900;
     float: none;
   }
 }
