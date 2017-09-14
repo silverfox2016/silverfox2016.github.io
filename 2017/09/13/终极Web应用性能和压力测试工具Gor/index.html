@@ -70,7 +70,8 @@
     </header>
     <div class="entry">
       
-        <p>什么是Gor</p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(&apos;Hello World!&apos;);</div></pre></td></tr></table></figure>
+<p>什么是Gor</p>
 <p>项目地址：<a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a></p>
 <p>官方描述</p>
 <p>Gor is a simple http traffic replication tool written in Go.<br>Its main goal is to replay traffic from production servers to staging and dev environments.</p>
@@ -101,13 +102,9 @@
 <pre><code>$ cd $GOPATH/src/github.com/buger/gor$ go build
 </code></pre><p>编译完成会产生一个gor二进制文件。</p>
 <p>Gor配置参数</p>
-<pre><code>#gor --help
--cpuprofile string  write cpu profile to file
-
--debug verbose  打开debug模式，显示所有接口的流量 
-
--http-allow-header value     用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 
-</code></pre>
+<p>`#gor –help<br>-cpuprofile string  write cpu profile to file</p>
+<p>-debug verbose  打开debug模式，显示所有接口的流量 </p>
+<p>-http-allow-header value     用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 `</p>
 <p>#gor –input-raw :8080 –output-http staging.com –http-allow-header api-version:^v1 (default [])</p>
 <p>-http-allow-method value  类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.</p>
 <p>#gor –input-raw :8080 –output-http staging.com –http-allow-method GET –http-allow-method OPTIONS (default [])<br>-http-allow-url value<br>      一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 </p>
