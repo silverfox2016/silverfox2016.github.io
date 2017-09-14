@@ -1,22 +1,456 @@
-doctype html
-html
-	include partial/head.jade
-	body
+<!DOCTYPE html>
+<html lang="en">
 
-		#postContainer
-			#postTop
-				h4#logo #{theme.logo}
-				br
-				br
-				h2#postTitle #{page.title}
-				br
-				span.postTime(class='fa fa-calendar' aria-hidden='true') #{date(page.date['_i'],'YYYY-M-D')}
-				each tag in page.tags.data
-					span.postTags(class='fa fa-tags'  aria-hidden='true') &nbsp;#{tag.name}
-				br
-				br
-			-str = markdown(page.content)
-			section#articleDiv!= str
-		script(src='/js/jquery.min.js')
-		script(src='/js/highlight.min.js')
-		script(src='/js/start.js')
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="silverfox2016">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="这20个正则表达式，让你少写1,000行代码"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Silverfox2016"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>这20个正则表达式，让你少写1,000行代码 - Silverfox2016</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/09/13/这20个正则表达式，让你少写1-000行代码/">
+                这20个正则表达式，让你少写1,000行代码
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>正则表达式，一个十分古老而又强大的文本处理工具，仅仅用一段非常简短的表达式语句，便能够快速实现一个非常复杂的业务逻辑。熟练地掌握正则表达式的话，能够使你的开发效率得到极大的提升。<br>正则表达式经常被用于字段或任意字符串的校验，如下面这段校验基本日期格式的JavaScript代码：</p>
+<p>var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/; var r = fieldValue.match(reg); if(r==null)alert(‘Date format error!’);<br>下面是技匠整理的，在前端开发中经常使用到的20个正则表达式。</p>
+<p>1 . 校验密码强度</p>
+<p>密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。<br><a id="more"></a></p>
+<p>^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$</p>
+<ol>
+<li>校验中文</li>
+</ol>
+<p>字符串仅能是中文。</p>
+<p>^[\u4e00-\u9fa5]{0,}$</p>
+<ol>
+<li>由数字、26个英文字母或下划线组成的字符串</li>
+</ol>
+<p>^\w+$</p>
+<ol>
+<li>校验E-Mail 地址</li>
+</ol>
+<p>同密码一样，下面是E-mail地址合规性的正则检查语句。</p>
+<p>[\w!#$%&amp;’<em>+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;’</em>+/=?^_`{|}~-]+)<em>@(?:[\w](?:[\w-]</em>[\w])?\.)+<a href="?:[\\w-]*[\\w]">\w</a>?</p>
+<ol>
+<li>校验身份证号码</li>
+</ol>
+<p>下面是身份证号码的正则校验。15 或 18位。</p>
+<p>15位：</p>
+<p>^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$<br>18位：</p>
+<p>^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$</p>
+<ol>
+<li>校验日期</li>
+</ol>
+<p>“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。</p>
+<p>^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$</p>
+<ol>
+<li>校验金额</li>
+</ol>
+<p>金额校验，精确到2位小数。</p>
+<p>^[0-9]+(.[0-9]{2})?$</p>
+<ol>
+<li>校验手机号</li>
+</ol>
+<p>下面是国内 13、15、18开头的手机号正则表达式。（可根据目前国内收集号扩展前两位开头号码）</p>
+<p>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</p>
+<ol>
+<li>判断IE的版本</li>
+</ol>
+<p>IE目前还没被完全取代，很多页面还是需要做版本兼容，下面是IE版本检查的表达式。</p>
+<p>^.<em>MSIE <a href="?:\\.[0-9]+">5-8</a>?(?!.</em>Trident\/[5-9]\.0).*$</p>
+<ol>
+<li>校验IP-v4地址</li>
+</ol>
+<p>IP4 正则语句。</p>
+<p>\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b</p>
+<ol>
+<li>校验IP-v6地址</li>
+</ol>
+<p>IP6 正则语句。</p>
+<p>(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))</p>
+<ol>
+<li>检查URL的前缀</li>
+</ol>
+<p>应用开发中很多时候需要区分请求是HTTPS还是HTTP，通过下面的表达式可以取出一个url的前缀然后再逻辑判断。</p>
+<p>if (!s.match(/^[a-zA-Z]+:\/\//)){ s = ‘http://‘ + s;}</p>
+<ol>
+<li>提取URL链接</li>
+</ol>
+<p>下面的这个表达式可以筛选出一段文本中的URL。</p>
+<p>^(f|ht){1}(tp|tps):\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&amp;=]*)?</p>
+<ol>
+<li>文件路径及扩展名校验</li>
+</ol>
+<p>验证windows下文件路径和扩展名（下面的例子中为.txt文件）</p>
+<p>^([a-zA-Z]\:|\\)\\([^\\]+\\)<em>[^\/:</em>?”&lt;&gt;|]+\.txt(l)?$</p>
+<ol>
+<li>提取Color Hex Codes</li>
+</ol>
+<p>有时需要抽取网页中的颜色代码，可以使用下面的表达式。</p>
+<p>^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$</p>
+<ol>
+<li>提取网页图片</li>
+</ol>
+<p>假若你想提取网页中所有图片信息，可以利用下面的表达式。</p>
+<p>\&lt; <em>[img][^\\&gt;]</em>[src] <em>= </em>[\“\‘]{0,1}([^\“\‘\ &gt;]*)</p>
+<ol>
+<li>提取页面超链接</li>
+</ol>
+<p>提取html中的超链接。</p>
+<p>(<a\\s*(?!.*\\brel=)[^>]<em>)(href=”https?:\/\/)((?!(?:(?:www\.)?’.implode(‘|(?:www\.)?’, $follow_list).’))[^”]+)”((?!.</em>\brel=)[^&gt;]<em>)(?:[^&gt;]</em>)&gt;</a\\s*(?!.*\\brel=)[^></p>
+<ol>
+<li>查找CSS属性</li>
+</ol>
+<p>通过下面的表达式，可以搜索到相匹配的CSS属性。</p>
+<p>^\s<em>[a-zA-Z\-]+\s</em>[:]{1}\s[a-zA-Z0-9\s.#]+[;]{1}</p>
+<ol>
+<li>抽取注释</li>
+</ol>
+<p>如果你需要移除HMTL中的注释，可以使用如下的表达式。</p>
+<!--(.*?)-->
+<ol>
+<li>匹配HTML标签</li>
+</ol>
+<p>通过下面的表达式可以匹配出HTML中的标签属性。</p>
+<p>&lt;\/?\w+((\s+\w+(\s<em>=\s</em>(?:”.<em>?”|’.</em>?’|[\^’”&gt;\s]+))?)+\s<em>|\s</em>)\/?&gt;<br>正则表达式的相关语法</p>
+<p>下面是我找到的一张非常不错的正则表达式 Cheat Sheet，可以用来快速查找相关语法。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/让man看起来色彩更加绚丽/">让man看起来色彩更加绚丽</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/nginx正则说明/">nginx正则说明</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/rsync-log日志时间差8小时问题/">rsync log日志时间差8小时问题</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">终极Web应用性能和压力测试工具Gor</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

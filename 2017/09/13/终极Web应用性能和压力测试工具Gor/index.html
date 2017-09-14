@@ -1,22 +1,508 @@
-doctype html
-html
-	include partial/head.jade
-	body
+<!DOCTYPE html>
+<html lang="en">
 
-		#postContainer
-			#postTop
-				h4#logo #{theme.logo}
-				br
-				br
-				h2#postTitle #{page.title}
-				br
-				span.postTime(class='fa fa-calendar' aria-hidden='true') #{date(page.date['_i'],'YYYY-M-D')}
-				each tag in page.tags.data
-					span.postTags(class='fa fa-tags'  aria-hidden='true') &nbsp;#{tag.name}
-				br
-				br
-			-str = markdown(page.content)
-			section#articleDiv!= str
-		script(src='/js/jquery.min.js')
-		script(src='/js/highlight.min.js')
-		script(src='/js/start.js')
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="silverfox2016">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="终极Web应用性能和压力测试工具Gor"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Silverfox2016"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>终极Web应用性能和压力测试工具Gor - Silverfox2016</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">
+                终极Web应用性能和压力测试工具Gor
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>什么是Gor</p>
+<p>项目地址：<a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a></p>
+<p>官方描述</p>
+<p>Gor is a simple http traffic replication tool written in Go.<br>Its main goal is to replay traffic from production servers to staging and dev environments.</p>
+<p>简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</p>
+<a id="more"></a>
+<p>Gor的功能</p>
+<p>Gor支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。Gor还支持根据正则表达式过滤流量，这意味着可以单独测试某个API服务。还可以修改HTTP请求头，比如替换User-Agent, 或者增加某些HTTPHeader。</p>
+<p>Gor还可以把请求记录到文件，以备回放和分析。Gor支持和ElasticSearch集成，将流量存入ES进行实时分析。</p>
+<p>gor的架构图</p>
+<p><img src="/2017/09/13/终极Web应用性能和压力测试工具Gor/gor.png" alt="gor的架构图"></p>
+<p>非http协议的流量复制</p>
+<pre><code>对于不是基于http协议的流量复制，可以使用流量复制工具TCPCopy, TCPCopy支持tcp协议流量的复制、转发、拦截，非常棒的工具.
+</code></pre><p>TCPCopy项目地址：<a href="https://github.com/session-replay-tools/tcpcopy" target="_blank" rel="external">https://github.com/session-replay-tools/tcpcopy</a></p>
+<p>Gor安装</p>
+<p>二进制版本</p>
+<p>官方预编译版本使用比较简单，开箱即用。</p>
+<p>通过以下地址下载最新版本</p>
+<p><a href="https://github.com/buger/gor/releases" target="_blank" rel="external">https://github.com/buger/gor/releases</a> </p>
+<p>Linux</p>
+<p>$ wget <a href="https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$" target="_blank" rel="external">https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$</a> tar xzvf gor_0.12.1_x64.tar.gz$ cp gor /usr/local/bin<br>Mac</p>
+<p>$ wget <a href="https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$" target="_blank" rel="external">https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$</a> tar xzvf gor_0.12.1_mac.tar.gz<br>编译安装</p>
+<p>搭建标准的Go语言环境,可参考<a href="http://golang.org/doc/code.html。并设置$GOPATH环境变量" target="_blank" rel="external">http://golang.org/doc/code.html。并设置$GOPATH环境变量</a></p>
+<p>获取源代码</p>
+<p>$ go get github.com/buger/gor<br>编译</p>
+<p>$ cd $GOPATH/src/github.com/buger/gor$ go build<br>编译完成会产生一个gor二进制文件。</p>
+<p>Gor配置参数</p>
+<pre><code>#gor --help
+-cpuprofile string
+    write cpu profile to file
+-debug verbose
+    打开debug模式，显示所有接口的流量 
+-http-allow-header value
+    用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 
+#gor --input-raw :8080 --output-http staging.com --http-allow-header api-version:^v1 (default [])
+-http-allow-method value
+    类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.
+#gor --input-raw :8080 --output-http staging.com --http-allow-method GET --http-allow-method OPTIONS (default [])
+-http-allow-url value
+      一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 
+#gor --input-raw :8080 --output-http staging.com --http-allow-url ^www. (default [])
+-http-disallow-header value
+      用一个正则表达式来匹配http头部，匹配到的请求会被拒绝掉
+#gor --input-raw :8080 --output-http staging.com --http-disallow-header &quot;User-Agent: Replayed by Gor&quot; (default [])
+-http-disallow-url value
+      用一个正则表达式来匹配url，如果请求匹配上了，则会被拒绝
+#gor --input-raw :8080 --output-http staging.com --http-disallow-url ^www. (default [])
+-http-header-limiter value
+      读取请求，基于FNV32-1A散列来拒绝一定比例的特殊请求 
+#gor --input-raw :8080 --output-http staging.com --http-header-imiter user-id:25% (default [])
+-http-original-host
+      在--output-http的输出中，通常gor会使用取代请求的http头，所以应该禁用该选项，保留原始的主机头
+-http-param-limiter value
+      Takes a fraction of requests, consistently taking or rejecting a request based on the FNV32-1A hash of a specific GET param:
+#gor --input-raw :8080 --output-http staging.com --http-param-limiter user_id:25% (default [])
+-http-rewrite-url value
+      Rewrite the request url based on a mapping:
+#gor --input-raw :8080 --output-http staging.com --http-rewrite-url /v1/user/([^\/]+)/ping:/v2/user/$1/ping (default [])
+-http-set-header value
+      Inject additional headers to http reqest:
+#gor --input-raw :8080 --output-http staging.com --http-set-header &apos;User-Agent: Gor&apos; (default [])
+-http-set-param value
+      Set request url param, if param already exists it will be overwritten:
+#gor --input-raw :8080 --output-http staging.com --http-set-param api_key=1 (default [])
+-input-dummy value
+      Used for testing outputs. Emits &apos;Get /&apos; request every 1s (default [])
+-input-file value
+      从一个文件中读取请求
+#gor --input-file ./requests.gor --output-http staging.com (default [])
+-input-http value
+      从一个http接口读取请求
+
+# Listen for http on 9000
+#gor --input-http :9000 --output-http staging.com (default [])
+
+-input-raw value
+      Capture traffic from given port (use RAW sockets and require *sudo* access):
+# Capture traffic from 8080 port
+#gor --input-raw :8080 --output-http staging.com (default [])
+-input-tcp value
+     用来在多个gor之间流转流量
+# Receive requests from other Gor instances on 28020 port, and redirect output to staging
+#gor --input-tcp :28020 --output-http staging.com (default [])
+-memprofile string
+      write memory profile to this file
+-middleware string
+      Used for modifying traffic using external command
+-output-dummy value
+      用来测试输入，打印出接收的数据. (default [])
+-output-file value
+      把进入的请求写入一个文件中
+      gor --input-raw :80 --output-file ./requests.gor (default [])
+-output-http value
+      转发进入的请求到一个http地址上
+# Redirect all incoming requests to staging.com address 
+#gor --input-raw :80 --output-http http://staging.com (default [])
+-output-http-elasticsearch string
+      把请求和响应状态发送到ElasticSearch:
+#gor --input-raw :8080 --output-http staging.com --output-http-elasticsearch &apos;es_host:api_port/index_name&apos;
+-output-http-redirects int
+      设置多少次重定向被允许
+-output-http-stats
+      每5秒钟输出一次输出队列的状态 
+-output-http-timeout duration
+     指定http的request/response超时时间，默认是5秒
+-output-http-workers int
+      gor默认是动态的扩展工作者数量，你也可以指定固定数量的工作者
+-output-tcp value
+      用来在多个gor之间流转流量
+# Listen for requests on 80 port and forward them to other Gor instance on 28020 port
+#gor --input-raw :80 --output-tcp replay.local:28020 (default [])
+-output-tcp-stats
+      每5秒钟报告一次tcp输出队列的状态
+-split-output true
+      By default each output gets same traffic. If set to true it splits traffic equally 
+      among all outputs.
+-stats
+      打开输出队列的状态
+-verbose
+      Turn on more verbose output
+</code></pre><p>Gor常用命令</p>
+<p>简单的HTTP流量复制</p>
+<pre><code>$ gor --input-raw :80 --output-http &quot;http://staging.com&quot;
+HTTP流量复制频率控制(获取每秒超过10个请求)
+
+$ gor --input-tcp :28020 --output-http &quot;http://staging.com|10&quot;
+HTTP流量复制缩小
+
+$ gor --input-raw :80 --output-tcp &quot;replay.local:28020|10%&quot;
+HTTP流量记录到本地文件
+
+$ gor --input-raw :80 --output-file requests.gor
+HTTP流量回放和压测
+
+$ gor --input-file &quot;requests.gor|200%&quot; --output-http &quot;staging.com&quot;
+HTTP流量过滤复制
+
+$ gor --input-raw :8080 --output-http staging.com --output-http-url-regexp ^www.
+自定义一些流量复制的参数
+
+$ gor --input-raw :80 --output-http 192.168.2.6:8000 --http-allow-method POST --http-set-header &apos;User-Agent: Gor&apos; -output-http-workers=1 -http-allow-url test.php
+将流量复制两份到不同的测试服务
+
+$ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-http &quot;http://dev.com&quot;
+将流量像负载均衡一样分配到不同的服务器
+
+$ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-http &quot;http://dev.com&quot; --split-output true
+测试实例
+</code></pre><p>预发布系统压力测试</p>
+<p>预发布系统主要由预发布服务器和Gor流量复制工具组成，为了查看和分析测试效果，还可以接入各种监控分析系统。<br>部署搭建预发布服务，预发布服务使用的数据库，消息队列，缓存等等需要生成环境隔离，避免对生产环境造成影响；同时，预发布环境使用的数据尽量保证和生成环境一致，以保证测试效果。<br>将线上的五台Api服务器的流量复制到了一台preview(预发布)服务器</p>
+<p>在Api服务器上启动Gor Listener，复制80端口的流量，转发到预发布服务器的28020端口<br>$ sudo gor –input-raw :80 –output-tcp preview:28020<br>在预发布服务器上启动Gor Replayer， 监听28020端口，同时将请求转发到预发布服务器<br>$ sudo gor –input-tcp preview:28020 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a><br>也可以将listener和replayer合二为一<br>$ sudo gor –input-tcp preview:28020 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a><br>注: gor使用listener捕捉请求的时候需要sudo权限</p>
+<p>测试总结<br>极少的情况下Gor会有少量的丢包问题出现，但是不影响测试效果。<br>建议将Gor的listener和replayer分开，减少对生成环境性能的影响。<br>部署搭建预发布服务，预发布服务使用的数据库，消息队列，缓存等等需要生成环境隔离，避免对生产环境造成影响；同时，预发布环境使用的数据尽量保证和生成环境一致，以保证测试效果。<br>由于预发布环境和生成环境的数据无法做到实时的同步，所以要注意区分哪些错误是有程序的bug，哪些是由数据不一致导致的。<br>预发布系统能够一站解决回归测试、abtest和压力测试，然而还是会有局限性：对于比较复杂的业务逻辑，并不能直观的表现出来，需要后台对数据进行进一步的分析比较后才能判断。</p>
+<p>参考文档</p>
+<p><a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a><br><a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a><br><a href="https://blog.eood.cn/web-performance-testing-gor" target="_blank" rel="external">https://blog.eood.cn/web-performance-testing-gor</a><br><a href="http://my.oschina.net/guol/blog/675294" target="_blank" rel="external">http://my.oschina.net/guol/blog/675294</a><br><a href="http://xuyaoqiang.com/2016/05/02/prevew-api-based-on-gor/" target="_blank" rel="external">http://xuyaoqiang.com/2016/05/02/prevew-api-based-on-gor/</a><br><a href="https://github.com/buger/gor/blob/master/ELASTICSEARCH.md" target="_blank" rel="external">https://github.com/buger/gor/blob/master/ELASTICSEARCH.md</a></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/让man看起来色彩更加绚丽/">让man看起来色彩更加绚丽</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/nginx正则说明/">nginx正则说明</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/rsync-log日志时间差8小时问题/">rsync log日志时间差8小时问题</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">终极Web应用性能和压力测试工具Gor</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

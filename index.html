@@ -1,21 +1,651 @@
-doctype html
-html 
-    include partial/head.jade
-    body
-        #particles-js
-            #container
-                #topnav
-                    br
-                    br
-                    span#subtitle #{config.subtitle}
-                    br
-                    br
-                    span#description #{config.description}
-                    br
-                    br
-                include partial/nav.jade
-                include partial/content.jade
-                //- include partial/footer.jade
-        script(src='/js/particles.js')
-        script(src='/js/mouseover.js')
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="silverfox2016">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Silverfox2016"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Silverfox2016"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="website" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Silverfox2016</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
             
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+            <h1 id="main-title" class="title">Silverfox2016</h1>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/让man看起来色彩更加绚丽/">
+                让man看起来色彩更加绚丽
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Man手册</p>
+<p>Man手册会为你列出命令和参数的使用大纲，教你如何使用她们。Man手册看起来沉闷呆板。 </p>
+<p>你需要安装 ‘most’；她会使你的你的man手册的色彩更加绚丽。</p>
+<p>yum install most ( 在epel-release包里）<br>export PAGER=most </p>
+<p>使用方法</p>
+<p>Quitting: 退出<br></p>
+        </div>
+        <a href="/2017/09/13/让man看起来色彩更加绚丽/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/nginx正则说明/">
+                nginx正则说明
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>^~     标识符后面跟一个字符串。<br>Nginx将在这个字符串匹配后停止进行正则表达式的匹配（location指令中正则表达式的匹配的结果优先使用）<br>如：location ^~ /images/，你希望对/images/这个目录进行一些特别的操作，如增加expires头，防盗链等，但是你又想把除了这个目录的图片外的所有图片只进行增加expires头的操作，这个操作可能会用到另外一个location，例如：location ~<em> .(gif|jpg|jpeg)$，这样，如果有请求/images/1.jpg，nginx如何决定去进行哪个location中的操作呢？结果取决于标识符^~，如果你这样写：location /images/，这样nginx会将1.jpg匹配到location ~</em> .(gif|jpg|jpeg)$这个location中，这并不是你需要的结果，而增加了^~这个标识符后，它在匹配了/images/这个字符串后就停止搜索其它带正则的location。<br>=      表示精确的查找地址，如location = /它只会匹配uri为/的请求，如果请求为/index.html，将查找另外的location，而不会匹配这个，当然可以写两个location，location = /和location /，这样/index.html将匹配到后者，如果你的站点对/的请求量较大，可以使用这个方法来加快请求的响应速度。<br>@      表示为一个location进行命名，即自定义一个location，这个location不能被外界所访问，只能用于Nginx产生的子请求，主要为error_page和try_files。<br></p>
+        </div>
+        <a href="/2017/09/13/nginx正则说明/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/rsync-log日志时间差8小时问题/">
+                rsync log日志时间差8小时问题
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p> 用rsync做个单点备份 部署没问题 同步没问题 隔天查看日志<br>发现日志时间差比当前时间差8小时。。。。怀疑时区问题<br>百思不得其解。。。。<br>查看了src的date -R 和 dst的date -R 发现时区均为CST<br>查看hwclock -r src 和 dst 也是一样<br>遂查询rsync源码 额发现是c写的 完全看不懂<br>那么好了 我们查关键字<br>grep time *<br> C library on some systems to fetch the timezone info<br>写的很清楚了 这个是取系统时区。。。到此 卡住。。。<br>遂寻求各种大牛帮助 （根本看不懂C）</p>
+<p>最终一大牛帮我看源码 告诉我因为rsync是取chroot下面etc/localtime<br>rsyncd.conf配置文件里面 path路径下etc/localtime 时间<br>如果发现没有取到 那么就会取默认的UTC时间 整整符合我们上面看日志里面发现差的8小时<br>那么 我们给每个path = 路径 下面 创建etc文件目录 在将/etc/localtime 复制到此目录下<br>至此问题解决 </p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">
+                终极Web应用性能和压力测试工具Gor
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>什么是Gor</p>
+<p>项目地址：<a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a></p>
+<p>官方描述</p>
+<p>Gor is a simple http traffic replication tool written in Go.<br>Its main goal is to replay traffic from production servers to staging and dev environments.</p>
+<p>简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</p>
+        </div>
+        <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/高效用Google/">
+                高效用Google
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p> 如果票选近二十年最伟大的发明，我相信搜索引擎肯定会占据一个不容小觑的位置，它不单是一项发明，更是一项成就，最大程度消灭了信息的不平等。既然人人都可以接触到海量的信息，那么衡量信息财富多寡就只剩下技巧这惟一的标准了：善用搜索引擎的都是信息时代的富翁，不懂搜索引擎的都是信息时代的负翁。<br>而像程序员这种必须终生学习的职业，搜索引擎就是我们的左膀右臂。懂搜索引擎就是我们的基本功，不，应该是童子功。只是大部分新手都在过分粗放的使用搜索引擎，而花几分钟时间了解搜索引擎的技巧和语法，就能让自己的信息财富来一个大跃进，不也是一笔划算的买卖么。</p>
+<p>而对于技术类问题的检索，谷歌的表现水准无疑要甩百度几条街；所以善用搜索引擎的第一条原则必然是：一如既往毫不犹豫百折不挠的使用Google。而对于一名程序员来说，保证自己随时随地能访问Google，是最最基本的技能，哪怕花费少许金钱也是物超所值。那么以下就撇开百度、专门讲讲使用Google的小贴士。</p>
+        </div>
+        <a href="/2017/09/13/高效用Google/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/">
+                Linux下使用Rinetd来实现端口转发
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Linux下端口转发一般都使用iptables来实现，使用iptables可以很容易将TCP和UDP端口从防火墙转发到内部主机上。但是如果需要将流量从专用地址转发到不在您当前网络上的机器上，可尝试另一个应用层端口转发程序Rinetd。Rinetd短小、高效，配置起来比iptables也简单很多。<br>Rinetd是为在一个Unix和Linux操作系统中为重定向传输控制协议(TCP)连接的一个工具。Rinetd是单一过程的服务器，它处理任何数量的连接到在配置文件etc/rinetd中指定的地址/端口对。尽管rinetd使用非闭锁I/O运行作为一个单一过程，它可能重定向很多连接而不对这台机器增加额外的负担。</p>
+<p>安装</p>
+<p>通过包安装<br>CentOS</p>
+<p>官方源中不具有Rinetd，所以需要先安装三方源。</p>
+<p>配置三方源<br></p>
+        </div>
+        <a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/">
+                开启ControlPersist来大幅度提升SSH的连接速度
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>背景介绍：<br>目前，项目中服务器的配置管理已经全部从Puppet迁移到了Ansible，而之前一直认为不会带来困扰的SSH通道慢的问题则暴露的很明显了。<br>因为很多时候需要同时更新几百台服务器，有不少服务器与Ansible主机还不在同一个IDC机房。<br>无意间发现了一篇文章，提到开启SSH的ControlMaster并持久化socket连接，可以加速Ansible的执行速度，不需要在每次都经历SSH认证，单个服务器可能节约的时间仅在1秒左右，而上百台的服务器就能节省约1分钟左右的时间。</p>
+<p>但开启这个功能，必须安装版本较新的openssh，而我们大部分主机都是CentOS6.4 x86_64，默认的版本太旧了并且官方yum仓库中的版本也很旧。<br>考虑到这个功能仅需要客户端的支持即可，不需要在每台服务器上都安装，我们就下载了最新的openssh源码包并打包成了RPM直接安装到了Ansible操作主机上。</p>
+<p>服务器环境：<br>CentOS 6.4 x86_64 Minimal<br></p>
+        </div>
+        <a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/curl-时间变量格式化输出/">
+                curl 时间变量格式化输出
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <a id="more"></a>
+<p> 对curl时间变量的格式化输出。<br>定义格式化文件</p>
+<p>#vim  curl-format.txt<br>\n<br>            time_namelookup:  %{time_namelookup}\n<br>               time_connect:  %{time_connect}\n<br>            time_appconnect:  %{time_appconnect}\n<br>           time_pretransfer:  %{time_pretransfer}\n<br>              time_redirect:  %{time_redirect}\n<br>         time_starttransfer:  %{time_starttransfer}\n<br>                            ———-\n<br>                 time_total:  %{time_total}\n<br>\n<br>这些变量的含义不解释了，大伙去看看curl帮助文档。重点说下time_connect和time_appconnect变量。time_connect 变量表示 TCP 握手的耗时，time_appconnect 变量表示 SSL 握手的耗时（ssl延时）。HTTPs 连接耗时要比 HTTP 连接耗时长 3 倍左右，具体取决于 CPU 的快慢。<br>发送请求</p>
+<h1 id="curl-w-“-curl-format-txt”-o-dev-null-s-http-www-baidu-com"><a href="#curl-w-“-curl-format-txt”-o-dev-null-s-http-www-baidu-com" class="headerlink" title="curl -w “@curl-format.txt” -o /dev/null -s  http://www.baidu.com"></a>curl -w “@curl-format.txt” -o /dev/null -s  <a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a></h1><pre><code>   time_namelookup:  0.002
+      time_connect:  1.973
+   time_appconnect:  0.000
+  time_pretransfer:  1.973
+     time_redirect:  0.000
+time_starttransfer:  3.126
+                   ----------
+        time_total:  5.374
+</code></pre><h1 id="curl-w-“-curl-format-txt”-o-dev-null-s-https-www-baidu-com"><a href="#curl-w-“-curl-format-txt”-o-dev-null-s-https-www-baidu-com" class="headerlink" title="curl -w “@curl-format.txt” -o /dev/null -s  https://www.baidu.com"></a>curl -w “@curl-format.txt” -o /dev/null -s  <a href="https://www.baidu.com" target="_blank" rel="external">https://www.baidu.com</a></h1><pre><code>   time_namelookup:  0.003
+      time_connect:  1.705
+   time_appconnect:  4.007
+  time_pretransfer:  4.007
+     time_redirect:  0.000
+time_starttransfer:  5.214
+                   ----------
+        time_total:  5.214
+</code></pre><p>-w 指定格式化文件<br>-o 请求重定向到<br>-s 静默，不显示进度</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/nginx配置陷阱和常见错误/">
+                nginx配置陷阱和常见错误
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>新老用户都可能遇到陷阱。下面我们列出频繁出现的问题，以及如何解决。 在 Freenode IRC #nginx 频道，我们经常看到这些问题。</p>
+<p>关于本指南<br>最常见的是有人试图从其他指南拷贝配置片段。并非所有的指南是错误的，但绝大部分是有问题的。 甚至 Linode library 的质量也不高，NGINX 社区成员有义务去尝试更正。</p>
+<p>这些文档由社区成员创建并审核。存在该指南的意义在于社区成员常见及反复出现的问题。</p>
+<p>我的问题未列出<br>你遇到的问题在这里没有看到，也许我们在这里没有指明你经历的问题。不要以为你无缘无故的浏览到该 页面，你看到这些是因为你做错的事情列在这里。<br></p>
+        </div>
+        <a href="/2017/09/13/nginx配置陷阱和常见错误/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/13/这20个正则表达式，让你少写1-000行代码/">
+                这20个正则表达式，让你少写1,000行代码
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-13</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>正则表达式，一个十分古老而又强大的文本处理工具，仅仅用一段非常简短的表达式语句，便能够快速实现一个非常复杂的业务逻辑。熟练地掌握正则表达式的话，能够使你的开发效率得到极大的提升。<br>正则表达式经常被用于字段或任意字符串的校验，如下面这段校验基本日期格式的JavaScript代码：</p>
+<p>var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/; var r = fieldValue.match(reg); if(r==null)alert(‘Date format error!’);<br>下面是技匠整理的，在前端开发中经常使用到的20个正则表达式。</p>
+<p>1 . 校验密码强度</p>
+<p>密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。<br></p>
+        </div>
+        <a href="/2017/09/13/这20个正则表达式，让你少写1-000行代码/" class="read-more">Read More</a>
+    
+
+</div>
+            
+        </section>
+    </div>
+</div>
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrap-pagination">
+                <a class="disabled" href="/">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                <a class="" href="/page/2/">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/让man看起来色彩更加绚丽/">让man看起来色彩更加绚丽</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/nginx正则说明/">nginx正则说明</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/rsync-log日志时间差8小时问题/">rsync log日志时间差8小时问题</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">终极Web应用性能和压力测试工具Gor</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
