@@ -162,7 +162,7 @@
     </header>
     <div class="entry">
       
-        <p> 用rsync做个单点备份 部署没问题 同步没问题 隔天查看日志<br>发现日志时间差比当前时间差8小时。。。。怀疑时区问题<br>百思不得其解。。。。<br>查看了src的date -R 和 dst的date -R 发现时区均为CST<br>查看hwclock -r src 和 dst 也是一样<br>遂查询rsync源码 额发现是c写的 完全看不懂<br>那么好了 我们查关键字<br>grep time *<br> C library on some systems to fetch the timezone info<br>写的很清楚了 这个是取系统时区。。。到此 卡住。。。<br>遂寻求各种大牛帮助 （根本看不懂C）</p>
+        <p> 用rsync做个单点备份 部署没问题 同步没问题 隔天查看日志<br>发现日志时间差比当前时间差8小时。。。。怀疑时区问题<br>百思不得其解。。。。<br>查看了src的date -R 和 dst的date -R 发现时区均为CST<br>查看hwclock -r src 和 dst 也是一样<br>遂查询rsync源码 额发现是c写的 完全看不懂<br>那么好了 我们查关键字<br>grep time *<br><img src="/2017/09/13/rsync-log日志时间差8小时问题/rsync.jpg" alt="rsync"><br> C library on some systems to fetch the timezone info<br>写的很清楚了 这个是取系统时区。。。到此 卡住。。。<br>遂寻求各种大牛帮助 （根本看不懂C）</p>
 <p>最终一大牛帮我看源码 告诉我因为rsync是取chroot下面etc/localtime<br>rsyncd.conf配置文件里面 path路径下etc/localtime 时间<br>如果发现没有取到 那么就会取默认的UTC时间 整整符合我们上面看日志里面发现差的8小时<br>那么 我们给每个path = 路径 下面 创建etc文件目录 在将/etc/localtime 复制到此目录下<br>至此问题解决 </p>
 
       
