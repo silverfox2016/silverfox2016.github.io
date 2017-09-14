@@ -95,27 +95,33 @@ filetype plug-in on set number # 可选，增加这行以在 vim 中显示行号
 <p>所有映射（+字符 组合）都是针对特定文件类型的：为了避免和其它插件的映射冲突，它们只适用于 sh 文件。<br>使用键映射的时候打字速度也有关系，引导符 \ 和后面字符的组合要在特定短时间内才能识别出来（很可能少于 3 秒 - 基于假设）。<br>下面我们会介绍和学习使用这个插件一些显著的功能：</p>
 <p>如何为新脚本自动生成文件头<br>看下面的示例文件头，为了要在你所有的新脚本中自动创建该文件头，请按照以下步骤操作。</p>
 <p><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash2.png" alt="bash2"></p>
-<p>脚本示例文件头选项<br>脚本示例文件头选项<br>首先设置你的个人信息（作者名称、作者参考、组织、公司等）。在一个 Bash 缓冲区（像下面这样打开一个测试脚本）中使用映射 \ntw 启动模板设置向导。</p>
+<pre><code>脚本示例文件头选项
+</code></pre><p>首先设置你的个人信息（作者名称、作者参考、组织、公司等）。在一个 Bash 缓冲区（像下面这样打开一个测试脚本）中使用映射 \ntw 启动模板设置向导。</p>
 <p>选中选项 1 设置个性化文件，然后按回车键。</p>
-<h1 id="vi-test-sh"><a href="#vi-test-sh" class="headerlink" title="vi test.sh"></a>vi test.sh</h1><p>在脚本文件中设置个性化信息<br>在脚本文件中设置个性化信息<br>之后，再次输入回车键。然后再一次选中选项 1 设置个性化文件的路径并输入回车。</p>
-<p>设置个性化文件路径<br>设置个性化文件路径<br>设置向导会把目标文件 .vim/bash-support/rc/personal.templates 拷贝到.vim/templates/personal.templates，打开并编辑它，在这里你可以输入你的信息。</p>
-<p>按 i 键像截图那样在单引号中插入合适的值。</p>
-<p>在脚本文件头添加信息<br>在脚本文件头添加信息<br>一旦你设置了正确的值，输入 :wq 保存并退出文件。关闭 Bash 测试脚本，打开另一个脚本来测试新的配置。现在文件头中应该有和下面截图类似的你的个人信息：</p>
-<h1 id="vi-test2-sh"><a href="#vi-test2-sh" class="headerlink" title="vi test2.sh"></a>vi test2.sh</h1><p>自动添加文件头到脚本<br>自动添加文件头到脚本<br>添加 Bash-support 插件帮助信息<br>为此，在 Vim 命令行输入下面的命令并按回车键，它会创建 .vim/doc/tags 文件：</p>
-<p>:helptags $HOME/.vim/doc/<br>在 Vi 编辑器添加插件帮助<br>在 Vi 编辑器添加插件帮助<br>如何在 Shell 脚本中插入注释<br>要插入一个块注释，在普通模式下输入 \cfr：</p>
-<p>添加注释到脚本<br>添加注释到脚本<br>如何在 Shell 脚本中插入语句<br>下面是一些用于插入语句的键映射（n – 普通模式, i – 插入模式，v 可视模式）：</p>
-<p>\sc – case in … esac (n, i)<br>\sei – elif then (n, i)<br>\sf – for in do done (n, i, v)<br>\sfo – for ((…)) do done (n, i, v)<br>\si – if then fi (n, i, v)<br>\sie – if then else fi (n, i, v)<br>\ss – select in do done (n, i, v)<br>\su – until do done (n, i, v)<br>\sw – while do done (n, i, v)<br>\sfu – function (n, i, v)<br>\se – echo -e “…” (n, i, v)<br>\sp – printf “…” (n, i, v)<br>\sa – 数组元素, ${.[.]} （n, i, v） 和其它更多的数组功能。<br>插入一个函数和函数头<br>输入 \sfu 添加一个新的空函数，然后添加函数名并按回车键创建它。之后，添加你的函数代码。</p>
-<p>在脚本中插入新函数<br>在脚本中插入新函数<br>为了给上面的函数创建函数头，输入 \cfu，输入函数名称，按回车键并填入合适的值（名称、介绍、参数、返回值）：</p>
-<p>在脚本中创建函数头<br>在脚本中创建函数头<br>更多关于添加 Bash 语句的例子<br>下面是一个使用 \si 插入一条 if 语句的例子：</p>
-<p>在脚本中插入语句<br>在脚本中插入语句<br>下面的例子显示使用 \se 添加一条 echo 语句：</p>
+<h1 id="vi-test-sh"><a href="#vi-test-sh" class="headerlink" title="vi test.sh"></a>vi test.sh</h1><p><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash3.png" alt="bash3"><br>                     在脚本文件中设置个性化信息<br>之后，再次输入回车键。然后再一次选中选项 1 设置个性化文件的路径并输入回车。</p>
+<p><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash4.png" alt="bash4"></p>
+<pre><code>设置个性化文件路径
+</code></pre><p>设置向导会把目标文件 .vim/bash-support/rc/personal.templates 拷贝到.vim/templates/personal.templates，打开并编辑它，在这里你可以输入你的信息。</p>
+<p>按 i 键像截图那样在单引号中插入合适的值。<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash5.png" alt="bash5"></p>
+<pre><code>在脚本文件头添加信息
+</code></pre><p>一旦你设置了正确的值，输入 :wq 保存并退出文件。关闭 Bash 测试脚本，打开另一个脚本来测试新的配置。现在文件头中应该有和下面截图类似的你的个人信息：</p>
+<h1 id="vi-test2-sh"><a href="#vi-test2-sh" class="headerlink" title="vi test2.sh"></a>vi test2.sh</h1><p><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash6.png" alt="bash6"><br>                    自动添加文件头到脚本<br>添加 Bash-support 插件帮助信息<br>为此，在 Vim 命令行输入下面的命令并按回车键，它会创建 .vim/doc/tags 文件：</p>
+<p>:helptags $HOME/.vim/doc/<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash7.png" alt="bash7"></p>
+<pre><code>在 Vi 编辑器添加插件帮助
+</code></pre><p>如何在 Shell 脚本中插入注释<br>要插入一个块注释，在普通模式下输入 \cfr：</p>
+<p><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash8.png" alt="bash8"><br>添加注释到脚本<br>如何在 Shell 脚本中插入语句<br>下面是一些用于插入语句的键映射（n – 普通模式, i – 插入模式，v 可视模式）：</p>
+<p>\sc – case in … esac (n, i)<br>\sei – elif then (n, i)<br>\sf – for in do done (n, i, v)<br>\sfo – for ((…)) do done (n, i, v)<br>\si – if then fi (n, i, v)<br>\sie – if then else fi (n, i, v)<br>\ss – select in do done (n, i, v)<br>\su – until do done (n, i, v)<br>\sw – while do done (n, i, v)<br>\sfu – function (n, i, v)<br>\se – echo -e “…” (n, i, v)<br>\sp – printf “…” (n, i, v)<br>\sa – 数组元素, ${.[.]} （n, i, v） 和其它更多的数组功能。<br>插入一个函数和函数头<br>输入 \sfu 添加一个新的空函数，然后添加函数名并按回车键创建它。之后，添加你的函数代码。<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash9.png" alt="bash9"></p>
+<p>在脚本中插入新函数<br>在脚本中插入新函数<br>为了给上面的函数创建函数头，输入 \cfu，输入函数名称，按回车键并填入合适的值（名称、介绍、参数、返回值）：<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash10.png" alt="bash10"></p>
+<p>在脚本中创建函数头<br>在脚本中创建函数头<br>更多关于添加 Bash 语句的例子<br>下面是一个使用 \si 插入一条 if 语句的例子：<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash11.png" alt="bash11"></p>
+<p>在脚本中插入语句<br>在脚本中插入语句<br>下面的例子显示使用 \se 添加一条 echo 语句：<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash12.png" alt="bash12"></p>
 <p>在脚本中添加 echo 语句<br>在脚本中添加 echo 语句<br>如何在 Vi 编辑器中使用运行操作<br>下面是一些运行操作键映射的列表：</p>
 <p>\rr – 更新文件，运行脚本 (n, i)<br>\ra – 设置脚本命令行参数 (n, i)<br>\rc – 更新文件，检查语法 (n, i)<br>\rco – 语法检查选项 (n, i)<br>\rd – 启动调试器 (n, i)<br>\re – 使脚本可/不可执行 ( * ) (n, i)</p>
-<p>使脚本可执行<br>编写完脚本后，保存它然后输入 \re 和回车键使它可执行。</p>
+<p>使脚本可执行<br>编写完脚本后，保存它然后输入 \re 和回车键使它可执行。<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash13.png" alt="bash13"></p>
 <p>使脚本可执行<br>使脚本可执行<br>如何在 Bash 脚本中使用预定义代码片段<br>预定义代码片段是为了特定目的包含了已写好代码的文件。为了添加代码段，输入 \nr 和 \nw 读/写预定义代码段。输入下面的命令列出默认的代码段：</p>
-<p>$ .vim/bash-support/codesnippets/<br>代码段列表<br>代码段列表<br>为了使用代码段，例如 free-software-comment，输入 \nr 并使用自动补全功能选择它的名称，然后输入回车键：</p>
+<p>$ .vim/bash-support/codesnippets/<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash14.png" alt="bash14"><br>代码段列表<br>代码段列表<br>为了使用代码段，例如 free-software-comment，输入 \nr 并使用自动补全功能选择它的名称，然后输入回车键：<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash15.png" alt="bash15"></p>
 <p>添加代码段到脚本<br>添加代码段到脚本<br>创建自定义预定义代码段<br>可以在  ~/.vim/bash-support/codesnippets/ 目录下编写你自己的代码段。另外，你还可以从你正常的脚本代码中创建你自己的代码段：</p>
 <p>选择你想作为代码段的部分代码，然后输入  \nw 并给它一个相近的文件名。<br>要读入它，只需要输入  \nr 然后使用文件名就可以添加你自定义的代码段。<br>在当前光标处查看内建和命令帮助<br>要显示帮助，在普通模式下输入：</p>
-<p>\hh – 内建帮助<br>\hm – 命令帮助<br>查看内建命令帮助<br>查看内建命令帮助<br>更多参考资料，可以查看文件：</p>
+<p>\hh – 内建帮助<br>\hm – 命令帮助<br><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash16.png" alt="bash16"><br>查看内建命令帮助<br>查看内建命令帮助<br>更多参考资料，可以查看文件：</p>
 <p>~/.vim/doc/bashsupport.txt #在线文档的副本~/.vim/doc/tags<br>访问 Bash-support 插件 GitHub 仓库：<a href="https://github.com/WolfgangMehner/bash-support" target="_blank" rel="external">https://github.com/WolfgangMehner/bash-support</a><br>在 Vim 网站访问 Bash-support 插件：<a href="http://www.vim.org/scripts/script.php?script_id=365" target="_blank" rel="external">http://www.vim.org/scripts/script.php?script_id=365</a></p>
 
       
