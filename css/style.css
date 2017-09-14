@@ -6,7 +6,7 @@
 }
 * {
   margin: 0;
-  padding: 0;
+  padding: auto;
   font-family: "Microsoft YaHei";
 }
 body {
@@ -91,7 +91,7 @@ a:hover {
 }
 @media screen and (max-width: 1260px) {
   #wrapper {
-    margin-right: 600px;
+    margin-right: 300px;
   }
 }
 @media screen and (max-width: 900px) {
