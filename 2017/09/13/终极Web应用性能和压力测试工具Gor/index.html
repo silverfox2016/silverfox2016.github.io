@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Silverfox2016">
 <meta property="og:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
 <meta property="og:image" content="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/gor.png">
-<meta property="og:updated_time" content="2017-09-14T04:48:43.000Z">
+<meta property="og:updated_time" content="2017-09-14T04:49:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="终极Web应用性能和压力测试工具Gor">
 <meta name="twitter:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
@@ -114,50 +114,50 @@
 <p>$ go get github.com/buger/gor<br>编译</p>
 <p>$ cd $GOPATH/src/github.com/buger/gor$ go build<br>编译完成会产生一个gor二进制文件。</p>
 <p>Gor配置参数</p>
-<pre><code>#gor --help
-    -cpuprofile string
-        write cpu profile to file
-    -debug verbose
-        打开debug模式，显示所有接口的流量 
-    -http-allow-header value
-        用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 
-         gor --input-raw :8080 --output-http staging.com --http-allow-header api-version:^v1 (default [])
-    -http-allow-method value
-        类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.
-        gor --input-raw :8080 --output-http staging.com --http-allow-method GET --http-allow-method OPTIONS (default [])
-      -http-allow-url value
-            一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 
-             gor --input-raw :8080 --output-http staging.com --http-allow-url ^www. (default [])
-      -http-disallow-header value
-            用一个正则表达式来匹配http头部，匹配到的请求会被拒绝掉
-             gor --input-raw :8080 --output-http staging.com --http-disallow-header &quot;User-Agent: Replayed by Gor&quot; (default [])
-      -http-disallow-url value
-            用一个正则表达式来匹配url，如果请求匹配上了，则会被拒绝
-             gor --input-raw :8080 --output-http staging.com --http-disallow-url ^www. (default [])
-      -http-header-limiter value
-            读取请求，基于FNV32-1A散列来拒绝一定比例的特殊请求 
-             gor --input-raw :8080 --output-http staging.com --http-header-imiter user-id:25% (default [])
-      -http-original-host
-            在--output-http的输出中，通常gor会使用取代请求的http头，所以应该禁用该选项，保留原始的主机头
-      -http-param-limiter value
-            Takes a fraction of requests, consistently taking or rejecting a request based on the FNV32-1A hash of a specific GET param:
-             gor --input-raw :8080 --output-http staging.com --http-param-limiter user_id:25% (default [])
-      -http-rewrite-url value
-            Rewrite the request url based on a mapping:
-            gor --input-raw :8080 --output-http staging.com --http-rewrite-url /v1/user/([^\/]+)/ping:/v2/user/$1/ping (default [])
-      -http-set-header value
-            Inject additional headers to http reqest:
-            gor --input-raw :8080 --output-http staging.com --http-set-header &apos;User-Agent: Gor&apos; (default [])
-      -http-set-param value
-            Set request url param, if param already exists it will be overwritten:
-            gor --input-raw :8080 --output-http staging.com --http-set-param api_key=1 (default [])
-      -input-dummy value
-            Used for testing outputs. Emits &apos;Get /&apos; request every 1s (default [])
-      -input-file value
-            从一个文件中读取请求
-            gor --input-file ./requests.gor --output-http staging.com (default [])
-      -input-http value
-            从一个http接口读取请求
+<pre><code>gor --help
+-cpuprofile string
+    write cpu profile to file
+-debug verbose
+    打开debug模式，显示所有接口的流量 
+-http-allow-header value
+    用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 
+     gor --input-raw :8080 --output-http staging.com --http-allow-header api-version:^v1 (default [])
+-http-allow-method value
+    类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.
+    gor --input-raw :8080 --output-http staging.com --http-allow-method GET --http-allow-method OPTIONS (default [])
+  -http-allow-url value
+        一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 
+         gor --input-raw :8080 --output-http staging.com --http-allow-url ^www. (default [])
+  -http-disallow-header value
+        用一个正则表达式来匹配http头部，匹配到的请求会被拒绝掉
+         gor --input-raw :8080 --output-http staging.com --http-disallow-header &quot;User-Agent: Replayed by Gor&quot; (default [])
+  -http-disallow-url value
+        用一个正则表达式来匹配url，如果请求匹配上了，则会被拒绝
+         gor --input-raw :8080 --output-http staging.com --http-disallow-url ^www. (default [])
+  -http-header-limiter value
+        读取请求，基于FNV32-1A散列来拒绝一定比例的特殊请求 
+         gor --input-raw :8080 --output-http staging.com --http-header-imiter user-id:25% (default [])
+  -http-original-host
+        在--output-http的输出中，通常gor会使用取代请求的http头，所以应该禁用该选项，保留原始的主机头
+  -http-param-limiter value
+        Takes a fraction of requests, consistently taking or rejecting a request based on the FNV32-1A hash of a specific GET param:
+         gor --input-raw :8080 --output-http staging.com --http-param-limiter user_id:25% (default [])
+  -http-rewrite-url value
+        Rewrite the request url based on a mapping:
+        gor --input-raw :8080 --output-http staging.com --http-rewrite-url /v1/user/([^\/]+)/ping:/v2/user/$1/ping (default [])
+  -http-set-header value
+        Inject additional headers to http reqest:
+        gor --input-raw :8080 --output-http staging.com --http-set-header &apos;User-Agent: Gor&apos; (default [])
+  -http-set-param value
+        Set request url param, if param already exists it will be overwritten:
+        gor --input-raw :8080 --output-http staging.com --http-set-param api_key=1 (default [])
+  -input-dummy value
+        Used for testing outputs. Emits &apos;Get /&apos; request every 1s (default [])
+  -input-file value
+        从一个文件中读取请求
+        gor --input-file ./requests.gor --output-http staging.com (default [])
+  -input-http value
+        从一个http接口读取请求
 </code></pre><h1 id="Listen-for-http-on-9000"><a href="#Listen-for-http-on-9000" class="headerlink" title="Listen for http on 9000"></a>Listen for http on 9000</h1><p>gor –input-http :9000 –output-http staging.com (default [])</p>
 <pre><code>-input-raw value
       Capture traffic from given port (use RAW sockets and require *sudo* access):
@@ -196,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7jz6ah3000b8v5wxr658zae" class="article-share-link">Share</a>
+      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7jz7u6u000bfa5wgiv6z6sc" class="article-share-link">Share</a>
       
       
     </footer>
