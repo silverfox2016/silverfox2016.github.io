@@ -107,7 +107,8 @@
 -debug verbose  打开debug模式，显示所有接口的流量 
 
 -http-allow-header value     用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 
-</code></pre><p>#gor –input-raw :8080 –output-http staging.com –http-allow-header api-version:^v1 (default [])</p>
+</code></pre>
+<p>#gor –input-raw :8080 –output-http staging.com –http-allow-header api-version:^v1 (default [])</p>
 <p>-http-allow-method value  类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.</p>
 <p>#gor –input-raw :8080 –output-http staging.com –http-allow-method GET –http-allow-method OPTIONS (default [])<br>-http-allow-url value<br>      一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 </p>
 <p>#gor –input-raw :8080 –output-http staging.com –http-allow-url ^www. (default [])<br>-http-disallow-header value<br>      用一个正则表达式来匹配http头部，匹配到的请求会被拒绝掉</p>
