@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Silverfox2016">
 <meta property="og:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
 <meta property="og:image" content="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/gor.png">
-<meta property="og:updated_time" content="2017-09-14T04:36:52.000Z">
+<meta property="og:updated_time" content="2017-09-14T04:37:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="终极Web应用性能和压力测试工具Gor">
 <meta name="twitter:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
@@ -122,15 +122,15 @@
 <h1 id="Receive-requests-from-other-Gor-instances-on-28020-port-and-redirect-output-to-staging"><a href="#Receive-requests-from-other-Gor-instances-on-28020-port-and-redirect-output-to-staging" class="headerlink" title="Receive requests from other Gor instances on 28020 port, and redirect output to staging"></a>Receive requests from other Gor instances on 28020 port, and redirect output to staging</h1><p>gor –input-tcp :28020 –output-http staging.com (default [])<br>      -memprofile string<br>            write memory profile to this file<br>      -middleware string<br>            Used for modifying traffic using external command<br>      -output-dummy value<br>            用来测试输入，打印出接收的数据. (default [])<br>      -output-file value<br>            把进入的请求写入一个文件中<br>            gor –input-raw :80 –output-file ./requests.gor (default [])<br>      -output-http value<br>            转发进入的请求到一个http地址上</p>
 <h1 id="Redirect-all-incoming-requests-to-staging-com-address"><a href="#Redirect-all-incoming-requests-to-staging-com-address" class="headerlink" title="Redirect all incoming requests to staging.com address"></a>Redirect all incoming requests to staging.com address</h1><p>gor –input-raw :80 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a> (default [])<br>      -output-http-elasticsearch string<br>            把请求和响应状态发送到ElasticSearch:<br>            gor –input-raw :8080 –output-http staging.com –output-http-elasticsearch ‘es_host:api_port/index_name’<br>      -output-http-redirects int<br>            设置多少次重定向被允许<br>      -output-http-stats<br>            每5秒钟输出一次输出队列的状态<br>      -output-http-timeout duration<br>           指定http的request/response超时时间，默认是5秒<br>      -output-http-workers int<br>            gor默认是动态的扩展工作者数量，你也可以指定固定数量的工作者<br>      -output-tcp value<br>            用来在多个gor之间流转流量</p>
 <pre><code># Listen for requests on 80 port and forward them to other Gor instance on 28020 port
-      gor --input-raw :80 --output-tcp replay.local:28020 (default [])
--output-tcp-stats
-      每5秒钟报告一次tcp输出队列的状态
--split-output true
-      By default each output gets same traffic. If set to true it splits traffic equally among all outputs.
--stats
-      打开输出队列的状态
--verbose
-      Turn on more verbose output
+        gor --input-raw :80 --output-tcp replay.local:28020 (default [])
+  -output-tcp-stats
+        每5秒钟报告一次tcp输出队列的状态
+  -split-output true
+        By default each output gets same traffic. If set to true it splits traffic equally among all outputs.
+  -stats
+        打开输出队列的状态
+  -verbose
+        Turn on more verbose output
 </code></pre><p>Gor常用命令</p>
 <p>简单的HTTP流量复制</p>
 <p>$ gor –input-raw :80 –output-http “<a href="http://staging.com" target="_blank" rel="external">http://staging.com</a>“<br>HTTP流量复制频率控制(获取每秒超过10个请求)</p>
@@ -152,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7jyr2gw000bbk5wpjqyuury" class="article-share-link">Share</a>
+      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7jysfvd000bh65w0f7xnc58" class="article-share-link">Share</a>
       
       
     </footer>
