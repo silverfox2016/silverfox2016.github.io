@@ -79,7 +79,9 @@
 <a id="more"></a>
 <p>如何在 Linux 中安装 Bash-support 插件</p>
 <p>用下面的命令下载最新版本的 bash-support 插件：</p>
-<h1 id="cd-Downloads"><a href="#cd-Downloads" class="headerlink" title="cd Downloads"></a>cd Downloads</h1><h1 id="curl-http-www-vim-org-scripts-download-script-php-src-id-24452-gt-bash-support-zip"><a href="#curl-http-www-vim-org-scripts-download-script-php-src-id-24452-gt-bash-support-zip" class="headerlink" title="curl http://www.vim.org/scripts/download_script.php?src_id=24452 &gt;bash-support.zip"></a>curl <a href="http://www.vim.org/scripts/download_script.php?src_id=24452" target="_blank" rel="external">http://www.vim.org/scripts/download_script.php?src_id=24452</a> &gt;bash-support.zip</h1><p>按照如下步骤安装；在你的主目录创建 .vim 目录（如果它不存在的话），进入该目录并提取 bash-support.zip 内容：</p>
+<pre><code># cd Downloads 
+# curl http://www.vim.org/scripts/download_script.php?src_id=24452 &gt;bash-support.zip
+</code></pre><p>按照如下步骤安装；在你的主目录创建 .vim 目录（如果它不存在的话），进入该目录并提取 bash-support.zip 内容：</p>
 <h1 id="mkdir-vim"><a href="#mkdir-vim" class="headerlink" title="mkdir ~/.vim"></a>mkdir ~/.vim</h1><h1 id="cd-vim-unzip-Downloads-bash-support-zip"><a href="#cd-vim-unzip-Downloads-bash-support-zip" class="headerlink" title="cd .vim$ unzip ~/Downloads/bash-support.zip"></a>cd .vim$ unzip ~/Downloads/bash-support.zip</h1><p>下一步，在 .vimrc 文件中激活它：</p>
 <h1 id="vi-vimrc"><a href="#vi-vimrc" class="headerlink" title="vi ~/.vimrc"></a>vi ~/.vimrc</h1><p>并插入下面一行：</p>
 <p>filetype plug-in on set number # 可选，增加这行以在 vim 中显示行号<br>如何在 Vim 编辑器中使用 Bash-support 插件</p>
