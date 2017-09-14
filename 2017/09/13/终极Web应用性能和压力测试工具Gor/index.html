@@ -82,20 +82,24 @@
 <p>gor的架构图</p>
 <p><img src="/2017/09/13/终极Web应用性能和压力测试工具Gor/gor.png" alt="gor的架构图"></p>
 <p>非http协议的流量复制</p>
-<pre><code>对于不是基于http协议的流量复制，可以使用流量复制工具TCPCopy, TCPCopy支持tcp协议流量的复制、转发、拦截，非常棒的工具.
-</code></pre><p>TCPCopy项目地址：<a href="https://github.com/session-replay-tools/tcpcopy" target="_blank" rel="external">https://github.com/session-replay-tools/tcpcopy</a></p>
+<p>对于不是基于http协议的流量复制，可以使用流量复制工具TCPCopy, TCPCopy支持tcp协议流量的复制、转发、拦截，非常棒的工具.</p>
+<p>TCPCopy项目地址：<a href="https://github.com/session-replay-tools/tcpcopy" target="_blank" rel="external">https://github.com/session-replay-tools/tcpcopy</a></p>
 <p>Gor安装</p>
 <p>二进制版本</p>
 <p>官方预编译版本使用比较简单，开箱即用。</p>
 <p>通过以下地址下载最新版本</p>
 <p><a href="https://github.com/buger/gor/releases" target="_blank" rel="external">https://github.com/buger/gor/releases</a> </p>
 <p>Linux</p>
-<p>$ wget <a href="https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$" target="_blank" rel="external">https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$</a> tar xzvf gor_0.12.1_x64.tar.gz$ cp gor /usr/local/bin<br>Mac</p>
-<p>$ wget <a href="https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$" target="_blank" rel="external">https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$</a> tar xzvf gor_0.12.1_mac.tar.gz<br>编译安装</p>
+<pre><code>$ wget https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_x64.tar.gz$ tar xzvf gor_0.12.1_x64.tar.gz$ cp gor /usr/local/bin
+</code></pre><p>Mac</p>
+<pre><code>$ wget https://github.com/buger/gor/releases/download/v0.12.1/gor_0.12.1_mac.tar.gz$ tar xzvf gor_0.12.1_mac.tar.gz
+</code></pre><p>编译安装</p>
 <p>搭建标准的Go语言环境,可参考<a href="http://golang.org/doc/code.html。并设置$GOPATH环境变量" target="_blank" rel="external">http://golang.org/doc/code.html。并设置$GOPATH环境变量</a></p>
 <p>获取源代码</p>
-<p>$ go get github.com/buger/gor<br>编译</p>
-<p>$ cd $GOPATH/src/github.com/buger/gor$ go build<br>编译完成会产生一个gor二进制文件。</p>
+<pre><code>$ go get github.com/buger/gor
+</code></pre><p>编译</p>
+<pre><code>$ cd $GOPATH/src/github.com/buger/gor$ go build
+</code></pre><p>编译完成会产生一个gor二进制文件。</p>
 <p>Gor配置参数</p>
 <pre><code>#gor --help
 -cpuprofile string
