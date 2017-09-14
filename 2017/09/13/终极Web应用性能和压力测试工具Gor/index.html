@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Silverfox2016">
 <meta property="og:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
 <meta property="og:image" content="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/gor.png">
-<meta property="og:updated_time" content="2017-09-14T05:04:53.000Z">
+<meta property="og:updated_time" content="2017-09-14T05:07:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="终极Web应用性能和压力测试工具Gor">
 <meta name="twitter:description" content="什么是Gor 项目地址：https://github.com/buger/gor 官方描述 Gor is a simple http traffic replication tool written in Go.Its main goal is to replay traffic from production servers to staging and dev environments. 简单">
@@ -54,9 +54,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://silverfox2016.github.com"></form>
@@ -114,100 +114,25 @@
 <p>$ go get github.com/buger/gor<br>编译</p>
 <p>$ cd $GOPATH/src/github.com/buger/gor$ go build<br>编译完成会产生一个gor二进制文件。</p>
 <p>Gor配置参数</p>
-<pre><code>#gor --help
--cpuprofile string
-    write cpu profile to file
--debug verbose
-    打开debug模式，显示所有接口的流量 
--http-allow-header value
-    用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 
-#gor --input-raw :8080 --output-http staging.com --http-allow-header api-version:^v1 (default [])
--http-allow-method value
-    类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.
-#gor --input-raw :8080 --output-http staging.com --http-allow-method GET --http-allow-method OPTIONS (default [])
-  -http-allow-url value
-        一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 
-  #gor --input-raw :8080 --output-http staging.com --http-allow-url ^www. (default [])
-  -http-disallow-header value
-        用一个正则表达式来匹配http头部，匹配到的请求会被拒绝掉
-  #gor --input-raw :8080 --output-http staging.com --http-disallow-header &quot;User-Agent: Replayed by Gor&quot; (default [])
-  -http-disallow-url value
-        用一个正则表达式来匹配url，如果请求匹配上了，则会被拒绝
-  #gor --input-raw :8080 --output-http staging.com --http-disallow-url ^www. (default [])
-  -http-header-limiter value
-        读取请求，基于FNV32-1A散列来拒绝一定比例的特殊请求 
-  #gor --input-raw :8080 --output-http staging.com --http-header-imiter user-id:25% (default [])
-  -http-original-host
-        在--output-http的输出中，通常gor会使用取代请求的http头，所以应该禁用该选项，保留原始的主机头
-  -http-param-limiter value
-        Takes a fraction of requests, consistently taking or rejecting a request based on the FNV32-1A hash of a specific GET param:
-  #gor --input-raw :8080 --output-http staging.com --http-param-limiter user_id:25% (default [])
-  -http-rewrite-url value
-        Rewrite the request url based on a mapping:
-  #gor --input-raw :8080 --output-http staging.com --http-rewrite-url /v1/user/([^\/]+)/ping:/v2/user/$1/ping (default [])
-  -http-set-header value
-        Inject additional headers to http reqest:
-  #gor --input-raw :8080 --output-http staging.com --http-set-header &apos;User-Agent: Gor&apos; (default [])
-  -http-set-param value
-        Set request url param, if param already exists it will be overwritten:
-  #gor --input-raw :8080 --output-http staging.com --http-set-param api_key=1 (default [])
-  -input-dummy value
-        Used for testing outputs. Emits &apos;Get /&apos; request every 1s (default [])
-  -input-file value
-        从一个文件中读取请求
-  #gor --input-file ./requests.gor --output-http staging.com (default [])
-  -input-http value
-        从一个http接口读取请求
-
-# Listen for http on 9000
-#gor --input-http :9000 --output-http staging.com (default [])
-
-  -input-raw value
-        Capture traffic from given port (use RAW sockets and require *sudo* access):
-# Capture traffic from 8080 port
-#gor --input-raw :8080 --output-http staging.com (default [])
-  -input-tcp value
-       用来在多个gor之间流转流量
-# Receive requests from other Gor instances on 28020 port, and redirect output to staging
-#gor --input-tcp :28020 --output-http staging.com (default [])
-  -memprofile string
-        write memory profile to this file
-  -middleware string
-        Used for modifying traffic using external command
-  -output-dummy value
-        用来测试输入，打印出接收的数据. (default [])
-  -output-file value
-        把进入的请求写入一个文件中
-        gor --input-raw :80 --output-file ./requests.gor (default [])
-  -output-http value
-        转发进入的请求到一个http地址上
-# Redirect all incoming requests to staging.com address 
-#gor --input-raw :80 --output-http http://staging.com (default [])
-  -output-http-elasticsearch string
-        把请求和响应状态发送到ElasticSearch:
-  #gor --input-raw :8080 --output-http staging.com --output-http-elasticsearch &apos;es_host:api_port/index_name&apos;
-  -output-http-redirects int
-        设置多少次重定向被允许
-  -output-http-stats
-        每5秒钟输出一次输出队列的状态 
-  -output-http-timeout duration
-       指定http的request/response超时时间，默认是5秒
-  -output-http-workers int
-        gor默认是动态的扩展工作者数量，你也可以指定固定数量的工作者
-  -output-tcp value
-        用来在多个gor之间流转流量
-# Listen for requests on 80 port and forward them to other Gor instance on 28020 port
-  #gor --input-raw :80 --output-tcp replay.local:28020 (default [])
-  -output-tcp-stats
-        每5秒钟报告一次tcp输出队列的状态
-  -split-output true
-        By default each output gets same traffic. If set to true it splits traffic equally 
-      among all outputs.
-  -stats
-        打开输出队列的状态
-  -verbose
-        Turn on more verbose output
-</code></pre><p>Gor常用命令</p>
+<p>  #gor –help<br>  -cpuprofile string<br>      write cpu profile to file<br>  -debug verbose<br>      打开debug模式，显示所有接口的流量<br>  -http-allow-header value<br>      用一个正则表达式来匹配http头部，如果请求的头部没有匹配上，则被拒绝 </p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-allow-header api-version:^v1 (default [])<br>  -http-allow-method value<br>      类似于一个白名单机制来允许通过的http请求方法，除此之外的方法都被拒绝.</p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-allow-method GET –http-allow-method OPTIONS (default [])<br>  -http-allow-url value<br>        一个正则表达式用来匹配url， 用来过滤完全匹配的的url，在此之外的都被过滤掉 </p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-allow-url ^www. (default [])<br>  -http-disallow-header value<br>        用一个正则表达式来匹配http头部，匹配到的请求会被拒绝掉</p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-disallow-header “User-Agent: Replayed by Gor” (default [])<br>  -http-disallow-url value<br>        用一个正则表达式来匹配url，如果请求匹配上了，则会被拒绝</p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-disallow-url ^www. (default [])<br>  -http-header-limiter value<br>        读取请求，基于FNV32-1A散列来拒绝一定比例的特殊请求 </p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-header-imiter user-id:25% (default [])<br>  -http-original-host<br>        在–output-http的输出中，通常gor会使用取代请求的http头，所以应该禁用该选项，保留原始的主机头<br>  -http-param-limiter value<br>        Takes a fraction of requests, consistently taking or rejecting a request based on the FNV32-1A hash of a specific GET param:</p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-param-limiter user_id:25% (default [])<br>  -http-rewrite-url value<br>        Rewrite the request url based on a mapping:</p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-rewrite-url /v1/user/([^\/]+)/ping:/v2/user/$1/ping (default [])<br>  -http-set-header value<br>        Inject additional headers to http reqest:</p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-set-header ‘User-Agent: Gor’ (default [])<br>  -http-set-param value<br>        Set request url param, if param already exists it will be overwritten:</p>
+<p>  #gor –input-raw :8080 –output-http staging.com –http-set-param api_key=1 (default [])<br>  -input-dummy value<br>        Used for testing outputs. Emits ‘Get /‘ request every 1s (default [])<br>  -input-file value<br>        从一个文件中读取请求</p>
+<p>  #gor –input-file ./requests.gor –output-http staging.com (default [])<br>  -input-http value<br>        从一个http接口读取请求</p>
+<h1 id="Listen-for-http-on-9000"><a href="#Listen-for-http-on-9000" class="headerlink" title="Listen for http on 9000"></a>Listen for http on 9000</h1><p>  #gor –input-http :9000 –output-http staging.com (default [])</p>
+<p>  -input-raw value<br>        Capture traffic from given port (use RAW sockets and require <em>sudo</em> access):</p>
+<h1 id="Capture-traffic-from-8080-port"><a href="#Capture-traffic-from-8080-port" class="headerlink" title="Capture traffic from 8080 port"></a>Capture traffic from 8080 port</h1><p>  #gor –input-raw :8080 –output-http staging.com (default [])<br>  -input-tcp value<br>       用来在多个gor之间流转流量</p>
+<h1 id="Receive-requests-from-other-Gor-instances-on-28020-port-and-redirect-output-to-staging"><a href="#Receive-requests-from-other-Gor-instances-on-28020-port-and-redirect-output-to-staging" class="headerlink" title="Receive requests from other Gor instances on 28020 port, and redirect output to staging"></a>Receive requests from other Gor instances on 28020 port, and redirect output to staging</h1><p>  #gor –input-tcp :28020 –output-http staging.com (default [])<br>  -memprofile string<br>        write memory profile to this file<br>  -middleware string<br>        Used for modifying traffic using external command<br>  -output-dummy value<br>        用来测试输入，打印出接收的数据. (default [])<br>  -output-file value<br>        把进入的请求写入一个文件中<br>        gor –input-raw :80 –output-file ./requests.gor (default [])<br>  -output-http value<br>        转发进入的请求到一个http地址上</p>
+<h1 id="Redirect-all-incoming-requests-to-staging-com-address"><a href="#Redirect-all-incoming-requests-to-staging-com-address" class="headerlink" title="Redirect all incoming requests to staging.com address"></a>Redirect all incoming requests to staging.com address</h1><p>  #gor –input-raw :80 –output-http <a href="http://staging.com" target="_blank" rel="external">http://staging.com</a> (default [])<br>  -output-http-elasticsearch string<br>        把请求和响应状态发送到ElasticSearch:</p>
+<p>  #gor –input-raw :8080 –output-http staging.com –output-http-elasticsearch ‘es_host:api_port/index_name’<br>  -output-http-redirects int<br>        设置多少次重定向被允许<br>  -output-http-stats<br>        每5秒钟输出一次输出队列的状态<br>  -output-http-timeout duration<br>       指定http的request/response超时时间，默认是5秒<br>  -output-http-workers int<br>        gor默认是动态的扩展工作者数量，你也可以指定固定数量的工作者<br>  -output-tcp value<br>        用来在多个gor之间流转流量</p>
+<h1 id="Listen-for-requests-on-80-port-and-forward-them-to-other-Gor-instance-on-28020-port"><a href="#Listen-for-requests-on-80-port-and-forward-them-to-other-Gor-instance-on-28020-port" class="headerlink" title="Listen for requests on 80 port and forward them to other Gor instance on 28020 port"></a>Listen for requests on 80 port and forward them to other Gor instance on 28020 port</h1><p>  #gor –input-raw :80 –output-tcp replay.local:28020 (default [])<br>  -output-tcp-stats<br>        每5秒钟报告一次tcp输出队列的状态<br>  -split-output true<br>        By default each output gets same traffic. If set to true it splits traffic equally<br>        among all outputs.<br>  -stats<br>        打开输出队列的状态<br>  -verbose<br>        Turn on more verbose output<br>Gor常用命令</p>
 <p>简单的HTTP流量复制</p>
 <pre><code>$ gor --input-raw :80 --output-http &quot;http://staging.com&quot;
 HTTP流量复制频率控制(获取每秒超过10个请求)
@@ -245,7 +170,7 @@ $ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7jzr790000bkk5wbn2uyo0o" class="article-share-link">Share</a>
+      <a data-url="http://silverfox2016.github.com/2017/09/13/终极Web应用性能和压力测试工具Gor/" data-id="cj7jzupi0000bxh5wrnl7hrjv" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -255,7 +180,7 @@ $ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-
 <nav id="article-nav">
   
     <a href="/2017/09/13/rsync-log日志时间差8小时问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           rsync log日志时间差8小时问题
@@ -265,7 +190,7 @@ $ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-
   
   
     <a href="/2017/09/13/高效用Google/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">高效用Google</div>
     </a>
   
@@ -298,7 +223,7 @@ $ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -376,7 +301,7 @@ $ gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 silverfox2016<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
