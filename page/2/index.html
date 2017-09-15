@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Page 2 | Silverfox2016</title>
+  <title>Seite 2 | Silverfox2016</title>
   <meta name="author" content="silverfox2016" />
 
   
@@ -55,6 +55,51 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-13T08:44:43.000Z"><a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/">2017-09-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/">开启ControlPersist来大幅度提升SSH的连接速度</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>背景介绍：<br>目前，项目中服务器的配置管理已经全部从Puppet迁移到了Ansible，而之前一直认为不会带来困扰的SSH通道慢的问题则暴露的很明显了。<br>因为很多时候需要同时更新几百台服务器，有不少服务器与Ansible主机还不在同一个IDC机房。<br>无意间发现了一篇文章，提到开启SSH的ControlMaster并持久化socket连接，可以加速Ansible的执行速度，不需要在每次都经历SSH认证，单个服务器可能节约的时间仅在1秒左右，而上百台的服务器就能节省约1分钟左右的时间。</p>
+<p>但开启这个功能，必须安装版本较新的openssh，而我们大部分主机都是CentOS6.4 x86_64，默认的版本太旧了并且官方yum仓库中的版本也很旧。<br>考虑到这个功能仅需要客户端的支持即可，不需要在每台服务器上都安装，我们就下载了最新的openssh源码包并打包成了RPM直接安装到了Ansible操作主机上。</p>
+<p>服务器环境：<br>CentOS 6.4 x86_64 Minimal<br></p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -427,7 +472,7 @@ time_starttransfer:  5.214
 <nav id="pagination">
   
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Vorherige Seite</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </nav>
@@ -435,7 +480,7 @@ time_starttransfer:  5.214
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:silverfox2016.github.com">
   </form>
 </div>
@@ -444,8 +489,12 @@ time_starttransfer:  5.214
 
   
 <div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
+  <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2017/09/15/运维利器万能的strace/">运维利器万能的strace</a>
+      </li>
     
       <li>
         <a href="/2017/09/15/如何用httpie更高效的调试接口/">如何用httpie更高效的调试接口</a>

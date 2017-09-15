@@ -61,6 +61,52 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-09-15T05:31:02.000Z"><a href="/2017/09/15/运维利器万能的strace/">2017-09-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/15/运维利器万能的strace/">运维利器万能的strace</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>strace是什么？</p>
+<p>按照strace官网的描述, strace是一个可用于诊断、调试和教学的Linux用户空间跟踪器。我们用它来监控用户空间进程和内核的交互，比如系统调用、信号传递、进程状态变更等。</p>
+<p>strace底层使用内核的ptrace特性来实现其功能。</p>
+<p>在运维的日常工作中，故障处理和问题诊断是个主要的内容，也是必备的技能。strace作为一种动态跟踪工具，能够帮助运维高效地定位进程和服务故障。它像是一个侦探，通过系统调用的蛛丝马迹，告诉你异常的真相。</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2017/09/15/运维利器万能的strace/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-09-15T04:44:33.000Z"><a href="/2017/09/15/如何用httpie更高效的调试接口/">2017-09-15</a></time>
       
       
@@ -457,56 +503,11 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-09-13T08:44:43.000Z"><a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/">2017-09-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/">开启ControlPersist来大幅度提升SSH的连接速度</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>背景介绍：<br>目前，项目中服务器的配置管理已经全部从Puppet迁移到了Ansible，而之前一直认为不会带来困扰的SSH通道慢的问题则暴露的很明显了。<br>因为很多时候需要同时更新几百台服务器，有不少服务器与Ansible主机还不在同一个IDC机房。<br>无意间发现了一篇文章，提到开启SSH的ControlMaster并持久化socket连接，可以加速Ansible的执行速度，不需要在每次都经历SSH认证，单个服务器可能节约的时间仅在1秒左右，而上百台的服务器就能节省约1分钟左右的时间。</p>
-<p>但开启这个功能，必须安装版本较新的openssh，而我们大部分主机都是CentOS6.4 x86_64，默认的版本太旧了并且官方yum仓库中的版本也很旧。<br>考虑到这个功能仅需要客户端的支持即可，不需要在每台服务器上都安装，我们就下载了最新的openssh源码包并打包成了RPM直接安装到了Ansible操作主机上。</p>
-<p>服务器环境：<br>CentOS 6.4 x86_64 Minimal<br></p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Nächste Seite &raquo;</a>
   </nav>
 
 </nav>
@@ -514,7 +515,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:silverfox2016.github.com">
   </form>
 </div>
@@ -523,8 +524,12 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
+  <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2017/09/15/运维利器万能的strace/">运维利器万能的strace</a>
+      </li>
     
       <li>
         <a href="/2017/09/15/如何用httpie更高效的调试接口/">如何用httpie更高效的调试接口</a>
