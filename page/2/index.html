@@ -61,6 +61,63 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-09-13T08:34:11.000Z"><a href="/2017/09/13/curl-时间变量格式化输出/">2017-09-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/13/curl-时间变量格式化输出/">curl 时间变量格式化输出</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <a id="more"></a>
+<p> 对curl时间变量的格式化输出。<br>定义格式化文件</p>
+<p>#vim  curl-format.txt<br>\n<br>            time_namelookup:  %{time_namelookup}\n<br>               time_connect:  %{time_connect}\n<br>            time_appconnect:  %{time_appconnect}\n<br>           time_pretransfer:  %{time_pretransfer}\n<br>              time_redirect:  %{time_redirect}\n<br>         time_starttransfer:  %{time_starttransfer}\n<br>                            ———-\n<br>                 time_total:  %{time_total}\n<br>\n<br>这些变量的含义不解释了，大伙去看看curl帮助文档。重点说下time_connect和time_appconnect变量。time_connect 变量表示 TCP 握手的耗时，time_appconnect 变量表示 SSL 握手的耗时（ssl延时）。HTTPs 连接耗时要比 HTTP 连接耗时长 3 倍左右，具体取决于 CPU 的快慢。<br>发送请求</p>
+<h1 id="curl-w-“-curl-format-txt”-o-dev-null-s-http-www-baidu-com"><a href="#curl-w-“-curl-format-txt”-o-dev-null-s-http-www-baidu-com" class="headerlink" title="curl -w “@curl-format.txt” -o /dev/null -s  http://www.baidu.com"></a>curl -w “@curl-format.txt” -o /dev/null -s  <a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a></h1><pre><code>   time_namelookup:  0.002
+      time_connect:  1.973
+   time_appconnect:  0.000
+  time_pretransfer:  1.973
+     time_redirect:  0.000
+time_starttransfer:  3.126
+                   ----------
+        time_total:  5.374
+</code></pre><h1 id="curl-w-“-curl-format-txt”-o-dev-null-s-https-www-baidu-com"><a href="#curl-w-“-curl-format-txt”-o-dev-null-s-https-www-baidu-com" class="headerlink" title="curl -w “@curl-format.txt” -o /dev/null -s  https://www.baidu.com"></a>curl -w “@curl-format.txt” -o /dev/null -s  <a href="https://www.baidu.com" target="_blank" rel="external">https://www.baidu.com</a></h1><pre><code>   time_namelookup:  0.003
+      time_connect:  1.705
+   time_appconnect:  4.007
+  time_pretransfer:  4.007
+     time_redirect:  0.000
+time_starttransfer:  5.214
+                   ----------
+        time_total:  5.214
+</code></pre><p>-w 指定格式化文件<br>-o 请求重定向到<br>-s 静默，不显示进度</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-09-13T08:31:20.000Z"><a href="/2017/09/13/nginx配置陷阱和常见错误/">2017-09-13</a></time>
       
       
@@ -389,6 +446,10 @@
 <div class="widget tag">
   <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2017/09/15/如何用httpie更高效的调试接口/">如何用httpie更高效的调试接口</a>
+      </li>
     
       <li>
         <a href="/2017/09/15/zabbix如何实现微信报警/">zabbix如何实现微信报警</a>
