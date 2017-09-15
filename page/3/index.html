@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>HAproxy监测工具(HaTop) | Silverfox2016</title>
+  <title>Seite 3 | Silverfox2016</title>
   <meta name="author" content="silverfox2016" />
 
   
@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="HAproxy监测工具(HaTop)" />
+  
   <meta property="og:site_name" content="Silverfox2016" />
 
   
@@ -54,36 +54,37 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-09-15T02:11:11.000Z"><a href="/2017/09/15/HAproxy监测工具-HaTop/">2017-09-15</a></time>
+        <time datetime="2017-09-13T08:11:29.000Z"><a href="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/">2017-09-13</a></time>
       
       
   
-    <h1 class="title">HAproxy监测工具(HaTop)</h1>
+    <h1 class="title"><a href="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/">如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>1.什么是HaTop</p>
-<p>HATop 是一个交互式的基于 ncurses 开发的实时监控 HAProxy 负载均衡系统的统计工具。后来有人对该工具进行改进，增加了 TCP 支持</p>
-<a id="more"></a>
-<p>2.安装部署</p>
-<p>在安装之前需要开启haproxy的sock<br>修改<br> /etc/haproxy/haproxy.cfg文件中的global部分，添加<br> stats socket /tmp/haproxy.sock<br>下载安装包<br>cd /usr/local/src/<br>wget <a href="https://github.com/Wirehive/hatop/archive/master.zip" target="_blank" rel="external">https://github.com/Wirehive/hatop/archive/master.zip</a><br>安装<br>unzip master.zip<br>cd hatop-master/<br>install -m 755  bin/hatop /usr/local/bin<br>install -m 644 man/hatop.1 /usr/local/share/man/man1<br>gzip /usr/local/share/man/man1/hatop.1<br>以上可以直接复制黏贴就可以实现了，具体的参数在hatop-master/README  可以了解到<br>3.HaTop使用<br>hatop -s /tmp/haproxy.sock<br><img src="/2017/09/15/HAproxy监测工具-HaTop/ha1.png" alt="ha1"><br>按q键退出，运行界面分为5大块      （界面切换分别按 1 2 3 4 5 来选择）<br>很多参数在上面的hatop-master/README  文件中可以了解的，界面也很清晰的告诉我们多少个机器是OK的</p>
-<h2 id="In-STATUS-mode"><a href="#In-STATUS-mode" class="headerlink" title="In STATUS mode"></a>In STATUS mode</h2><p>::<br>ACT         server is active (server), number of active servers (backend)  存货机器<br>BCK         server is backup (server), number of backup servers (backend)  备份机器<br>QCUR        current queued requests  当前队列请求<br>QMAX        max queued requests   最大队列请求<br>SCUR        current sessions  当前会话<br>SMAX        max sessions 最大会话<br>SLIM        sessions limit   会话限制<br>STOT        total sessions  总会话数</p>
-<h2 id="In-TRAFFIC-mode"><a href="#In-TRAFFIC-mode" class="headerlink" title="In TRAFFIC mode"></a>In TRAFFIC mode</h2><p>::<br>LBTOT       total number of times a server was selected  每个服务器被选中的次数<br>RATE        number of sessions per second over last elapsed second  过去一秒的会话运行次数<br>RLIM        limit on new sessions per second  在每秒新建会话限制<br>RMAX        max number of new sessions per second 每秒最大连接数<br>BIN         bytes in (IEEE 1541-2002)<br>BOUT        bytes out (IEEE 1541-2002)</p>
-<h2 id="In-HTTP-mode"><a href="#In-HTTP-mode" class="headerlink" title="In HTTP mode"></a>In HTTP mode</h2><p>::<br>RATE        HTTP requests per second over last elapsed second  过去1妙http请求<br>RMAX        max number of HTTP requests per second observed<br>RTOT        total number of HTTP requests received<br>1xx         number of HTTP responses with 1xx code<br>2xx         number of HTTP responses with 2xx code<br>3xx         number of HTTP responses with 3xx code<br>4xx         number of HTTP responses with 4xx code<br>5xx         number of HTTP responses with 5xx code<br>?xx         number of HTTP responses with other codes (protocol error)</p>
-<h2 id="In-ERRORS-mode"><a href="#In-ERRORS-mode" class="headerlink" title="In ERRORS mode"></a>In ERRORS mode</h2><p>::<br>CF          number of failed checks<br>CD          number of UP-&gt;DOWN transitions<br>CL          last status change<br>ECONN       connection errors<br>EREQ        request errors<br>ERSP        response errors<br>DREQ        denied requests<br>DRSP        denied responses<br>DOWN        total downtime</p>
-<h1 id="Health-check-status-reference"><a href="#Health-check-status-reference" class="headerlink" title="Health check status reference"></a>Health check status reference</h1><p>::<br>UNK         unknown<br>INI         initializing<br>SOCKERR     socket error<br>L4OK        check passed on layer 4, no upper layers testing enabled<br>L4TMOUT     layer 1-4 timeout<br>L4CON       layer 1-4 connection problem, for example<br>“Connection refused” (tcp rst) or “No route to host” (icmp)<br>L6OK        check passed on layer 6<br>L6TOUT      layer 6 (SSL) timeout<br>L6RSP       layer 6 invalid response - protocol error<br>L7OK        check passed on layer 7<br>L7OKC       check conditionally passed on layer 7, for example 404 with<br>disable-on-404<br>L7TOUT      layer 7 (HTTP/SMTP) timeout<br>L7RSP       layer 7 invalid response - protocol error<br>L7STS       layer 7 response error, for example HTTP 5xx<br><img src="/2017/09/15/HAproxy监测工具-HaTop/ha2.png" alt="ha2"></p>
-<p>可以通过给该命令行查询一些服务器信息，可以敲“help”命令查询命令</p>
-
+        <p>IDE（集成开发环境[1]）就是这样一个软件，它为了最大化程序员生产效率，提供了很多编程所需的设施和组件。 IDE 将所有开发工作集中到一个程序中，使得程序员可以编写、修改、编译、部署以及调试程序。<br>在这篇文章中，我们会介绍如何通过使用 bash-support vim 插件将 Vim 编辑器安装和配置[2] 为一个编写 Bash 脚本的 IDE。</p>
+<p><img src="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/bash1.jpg" alt="bash"></p>
+<p>什么是 bash-support.vim 插件？</p>
+<p>bash-support 是一个高度定制化的 vim 插件，它允许你插入：文件头、补全语句、注释、函数、以及代码块。它也使你可以进行语法检查、使脚本可执行、一键启动调试器；而完成所有的这些而不需要关闭编辑器。</p>
+<p>它使用快捷键（映射），通过有组织地、一致的文件内容编写/插入，使得 bash 脚本编程变得有趣和愉快。</p>
+<p>插件当前版本是 4.3，4.0 版本 重写了之前的 3.12.1 版本，4.0 及之后的版本基于一个全新的、更强大的、和之前版本模板语法不同的模板系统。</p>
       
     </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2017/09/13/如何用bash-support插件将Vim编辑器打造成编写Bash脚本的IDE/#more" class="more-link">More</a>
+      </div>
+    </footer>
     
     <footer>
         <div class="alignright">
@@ -100,6 +101,16 @@
 
 
 
+
+
+
+<nav id="pagination">
+  
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Vorherige Seite</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+</nav>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
