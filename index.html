@@ -61,6 +61,100 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-09-15T02:27:51.000Z"><a href="/2017/09/15/zabbix如何实现微信报警/">2017-09-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/15/zabbix如何实现微信报警/">zabbix如何实现微信报警</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p> 如何操作企业号？</p>
+<p>1.通讯录添加企业成员</p>
+<p>我们要提前把成员信息添加进组织部门，必填项+手机号或者微信号，这样别人扫描二维码的时候才能成功关注企业号。</p>
+<p>注意：这里有两个我们要用到信息，一个组织部门的ID，一个部门成员的账号（账号是自己手动指定的，不同于微信号，最好是字母加数字）<br><img src="/2017/09/15/zabbix如何实现微信报警/z1.jpg" alt="z1"></p>
+<p>2.应用中心创建应用</p>
+<p>我们要在这里创建应用，因为要通过应用发送消息给部门成员</p>
+<p>注意：这里要记住一个值，应用ID<br><img src="/2017/09/15/zabbix如何实现微信报警/z2.jpg" alt="z2"><br><img src="/2017/09/15/zabbix如何实现微信报警/z3.jpg" alt="z3"></p>
+<p>3.给部门设置管理员</p>
+<p>设置—&gt;功能设置—-&gt;权限管理—-&gt;新建管理组</p>
+<p>管理员必须事先已经关注了企业号，并且已经设置好邮箱地址<br><img src="/2017/09/15/zabbix如何实现微信报警/z4.jpg" alt="z4"></p>
+<p>确定管理员可以读取通讯录，可以使用应用发消息。</p>
+<p>注意：我们需要管理员的CorpID和Secret<br><img src="/2017/09/15/zabbix如何实现微信报警/z5.jpg" alt="z5"></p>
+<p>我们要准备这些东西：</p>
+<p>一个微信企业号</p>
+<p>企业号已经被部门成员关注</p>
+<p>企业号里有一个可以发消息的应用</p>
+<p>一个授权管理员，可以使用该应用给成员发消息</p>
+<p>我们要取到这些信息：</p>
+<p>成员账号</p>
+<p>组织部门ID</p>
+<p>应用ID</p>
+<p>CropID</p>
+<p>Secret</p>
+<p>如何调用微信接口？</p>
+<p>调用微信接口需要一个调用接口的凭证：access_token</p>
+<p>通过 ：CropID 、Secret  才能获取到access_token，但是获取到的token有效期为两分钟</p>
+<p><img src="/2017/09/15/zabbix如何实现微信报警/z6.jpg" alt="z6"></p>
+<p><img src="/2017/09/15/zabbix如何实现微信报警/z7.jpg" alt="z7"></p>
+<p>微信企业号接口调试工具传送门：<a href="http://qydev.weixin.qq.com/debug" target="_blank" rel="external">http://qydev.weixin.qq.com/debug</a></p>
+<p>Shell脚本原理</p>
+<p>使用：</p>
+<p>curl -s -G  url           获取 AccessToken</p>
+<p>使用：</p>
+<p>curl –data  url     传送凭证调用企业号接口</p>
+<p>zabbix会传递三个参数给脚本，$1是消息接收账号，$2报警标题，$3报警内容</p>
+<p>#!/bin/bash</p>
+<p>###SCRIPT_NAME:weixin.sh###</p>
+<p>###send message from weixin for zabbix monitor###</p>
+<p>###wuhf###</p>
+<p>###V1-2015-08-25###<br>CropID=‘xxxxxx‘<br>Secret=‘xxxxxx‘<br>GURL=”<a href="https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$CropID&amp;corpsecret=$Secret" target="_blank" rel="external">https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$CropID&amp;corpsecret=$Secret</a>“ </p>
+<p>Gtoken=$(/usr/bin/curl -s -G $GURL | awk -F\” ‘{print $4}‘)  </p>
+<p>PURL=”<a href="https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=$Gtoken" target="_blank" rel="external">https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=$Gtoken</a>“<br>function body() {<br>        local int AppID=3                        企业号中的应用id<br>        local UserID=$1                          部门成员id，zabbix中定义的微信接收者<br>        local PartyID=1                          部门id，定义了范围，组内成员都可接收到消息<br>        local Msg=$(echo “$@” | cut -d” “ -f3-)  过滤出zabbix中传递的第三个参数<br>        printf ‘{\n‘        printf ‘\t”touser”: “‘“$User”\””,\n”<br>        printf ‘\t”toparty”: “‘“$PartyID”\””,\n”<br>        printf ‘\t”msgtype”: “text”,\n‘<br>        printf ‘}\n‘<br>        printf ‘\t”agentid”: “‘“ $AppID “\””,\n”<br>        printf ‘\t”text”: {\n‘<br>        printf ‘\t\t”content”: “‘“$Msg”\””\n”<br>        printf ‘\t},\n‘<br>        printf ‘\t”safe”:”0”\n‘<br>        printf ‘}\n‘<br>}<br>为什么要这样写脚本？</p>
+<pre><code>因为微信企业号开放的端口有固定的格式限制
+
+企业号支持的格式：http://qydev.weixin.qq.com/wiki/index.php?title=消息类型及数据格式
+</code></pre><p><img src="/2017/09/15/zabbix如何实现微信报警/z8.jpg" alt="z8"></p>
+<p>将脚本放入zabbix默认执行路径下</p>
+<p>mv weixin.sh /usr/local/zabbix/share/zabbix/alertscripts<br>chown zabbix.zabbix /usr/local/zabbix/share/zabbix/alertscripts/weixin.sh<br>chmod +x /usr/local/zabbix/share/zabbix/alertscripts/weixin.sh</p>
+<p> 服务器端</p>
+<p>1.创建媒介</p>
+<p><img src="/2017/09/15/zabbix如何实现微信报警/z9.jpg" alt="z9"></p>
+<p>2.创建用户</p>
+<p><img src="/2017/09/15/zabbix如何实现微信报警/z10.jpg" alt="z10"></p>
+<p>3.创建触发器动作发送内容</p>
+<p><img src="/2017/09/15/zabbix如何实现微信报警/z11.jpg" alt="z11"></p>
+<p>4.设置触发器动作发送方式</p>
+<p><img src="/2017/09/15/zabbix如何实现微信报警/z12.jpg" alt="z12"></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-09-15T02:11:11.000Z"><a href="/2017/09/15/HAproxy监测工具-HaTop/">2017-09-15</a></time>
       
       
@@ -469,52 +563,6 @@ time_starttransfer:  5.214
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-09-13T08:31:20.000Z"><a href="/2017/09/13/nginx配置陷阱和常见错误/">2017-09-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/09/13/nginx配置陷阱和常见错误/">nginx配置陷阱和常见错误</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>新老用户都可能遇到陷阱。下面我们列出频繁出现的问题，以及如何解决。 在 Freenode IRC #nginx 频道，我们经常看到这些问题。</p>
-<p>关于本指南<br>最常见的是有人试图从其他指南拷贝配置片段。并非所有的指南是错误的，但绝大部分是有问题的。 甚至 Linode library 的质量也不高，NGINX 社区成员有义务去尝试更正。</p>
-<p>这些文档由社区成员创建并审核。存在该指南的意义在于社区成员常见及反复出现的问题。</p>
-<p>我的问题未列出<br>你遇到的问题在这里没有看到，也许我们在这里没有指明你经历的问题。不要以为你无缘无故的浏览到该 页面，你看到这些是因为你做错的事情列在这里。<br></p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2017/09/13/nginx配置陷阱和常见错误/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -538,6 +586,10 @@ time_starttransfer:  5.214
 <div class="widget tag">
   <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2017/09/15/zabbix如何实现微信报警/">zabbix如何实现微信报警</a>
+      </li>
     
       <li>
         <a href="/2017/09/15/HAproxy监测工具-HaTop/">HAproxy监测工具(HaTop)</a>
