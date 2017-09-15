@@ -70,21 +70,21 @@
     </header>
     <div class="entry">
       
-        <p>查看线上机器 发现PID有- 如下图 遂 lsof 查看</p>
-<p>我嘞个去  木有诶。。。<br>去伪系统看看<br>ll /proc/*/fd &gt; proc.txt</p>
+        <p>查看线上机器 发现PID有-<br>如下图<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat1.jpg" alt="netsta1"><br>遂 lsof 查看<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat2.jpg" alt="netsta2"><br>我嘞个去  木有诶。。。<br>去伪系统看看<br>ll /proc/*/fd &gt; proc.txt</p>
 <p>搜索下511398198 511398183 511398188 511398200<br>grep -E “511398198|511398183|511398188|511398200” proc.txt<br><a id="more"></a></p>
-<p>我擦 还没有。。。。<br>懵逼了<br>遂 群里寻求帮助<br>无解 。。。。下班 回家<br>周一 有大牛提供systemtap<br>这是个什么东西呢。。。 擦 木有玩过哇。。。<br>遂百度先看看</p>
+<p><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat3.jpg" alt="netsta3"></p>
+<p>我擦 还没有。。。。<br>懵逼了<br>遂 群里寻求帮助<br>无解 。。。。下班 回家<br>周一 有大牛提供systemtap<br>这是个什么东西呢。。。 擦 木有玩过哇。。。<br>遂百度先看看<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/systemtap.jpg" alt="systemtap"></p>
 <p> 安装systemtap<br>1.查看当前内核版本<br>uname -a<br>2 查看当前安装kernel版本 kernel-devel kernel-debuginfo kernel-debuginfo-common<br>rpm -qa| grep kernel<br>所有版本需要跟uname -r版本一致<br>kernel-debuginfo kernel-debuginfo-common 这两个包去<a href="http://debuginfo.centos.org/" target="_blank" rel="external">http://debuginfo.centos.org/</a> 这里下载<br>（版本需要跟uname -r 版本一致）</p>
 <p>安装完毕后<br>yum install systemtap -y</p>
-<p>rpm -qa | grep systemtap</p>
-<p>rpm -ql systemtap-client | grep examples | head -n 1</p>
+<p>rpm -qa | grep systemtap<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat4.jpg" alt="netsta4"></p>
+<p>rpm -ql systemtap-client | grep examples | head -n 1<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat5.jpg" alt="netsta5"></p>
 <p>nginx 简单配置个页面 root /usr/share/doc/systemtap-client-2.9/examples</p>
-<p>nginx 配置 （略）</p>
-<p>全E文 啃啃吧<br>by keyword （关键字）<br>点下</p>
-<p>我们要查的玩意跟socket有关系 点下 会自动跳转到相关内容</p>
+<p>nginx 配置 （略）<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat6.jpg" alt="netsta6"></p>
+<p>全E文 啃啃吧<br>by keyword （关键字）<br>点下<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat7.jpg" alt="netsta7"></p>
+<p>我们要查的玩意跟socket有关系 点下 会自动跳转到相关内容<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat8.jpg" alt="netsta8"></p>
 <p>network/tcp_connections.stp - Track Creation of Incoming TCP Connections<br>keywords: NETWORK TCP SOCKET<br>The tcp_connections.stp script prints information for each new incoming TCP connection accepted by the computer. The information includes the UID, the command accepting the connection, the PID of the command, the port the connection is on, and the IP address of the originator of the request.<br>tcp_connections.stp脚本打印计算机接受的每个新的传入TCP连接的信息。 信息包括UID，接受连接的命令，命令的PID，连接的端口以及请求的发起方的IP地址。<br>（大体就是tcp链接能得到展现pid之类的 正是我们需要的 ）</p>
 <h1 id="stap-tcp-connections-stp-c-“sleep-1”"><a href="#stap-tcp-connections-stp-c-“sleep-1”" class="headerlink" title="stap tcp_connections.stp -c “sleep 1”"></a>stap tcp_connections.stp -c “sleep 1”</h1><p>执行 satp -r <code>uname -r</code> tcp_connections.stp  </p>
-<p>然后 再开个crt或者xshell的窗口 （session）<br>telnet 0 14489 </p>
+<p>然后 再开个crt或者xshell的窗口 （session）<br>telnet 0 14489<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat9.jpg" alt="netsta9"></p>
 <p>久违的pid出现了  就是9929 和 9933<br>哦了 pid 找到了  咦 连带着cmd也找到了<br>啊哦 好像是nfs相关服务<br>查看下本机 发现 没有nfs存在的必要<br>遂<br>/etc/init.d/nfs stop</p>
 <p>全世界清静咯 </p>
 
