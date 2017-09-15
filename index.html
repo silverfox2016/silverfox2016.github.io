@@ -72,102 +72,15 @@
     <div class="entry">
       
         <p>如果你经常需要通过终端以非交互模式访问网络服务器(例如，从网络上下载文件，或者是测试RESTful网络服务接口)，可能你会选择的工具是wget或curl。<br>HTTPie(读aych-tee-tee-pie)是一款开源的命令行HTTP工具。HTTPie采用Python开发，底层用到了Requests和Pygments库。</p>
-<p>HTTPie设计用来增强wget和curl的可用性。它的主要目标是使通过命令行与网络服务器进行交互的过程变得尽可能的人性化。其提供了一个简单的HTTP环境来让我们通过简单而自然的语法发送任意HTTP请求，并显示彩色输出。HTTPie可用于测试，调试和与HTTP服务器进行普通的交互。</p>
-<p>官方主页: <a href="http://httpie.org/" target="_blank" rel="external">http://httpie.org/</a></p>
-<p>先展示一下HTTPie官方的一个HTTPie VS cURL的图给大家看看。<br><img src="如何用httpie更高效的调试接口/httpie.jpg" alt="httpie"></p>
-<p>安装HTTPie</p>
-<p>Linux</p>
-<p>HTTPie是用Python写的，所以你可以在几乎所有地方(Linux，MacOSX，Windows)安装它。而且，在大多数的Linux发行版中都有编译好的安装包。</p>
-<p>Debian、Ubuntu或者Linux Mint</p>
-<pre><code>$ sudo apt-get install httpie
-</code></pre><p>Fedora</p>
-<pre><code>$ sudo yum install httpie
-</code></pre><p>CentOS/RHEL(Centos7需启用EPEL源)</p>
-<p>首先，启用EPEL仓库，然后运行</p>
-<pre><code>$ sudo yum install httpie
-</code></pre><p>对于任何Linux发行版，另一个安装方法使用pip。</p>
-<pre><code>$ sudo pip install --upgrade httpie
-</code></pre><p>Mac OS X</p>
-<pre><code>$ brew install httpie
-</code></pre><p>HTTPie使用</p>
-<p>当你安装完HTTPie后，你可以通过输入http命令来调用它。</p>
-<p>标准命令格式</p>
-<p>http [flags] [METHOD] URL [ITEM [ITEM]]<br>先看一个示例</p>
-<pre><code>$ http PUT httpbin.org/put hello=world Referer:http://www.imike.meHTTP/1.1 200 OKAccess-Control-Allow-Credentials: trueAccess-Control-Allow-Origin: *Connection: keep-aliveContent-Length: 458Content-Type: application/jsonDate: Tue, 03 May 2016 09:25:33 GMTServer: nginx{    &quot;args&quot;: {},    &quot;data&quot;: &quot;{\&quot;hello\&quot;: \&quot;world\&quot;}&quot;,    &quot;files&quot;: {},    &quot;form&quot;: {},    &quot;headers&quot;: {        &quot;Accept&quot;: &quot;application/json&quot;,        &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;,        &quot;Content-Length&quot;: &quot;18&quot;,        &quot;Content-Type&quot;: &quot;application/json&quot;,        &quot;Host&quot;: &quot;httpbin.org&quot;,        &quot;Referer&quot;: &quot;http://www.imike.me&quot;,        &quot;User-Agent&quot;: &quot;HTTPie/0.9.3&quot;    },    &quot;json&quot;: {        &quot;hello&quot;: &quot;world&quot;    },    &quot;origin&quot;: &quot;118.60.17.21&quot;,    &quot;url&quot;: &quot;http://httpbin.org/put&quot;}
-</code></pre><p>定制头部</p>
-<p>你可以使用<header:value>的格式来定制头部。例如，我们发送一个HTTP GET请求到www.test.com ，使用定制用户代理(user-agent)和来源(referer)，还有定制头部(比如MyParam)。</header:value></p>
-<pre><code>$ http www.test.com User-Agent:Xmodulo/1.0 Referer:http://www.imike.me MyParam:Foo
-</code></pre><p>注意到当使用HTTP GET方法时，就无需明确指定HTTP方法。</p>
-<p>这个HTTP请求看起来如下</p>
-<pre><code>GET / HTTP/1.1Host: www.test.comAccept: */*Referer: www.imike.meAccept-Encoding: gzip, deflate, compressMyParam: FooUser-Agent: Xmodulo/1.0
-</code></pre><p>上传文件</p>
-<pre><code>$ http  post http://127.0.0.1:8080/login &lt; /root/1.py
-</code></pre><p>下载文件</p>
-<p>你可以把http作为文件下载器来使用。你需要像下面一样把输出重定向到文件。</p>
-<pre><code>$ http www.test.com/my_file.zip &gt; my_file.zip
-</code></pre><p>或者</p>
-<pre><code>$ http --download www.test.com/my_file.zip
-</code></pre><p>或者</p>
-<pre><code>$ http -d {url} #支持https
-</code></pre><p>使用其他HTTP方法</p>
-<p>除了默认的GET方法，你还可以使用其他方法(比如PUT、POST、DELETE、HEAD)。</p>
-<p>发送一个HTTP PUT请求</p>
-<pre><code>$ http PUT www.test.com name=&apos;Dan Nanni&apos; email=&apos;dan@email.com&apos;
-</code></pre><p>发送POST数据</p>
-<p>提交表单</p>
-<p>使用http命令提交表单很容易，如下</p>
-<pre><code>$ http -f POST www.test.com name=&apos;Dan Nanni&apos; comment=&apos;Hi there&apos;
-</code></pre><p>-f选项使http命令序列化数据字段，并将Content-Type设置为application/x-www-form-urlencoded; charset=utf-8。</p>
-<p>这个HTTP POST 请求看起来如下</p>
-<pre><code>POST / HTTP/1.1Host: www.test.comContent-Length: 31Content-Type: application/x-www-form-urlencoded; charset=utf-8Accept-Encoding: gzip, deflate, compressAccept: */*User-Agent: HTTPie/0.8.0name=Dan+Nanni&amp;comment=Hi+there
-</code></pre><p>模拟Form的上传, Content-Type: multipart/form-data</p>
-<pre><code>$ http -f POST test.com/jobs name=&apos;John Smith&apos; file@~/test.pdf
-</code></pre><p>模拟HEAD方法</p>
-<pre><code>$ http HEAD www.imike.me
-</code></pre><p>HEAD这个方法只会让服务器返回http response headers。</p>
-<p>这个命令结果如下</p>
-<pre><code>RequestHEAD / HTTP/1.1Accept: */*Accept-Encoding: gzip, deflateConnection: keep-aliveHost: www.imike.meUser-Agent: HTTPie/0.9.2ResponseHTTP/1.1 200 OKAccept-Ranges: bytesAccess-Control-Allow-Origin: *Age: 0Cache-Control: max-age=600Connection: keep-aliveContent-Encoding: gzipContent-Length: 36794Content-Type: text/html; charset=utf-8Date: Wed, 15 Jul 2015 09:26:22 GMTExpires: Wed, 15 Jul 2015 09:36:22 GMTLast-Modified: Sun, 12 Jul 2015 11:32:15 GMTServer: imike.meVary: Accept-EncodingVia: 1.1 varnishX-Cache: MISSX-Cache-Hits: 0X-Served-By: cache-fra1227-FRAX-Timer: S1436952382.011631,VS0,VE99
-</code></pre><p>请求删除的方法</p>
-<pre><code>$ http DELETE test.com
-</code></pre><p>修改请求头</p>
-<p>使用:分隔</p>
-<pre><code>$ http test.com  User-Agent:Yhz/1.0  &apos;Cookie:a=b;b=c&apos;  Referer:http://imike.me/
-</code></pre><p>认证</p>
-<pre><code>$ http -a username:password test.com  $ http --auth-type=digest -a username:password test.com
-</code></pre><p>JSON支持</p>
-<p>HTTPie内置JSON的支持。事实上HTTPie默认使用的内容类型(content-type)就是application/json。因此，当你不指定内容类型发送数据字段时，它们会自动序列化为JSON对象。</p>
-<pre><code>$ http http://127.0.0.1:8080/snippets/1/HTTP/1.0 200 OKContent-Type: application/jsonDate: Mon, 04 Jan 2016 03:22:29 GMTServer: WSGIServer/0.1 Python/2.7.6X-Frame-Options: SAMEORIGIN{    &quot;code&quot;: &quot;foo = \&quot;bar\&quot;\n&quot;,    &quot;language&quot;: &quot;python&quot;,    &quot;linenos&quot;: false,    &quot;pk&quot;: 1,    &quot;style&quot;: &quot;friendly&quot;,    &quot;title&quot;: &quot;&quot;}
-</code></pre><p>传递JSON数据请求(默认就是JSON数据请求)</p>
-<pre><code>$ http PUT test.com name=nate password=nate_password
-</code></pre><p>如果JSON数据存在不是字符串则用:=分隔，例如</p>
-<pre><code>$ http PUT test.com name=nate password=nate_password age:=28 a:=true streets:=&apos;[&quot;a&quot;, &quot;b&quot;]&apos;
-</code></pre><p>输入重定向</p>
-<p>HTTPie的另外一个用户友好特性是输入重定向，你可以使用缓冲数据提供HTTP请求内容。例如</p>
-<pre><code>$ http POST api.test.com/db/lookup &lt; my_info.json
-</code></pre><p>或者</p>
-<pre><code>$ echo &apos;{&quot;name&quot;: &quot;Dan Nanni&quot;}&apos; | http POST api.test.com/db/lookup$ echo &apos;{&quot;name&quot;: &quot;Dan Nanni&quot;,&quot;email&quot;: &quot;test@email.com&quot;}&apos; | http POST api.test.com/db/lookup
-</code></pre><p>使用http代理</p>
-<pre><code>$ http --proxy=http:127.0.0.1:8087 youtube.com$ http --proxy=http:http://192.168.1.100:8060 youtube.com  $ http --proxy=http:http://user:pass@192.168.1.100:8060 youtube.com
-</code></pre><p>显示详细的请求</p>
-<pre><code>$ http -v test.com
-</code></pre><p>只显示Header</p>
-<pre><code>$ http -h test.com
-</code></pre><p>只显示Body</p>
-<pre><code>$ http -b test.com
-</code></pre><p>进阶用法</p>
-<p>看全部并跟随跳转</p>
-<pre><code>$ http --follow httpbin.org/redirect/3
-</code></pre><p>下载图片，然后用imagemagick转化，然后上传到另外一个网站</p>
-<pre><code>$ http octodex.github.com/images/original.jpg | convert - -resize 25% -  | http test.com/Octocats
-</code></pre><p>把认证信息放到session里</p>
-<pre><code>$ http --session=user1 -a user1:password test.com X-Foo:Bar
-</code></pre><p>使用之前认证过后的session继续访问</p>
-<pre><code>$ http --session=user1 test.com
-</code></pre><p>参考文档</p>
-<p><a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a><br><a href="https://github.com/jkbrzt/httpie" target="_blank" rel="external">https://github.com/jkbrzt/httpie</a><br><a href="http://lingxiankong.github.io/blog/2014/08/19/curl-httpie/" target="_blank" rel="external">http://lingxiankong.github.io/blog/2014/08/19/curl-httpie/</a><br><a href="http://www.rendoumi.com/httpdiao-shi-de-ling-yi-li-qi-httpie/" target="_blank" rel="external">http://www.rendoumi.com/httpdiao-shi-de-ling-yi-li-qi-httpie/</a></p>
-
+<p>HTTPie设计用来增强wget和curl的可用性。它的主要目标是使通过命令行与网络服务器进行交互的过程变得尽可能的人性化。其提供了一个简单的HTTP环境来让我们通过简单而自然的语法发送任意HTTP请求，并显示彩色输出。HTTPie可用于测试，调试和与HTTP服务器进行普通的交互。<br></p>
       
     </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2017/09/15/如何用httpie更高效的调试接口/#more" class="more-link">More</a>
+      </div>
+    </footer>
     
     <footer>
         <div class="alignright">
