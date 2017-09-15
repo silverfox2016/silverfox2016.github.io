@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Seite 4 | Archiv: 2017 | Silverfox2016</title>
+  <title>如何从Zabbix数据库中获取监控数据 | Silverfox2016</title>
   <meta name="author" content="silverfox2016" />
 
   
@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  
+  <meta property="og:title" content="如何从Zabbix数据库中获取监控数据" />
   <meta property="og:site_name" content="Silverfox2016" />
 
   
@@ -54,49 +54,126 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2017</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-15T06:01:27.000Z"><a href="/2017/09/15/如何从Zabbix数据库中获取监控数据/">2017-09-15</a></time>
+      
+      
+  
+    <h1 class="title">如何从Zabbix数据库中获取监控数据</h1>
+  
 
+    </header>
+    <div class="entry">
+      
+        <a id="more"></a>
+<p> 1）通过hosts表查找host的ID。<br>    mysql&gt; select host,hostid from hosts where host=’ta-u-cdn-17.200’;</p>
+<pre><code>+-----------------+--------+
 
-  <div class="archive">
+| host            | hostid |
+
++-----------------+--------+
+
+| ta-u-cdn-17.200 |  10275 |
+
++-----------------+--------+
+
+1 row in set (0.00 sec)
+</code></pre><p>2）通过items表查找主的监控项和key以及itemid。</p>
+<pre><code>mysql&gt; select itemid,name,key_ from items where hostid= 10275 and key_=&apos;net.if.out[em1]&apos;;
+
++--------+--------------------------------+-----------------+
+
+| itemid | name                           | key_            |
+
++--------+--------------------------------+-----------------+
+
+|  40397 | Outgoing network traffic on $1 | net.if.out[em1] |
+
++--------+--------------------------------+-----------------+
+
+1 row in set (0.00 sec) 
+</code></pre><p>3）通过itemid查询主机的监控项目（history_uint或者trends_uint)，单位为M。</p>
+<p>   主机流入流量：</p>
+<pre><code>mysql&gt; select from_unixtime(clock) as DateTime,round(value/1024/1024,2) as Traffic_in from history_uint where itemid= 40397 and from_unixtime(clock)&gt;= &apos;2015-11-01&apos; limit 1;
+
++---------------------+------------+
+
+| DateTime            | Traffic_in |
+
++---------------------+------------+
+
+| 2016-04-12 16:06:17 |      63.03 |
+
++---------------------+------------+
+
+1 row in set (0.01 sec)
+</code></pre><p>主机流出流量：</p>
+<pre><code>mysql&gt; select from_unixtime(clock) as DateTime,round(value/1024/1024,2) as Traffic_out from history_uint where itemid= 40389 and from_unixtime(clock)&gt;= &apos;2015-11-01&apos; limit 1;   
+
++---------------------+-------------+
+
+| DateTime            | Traffic_out |
+
++---------------------+-------------+
+
+| 2016-04-12 16:06:09 |        1.05 |
+
++---------------------+-------------+
+
+1 row in set (0.03 sec)
+</code></pre><p>4）如果是两台设备，汇总流量，假如公司出口有两台设备，可以用下面的SQL语句汇总每天的流量。下面SQL语句是汇总上面主机网卡的进出流量的。     </p>
+<pre><code>mysql&gt; select from_unixtime(clock,&quot;%Y-%m-%d %H:%i&quot;) as DateTime,sum(round(value/1024/1024,2)) as Traffic_total from history_uint where itemid in (40397,40389)  and from_unixtime(clock)&gt;=&apos;2015-11-01&apos; group by from_unixtime(clock,&quot;%Y-%m-%d %H:%i&quot;) limit 1;    
+
++------------------+---------------+
+
+| DateTime         | Traffic_total |
+
++------------------+---------------+
+
+| 2016-04-12 16:06 |         64.08 |
+
++------------------+---------------+
+
+1 row in set (1 min 37.89 sec)
+</code></pre><p>5）查询一天中主机流量的最大值，最小值和平均值。 </p>
+<pre><code>mysql&gt;  select date as DateTime,round(min(traffic)/2014/1024,2) as TotalMinIN,round(avg(traffic)/1024/1024,2) as TotalAvgIN,round(max(traffic)/1024/1024,2)  as TotalMaxIN from (select from_unixtime(clock,&quot;%Y-%m-%d&quot;) as date,sum(value) as traffic from history_uint where itemid in (40397,40389) and from_unixtime(clock)&gt;=&apos;2015-11-01&apos; group by from_unixtime(clock,&quot;%Y-%m-%d %H:%i&quot;) ) tmp;    
+
++------------+------------+------------+------------+
+
+| DateTime   | TotalMinIN | TotalAvgIN | TotalMaxIN |
+
++------------+------------+------------+------------+
+
+| 2016-04-12 |       0.01 |     157.47 |     518.18 |
+
++------------+------------+------------+------------+
+
+1 row in set (0.34 sec)
+</code></pre><p>PS：里面的数值大家根据自己的实际情况更改</p>
+
+      
+    </div>
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2017-09-13T08:50:46.000Z"><a href="/2017/09/13/高效用Google/">2017-09-13</a></time>
-            
-              <h1 class="title"><a href="/2017/09/13/高效用Google/">高效用Google</a></h1>
-            
-          </header>
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
         </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2017-09-13T08:48:15.000Z"><a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/">2017-09-13</a></time>
-            
-              <h1 class="title"><a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/">Linux下使用Rinetd来实现端口转发</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2017-09-13T08:44:43.000Z"><a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/">2017-09-13</a></time>
-            
-              <h1 class="title"><a href="/2017/09/13/开启ControlPersist来大幅度提升SSH的连接速度/">开启ControlPersist来大幅度提升SSH的连接速度</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
   </div>
+</article>
+
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

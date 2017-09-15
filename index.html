@@ -61,6 +61,128 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-09-15T06:01:27.000Z"><a href="/2017/09/15/如何从Zabbix数据库中获取监控数据/">2017-09-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/15/如何从Zabbix数据库中获取监控数据/">如何从Zabbix数据库中获取监控数据</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <a id="more"></a>
+<p> 1）通过hosts表查找host的ID。<br>    mysql&gt; select host,hostid from hosts where host=’ta-u-cdn-17.200’;</p>
+<pre><code>+-----------------+--------+
+
+| host            | hostid |
+
++-----------------+--------+
+
+| ta-u-cdn-17.200 |  10275 |
+
++-----------------+--------+
+
+1 row in set (0.00 sec)
+</code></pre><p>2）通过items表查找主的监控项和key以及itemid。</p>
+<pre><code>mysql&gt; select itemid,name,key_ from items where hostid= 10275 and key_=&apos;net.if.out[em1]&apos;;
+
++--------+--------------------------------+-----------------+
+
+| itemid | name                           | key_            |
+
++--------+--------------------------------+-----------------+
+
+|  40397 | Outgoing network traffic on $1 | net.if.out[em1] |
+
++--------+--------------------------------+-----------------+
+
+1 row in set (0.00 sec) 
+</code></pre><p>3）通过itemid查询主机的监控项目（history_uint或者trends_uint)，单位为M。</p>
+<p>   主机流入流量：</p>
+<pre><code>mysql&gt; select from_unixtime(clock) as DateTime,round(value/1024/1024,2) as Traffic_in from history_uint where itemid= 40397 and from_unixtime(clock)&gt;= &apos;2015-11-01&apos; limit 1;
+
++---------------------+------------+
+
+| DateTime            | Traffic_in |
+
++---------------------+------------+
+
+| 2016-04-12 16:06:17 |      63.03 |
+
++---------------------+------------+
+
+1 row in set (0.01 sec)
+</code></pre><p>主机流出流量：</p>
+<pre><code>mysql&gt; select from_unixtime(clock) as DateTime,round(value/1024/1024,2) as Traffic_out from history_uint where itemid= 40389 and from_unixtime(clock)&gt;= &apos;2015-11-01&apos; limit 1;   
+
++---------------------+-------------+
+
+| DateTime            | Traffic_out |
+
++---------------------+-------------+
+
+| 2016-04-12 16:06:09 |        1.05 |
+
++---------------------+-------------+
+
+1 row in set (0.03 sec)
+</code></pre><p>4）如果是两台设备，汇总流量，假如公司出口有两台设备，可以用下面的SQL语句汇总每天的流量。下面SQL语句是汇总上面主机网卡的进出流量的。     </p>
+<pre><code>mysql&gt; select from_unixtime(clock,&quot;%Y-%m-%d %H:%i&quot;) as DateTime,sum(round(value/1024/1024,2)) as Traffic_total from history_uint where itemid in (40397,40389)  and from_unixtime(clock)&gt;=&apos;2015-11-01&apos; group by from_unixtime(clock,&quot;%Y-%m-%d %H:%i&quot;) limit 1;    
+
++------------------+---------------+
+
+| DateTime         | Traffic_total |
+
++------------------+---------------+
+
+| 2016-04-12 16:06 |         64.08 |
+
++------------------+---------------+
+
+1 row in set (1 min 37.89 sec)
+</code></pre><p>5）查询一天中主机流量的最大值，最小值和平均值。 </p>
+<pre><code>mysql&gt;  select date as DateTime,round(min(traffic)/2014/1024,2) as TotalMinIN,round(avg(traffic)/1024/1024,2) as TotalAvgIN,round(max(traffic)/1024/1024,2)  as TotalMaxIN from (select from_unixtime(clock,&quot;%Y-%m-%d&quot;) as date,sum(value) as traffic from history_uint where itemid in (40397,40389) and from_unixtime(clock)&gt;=&apos;2015-11-01&apos; group by from_unixtime(clock,&quot;%Y-%m-%d %H:%i&quot;) ) tmp;    
+
++------------+------------+------------+------------+
+
+| DateTime   | TotalMinIN | TotalAvgIN | TotalMaxIN |
+
++------------+------------+------------+------------+
+
+| 2016-04-12 |       0.01 |     157.47 |     518.18 |
+
++------------+------------+------------+------------+
+
+1 row in set (0.34 sec)
+</code></pre><p>PS：里面的数值大家根据自己的实际情况更改</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-09-15T05:31:02.000Z"><a href="/2017/09/15/运维利器万能的strace/">2017-09-15</a></time>
       
       
@@ -456,53 +578,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-09-13T08:48:15.000Z"><a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/">2017-09-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/">Linux下使用Rinetd来实现端口转发</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Linux下端口转发一般都使用iptables来实现，使用iptables可以很容易将TCP和UDP端口从防火墙转发到内部主机上。但是如果需要将流量从专用地址转发到不在您当前网络上的机器上，可尝试另一个应用层端口转发程序Rinetd。Rinetd短小、高效，配置起来比iptables也简单很多。<br>Rinetd是为在一个Unix和Linux操作系统中为重定向传输控制协议(TCP)连接的一个工具。Rinetd是单一过程的服务器，它处理任何数量的连接到在配置文件etc/rinetd中指定的地址/端口对。尽管rinetd使用非闭锁I/O运行作为一个单一过程，它可能重定向很多连接而不对这台机器增加额外的负担。</p>
-<p>安装</p>
-<p>通过包安装<br>CentOS</p>
-<p>官方源中不具有Rinetd，所以需要先安装三方源。</p>
-<p>配置三方源<br></p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2017/09/13/Linux下使用Rinetd来实现端口转发/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -526,6 +601,10 @@
 <div class="widget tag">
   <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2017/09/15/如何从Zabbix数据库中获取监控数据/">如何从Zabbix数据库中获取监控数据</a>
+      </li>
     
       <li>
         <a href="/2017/09/15/运维利器万能的strace/">运维利器万能的strace</a>
