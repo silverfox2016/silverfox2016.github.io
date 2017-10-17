@@ -61,6 +61,53 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-09-13T08:51:39.000Z"><a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">2017-09-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/">终极Web应用性能和压力测试工具Gor</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>什么是Gor</p>
+<p>项目地址：<a href="https://github.com/buger/gor" target="_blank" rel="external">https://github.com/buger/gor</a></p>
+<p>官方描述</p>
+<p>Gor is a simple http traffic replication tool written in Go.<br>Its main goal is to replay traffic from production servers to staging and dev environments.</p>
+<p>简单点说就是一个http流量复制器，Gor是用Golang写的一个HTTP实时流量复制工具。只需要在LB或者Varnish入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如Staging 环境、Dev环境。完美解决了HTTP层实时流量复制和压力测试的问题。</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2017/09/13/终极Web应用性能和压力测试工具Gor/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-09-13T08:50:46.000Z"><a href="/2017/09/13/高效用Google/">2017-09-13</a></time>
       
       
@@ -467,50 +514,6 @@ time_starttransfer:  5.214
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-09-13T08:19:45.000Z"><a href="/2017/09/13/netstat-ntlp-PID不显示的解决办法/">2017-09-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/09/13/netstat-ntlp-PID不显示的解决办法/">netstat -ntlp PID不显示的解决办法</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>查看线上机器 发现PID有-<br>如下图<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat1.jpg" alt="netsta1"><br>遂 lsof 查看<br><img src="/2017/09/13/netstat-ntlp-PID不显示的解决办法/netstat2.jpg" alt="netsta2"><br>我嘞个去  木有诶。。。<br>去伪系统看看<br>ll /proc/*/fd &gt; proc.txt</p>
-<p>搜索下511398198 511398183 511398188 511398200<br>grep -E “511398198|511398183|511398188|511398200” proc.txt<br></p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2017/09/13/netstat-ntlp-PID不显示的解决办法/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -534,6 +537,10 @@ time_starttransfer:  5.214
 <div class="widget tag">
   <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2017/10/17/一篇文章全面了解监控知识体系/">一篇文章全面了解监控知识体系</a>
+      </li>
     
       <li>
         <a href="/2017/09/15/chmod-SUID-SGID和StickyBit解析-linux权限位/">chmod-SUID-SGID和StickyBit解析-linux权限位</a>
